@@ -1,0 +1,412 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\app_start\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:app_start\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\app_start\\requirehttpsattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:app_start\\requirehttpsattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\app_start\\ninjectwebcommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:app_start\\ninjectwebcommon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\controllers\\branchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:controllers\\branchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|f:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\manager\\branchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:manager\\branchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\data\\branchdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:data\\branchdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\manager\\ibranchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:manager\\ibranchmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\data\\adminlogindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:data\\adminlogindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\models\\branchviewstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:models\\branchviewstudent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\manager\\studentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:manager\\studentmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\controllers\\studentcoursebindcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:controllers\\studentcoursebindcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\data\\coursedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:data\\coursedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\models\\branchpaymentcollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:models\\branchpaymentcollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9411DFE-43C9-4DA7-A999-2362C0510CBD}|rg.servicetoken.csproj|solutionrelative:controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\ResourceData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\ResourceData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\ResourceController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Controllers\\ResourceController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\Resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\Resource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RequireHttpsAttribute.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\RequireHttpsAttribute.cs",
+              "RelativeDocumentMoniker": "App_Start\\RequireHttpsAttribute.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\RequireHttpsAttribute.cs",
+              "RelativeToolTip": "App_Start\\RequireHttpsAttribute.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T13:18:49.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WebApiConfig.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\WebApiConfig.cs",
+              "RelativeDocumentMoniker": "App_Start\\WebApiConfig.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\WebApiConfig.cs",
+              "RelativeToolTip": "App_Start\\WebApiConfig.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAgwCMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T13:16:51.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\Startup.cs",
+              "RelativeDocumentMoniker": "App_Start\\Startup.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\Startup.cs",
+              "RelativeToolTip": "App_Start\\Startup.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T13:16:46.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NinjectWebCommon.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\NinjectWebCommon.cs",
+              "RelativeDocumentMoniker": "App_Start\\NinjectWebCommon.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\App_Start\\NinjectWebCommon.cs",
+              "RelativeToolTip": "App_Start\\NinjectWebCommon.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T13:16:36.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Startup.cs",
+              "RelativeDocumentMoniker": "Startup.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Startup.cs",
+              "RelativeToolTip": "Startup.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T13:16:14.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BranchController.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\BranchController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BranchController.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\BranchController.cs",
+              "RelativeToolTip": "Controllers\\BranchController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T13:12:44.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Web.config",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Web.config",
+              "RelativeDocumentMoniker": "Web.config",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Web.config",
+              "RelativeToolTip": "Web.config",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-11-01T12:57:50.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BranchData.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\BranchData.cs",
+              "RelativeDocumentMoniker": "Data\\BranchData.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\BranchData.cs",
+              "RelativeToolTip": "Data\\BranchData.cs",
+              "ViewState": "AQIAAKwAAAAAAAAAAAAcwMEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T07:20:08.532Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "Models\\Notification.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\Notification.cs",
+              "RelativeToolTip": "Models\\Notification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T07:16:11.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ResourceData.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\ResourceData.cs",
+              "RelativeDocumentMoniker": "Data\\ResourceData.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\ResourceData.cs",
+              "RelativeToolTip": "Data\\ResourceData.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAABcAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T06:44:54.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ResourceController.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\ResourceController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ResourceController.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\ResourceController.cs",
+              "RelativeToolTip": "Controllers\\ResourceController.cs",
+              "ViewState": "AQIAAIcAAAAAAAAAAAAAAJgAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T06:44:10.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\NotificationController.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "Controllers\\NotificationController.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAYwEgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T14:38:24.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BranchManager.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Manager\\BranchManager.cs",
+              "RelativeDocumentMoniker": "Manager\\BranchManager.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Manager\\BranchManager.cs",
+              "RelativeToolTip": "Manager\\BranchManager.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAwD4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T14:38:49.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IBranchManager.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Manager\\IBranchManager.cs",
+              "RelativeDocumentMoniker": "Manager\\IBranchManager.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Manager\\IBranchManager.cs",
+              "RelativeToolTip": "Manager\\IBranchManager.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwA8AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T07:25:16.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Resource.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\Resource.cs",
+              "RelativeDocumentMoniker": "Models\\Resource.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\Resource.cs",
+              "RelativeToolTip": "Models\\Resource.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T06:53:56.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminLoginData.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\AdminLoginData.cs",
+              "RelativeDocumentMoniker": "Data\\AdminLoginData.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\AdminLoginData.cs",
+              "RelativeToolTip": "Data\\AdminLoginData.cs",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAIwDcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T12:15:35.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "StudentManager.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Manager\\StudentManager.cs",
+              "RelativeDocumentMoniker": "Manager\\StudentManager.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Manager\\StudentManager.cs",
+              "RelativeToolTip": "Manager\\StudentManager.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAowBUAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T05:32:42.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StudentController.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "Controllers\\StudentController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwCoAAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T05:32:31.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BranchViewStudent.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\BranchViewStudent.cs",
+              "RelativeDocumentMoniker": "Models\\BranchViewStudent.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\BranchViewStudent.cs",
+              "RelativeToolTip": "Models\\BranchViewStudent.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAxwBEAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-06T10:00:19.091Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "BranchPaymentCollection.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\BranchPaymentCollection.cs",
+              "RelativeDocumentMoniker": "Models\\BranchPaymentCollection.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Models\\BranchPaymentCollection.cs",
+              "RelativeToolTip": "Models\\BranchPaymentCollection.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAswCoAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T13:22:08.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "StudentCourseBindController.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\StudentCourseBindController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StudentCourseBindController.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\StudentCourseBindController.cs",
+              "RelativeToolTip": "Controllers\\StudentCourseBindController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAowEAAAAB1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T12:52:00.121Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CourseData.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\CourseData.cs",
+              "RelativeDocumentMoniker": "Data\\CourseData.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Data\\CourseData.cs",
+              "RelativeToolTip": "Data\\CourseData.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowC4AAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T12:44:44.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\CourseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CourseController.cs",
+              "ToolTip": "F:\\kaushik hansda\\nationalyouth.co.in\\rg.servicetoken\\Controllers\\CourseController.cs",
+              "RelativeToolTip": "Controllers\\CourseController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAD0AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-05T12:43:51.015Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

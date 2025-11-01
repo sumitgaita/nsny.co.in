@@ -1,0 +1,240 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Add Student</strong>
+      </c-card-header>
+      <c-card-body>
+        <form [formGroup]="addStudentForm" (ngSubmit)="onAddStudentSubmit()">
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group required">
+                <label for="stu_name" class="col-sm-4 control-label">&#160;Name <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="stu_name" class="form-control" tabindex="1" id="stu_name">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group required">
+                <label for="paddress" class="col-sm-4 control-label">&#160;Present Address <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <textarea class="form-control" formControlName="paddress" rows="3" tabindex="2" id="paddress" ></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                check for Same Address <input type="checkbox" id="resourceId" (change)="sameAddress($any($event).target.checked)" />
+                <label for="peraddress" class="col-sm-4 control-label">&nbsp; Permanent Address</label>
+                <div class="col-sm-8 mt-2">
+                  <textarea class="form-control" formControlName="peraddress" rows="3" tabindex="3" id="peraddress"></textarea>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="nationality" class="col-sm-4 control-label">Nationality</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="nationality" class="form-control" tabindex="4" id="nationality">
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group required">
+                <label for="mobile" class="col-sm-4 control-label">&#160;Mobile <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" tabindex="5" formControlName="mobile" class="form-control" id="mobile">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group required">
+                <label for="guardian" class="col-sm-4 control-label">&#160;Father Name <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="guardian" class="form-control" tabindex="6" id="guardian">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="emaiid" class="col-sm-4 control-label">Email</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" tabindex="7" formControlName="emaiid" class="form-control" id="emaiid">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="religion" class="col-sm-4 control-label">Religion</label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedreligion" formControlName="religion" tabindex="8" id="religion" class="form-control">
+                    <option *ngFor="let re of religiousList" [value]="re">{{re}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group required">
+                <label for="selectdob" class="col-sm-4 control-label">&#160;Date of birth</label>
+                <div class="col-sm-8 mt-2">
+                  <input class="form-control"
+                         placeholder="yyyy-mm-dd"
+                         name="dp"
+                         id="selectdob"
+                         [(ngModel)]="selectdob"
+                         [ngModelOptions]="{standalone: true}"
+                         (ngModelChange)="onSelectDate($event)"
+                         (click)="d.toggle()"
+                         ngbDatepicker
+                         #d="ngbDatepicker" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="casts" class="col-sm-4 control-label">Casts</label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedcast" formControlName="casts" tabindex="10" id="casts" class="form-control">
+                    <option *ngFor="let ca of castRList" [value]="ca">{{ca}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sex" class="col-sm-4 control-label">Gender</label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedcast" formControlName="sex" tabindex="11" id="sex" class="form-control">
+                    <option *ngFor="let se of sexList" [value]="se">{{se}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="exam" class="col-sm-4 control-label">Last Exam Passed</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="exam" tabindex="12" class="form-control" id="exam">
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="university" class="col-sm-4 control-label">Board/University</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="university" class="form-control" tabindex="13" id="university">
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="percentage" class="col-sm-4 control-label">Percentage</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" tabindex="14" formControlName="percentage" class="form-control" id="percentage">
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="file" class="col-sm-4 control-label">Pic Upload</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="file" id="file" (change)="showPreview($event)" tabindex="15" #inputFile />
+
+
+                  <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                    <img [src]="imageURL" [alt]="addStudentForm.value.name" width="100" height="150">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="center_code" class="col-sm-4 control-label">Center Code</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="center_code" readonly tabindex="16" class="form-control" id="center_code">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="center_name" class="col-sm-4 control-label">Center Name</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="center_name" readonly class="form-control" tabindex="17" id="center_name">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="nSSY_code" class="col-sm-4 control-label">Student Id</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="nSSY_code" readonly tabindex="18" class="form-control" id="nSSY_code">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="FormBottom mt-4">
+            <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

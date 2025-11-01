@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\environments",
+    "\\src\\app\\views",
+    "\\src\\app\\views\\base",
+    "\\src\\app\\views\\base\\noticetobranch",
+    "\\src\\app\\views\\base\\noticetobranchdetails",
+    "\\src\\app\\views\\pages",
+    "\\src\\app\\views\\pages\\login"
+  ],
+  "SelectedNode": "\\src\\app\\environments\\environment.ts",
+  "PreviewInSolutionExplorer": false
+}

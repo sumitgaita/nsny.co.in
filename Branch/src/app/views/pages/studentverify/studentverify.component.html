@@ -1,0 +1,270 @@
+<div class="card mt-4">
+  <div class="card-body">
+    <div style="width: 70%" align="left">
+      <div>
+        <img src="{{environment}}/finaid_icon_verification.gif"><h1>({{title}})</h1>
+      </div>
+      <hr />
+      <div class="tabs_holder tabs_wrapper skin3 top" style="display: block; overflow: hidden; position: relative;">
+
+        <div class="content_holder">
+          <div class="content_holder_inner" style="overflow: hidden; position: relative; z-index: 1; padding: 10px 0px;">
+            <div style="padding: 20px">
+              <div>
+
+                <table width="550" border="0" cellspacing="0" cellpadding="0" style="font-family: Tahoma; font-size: 14px">
+                  <tbody>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="name">Name:</label>
+                          <input name="name" [(ngModel)]="sname" type="text" id="name" class="form-control">
+
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="nssycode">Student ID:</label>
+                          <input name="nssycode" [(ngModel)]="nssycode" type="text" id="nssycode" class="form-control">
+
+                        </div>
+                        <!--<div class="form-group">
+                    <label for="txtTo">Date of Birth:</label>
+                    <input type="text" readonly placeholder="yyyy-mm-dd" class="form-control"
+                           name="dd" [(ngModel)]="selectdob" (click)="dd.toggle()"
+                           (ngModelChange)="onSelectDate($event)" ngbDatepicker #dd="ngbDatepicker" [ngModelOptions]="{standalone: true}">
+
+                  </div>-->
+                      </div>
+                    </div>
+
+                    <!--<div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="txtFrom">Student ID:</label>
+                    <input name="name" [(ngModel)]="nssycode" type="text" id="name" class="form-control">
+
+                  </div>
+                </div>
+
+              </div>-->
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+            <div id="your-tab-id-1" class="tab_content" style="display: block;">
+              <div class="inner_content">
+                <div id="UpdatePanel1">
+
+                  <div align="center">
+                    <div style="padding: 10px" class="form-group mt-4">
+                      <input type="submit" (click)="getPaymentEaning()" name="Button2" class="btn btn-info" value="Verify Now" id="Button2"><!--&nbsp;&nbsp;-->
+                      <!--<input type="submit" (click)="PaymentDetails()" name="Button1" class="btn btn-info" value="View Payment" id="Button1">-->
+                    </div>
+
+                    <div id="content" class="container" #content>
+                      <table id="contentToConvert" width="792" *ngIf="isVisibleComp" border="0" cellspacing="0" cellpadding="0" style="border: solid 0px #3399FF; font-family: 'ciclefina'; font-size: 18px">
+                        <tbody>
+                          <tr>
+                            <td height="37" colspan="3" style="background-color: #3399FF; font-size: 24px; color: #FFFFFF">
+                              <div align="center">Verify Your Details ({{title}})</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td width="169">&nbsp;</td>
+                            <td width="22">
+                              <div align="center" style="position: relative;top: 107px;left: 516px; margin-top: -5rem;">
+                                <img width="100" height="100" src="{{domain}}/Files/{{setudentCompleteDetails.pic}}">
+                                <!--<img width="100" height="100" src="http://nationalyouth.co.in/Files/{{setudentCompleteDetails.pic}}">-->
+                                <!--<img width="100" height="100" src="http://localhost/nationalyouth/Files/{{setudentCompleteDetails.pic}}">-->
+                              </div>
+                            </td>
+                            <td width="509">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Student Name</div>
+                            </td>
+                            <td valign="middle" style="height: 25px">
+                              <div align="center">:</div>
+                            </td>
+                            <td style="height: 25px">&nbsp;{{setudentCompleteDetails?.stu_name}}</td>
+                            <!--<span style="position: relative; top: -6px; left: -95px;"></span>-->
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Roll Number </div>
+                            </td>
+                            <td valign="middle" style="height: 25px">
+                              <div align="center">:</div>
+                            </td>
+                            <td style="height: 25px">&nbsp;{{setudentCompleteDetails?.nssY_code}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Hologram Number </div>
+                            </td>
+                            <td valign="middle" style="height: 25px">
+                              <div align="center">:</div>
+                            </td>
+                            <td style="height: 25px">&nbsp;{{setudentCompleteDetails?.r2}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle">
+                              <div align="right"></div>
+                            </td>
+                            <td valign="middle">
+                              <div align="center"></div>
+                            </td>
+                            <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Grade</div>
+                            </td>
+                            <td valign="middle" style="height: 25px">
+                              <div align="center">:</div>
+                            </td>
+                            <td style="height: 25px">&nbsp;{{setudentCompleteDetails?.r1}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle">
+                              <div align="right"></div>
+                            </td>
+                            <td valign="middle">
+                              <div align="center"></div>
+                            </td>
+                            <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Father's / Gurdian Name </div>
+                            </td>
+                            <td valign="middle" style="height: 25px">
+                              <div align="center">:</div>
+                            </td>
+                            <td style="height: 25px">&nbsp;{{setudentCompleteDetails?.guardian}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Address</div>
+                            </td>
+                            <td valign="middle" style="height: 25px">
+                              <div align="center">:</div>
+                            </td>
+                            <td style="height: 25px">&nbsp;{{setudentCompleteDetails?.paddress}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle">
+                              <div align="right"></div>
+                            </td>
+                            <td valign="middle">
+                              <div align="center"></div>
+                            </td>
+                            <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Course</div>
+                            </td>
+                            <td valign="middle" style="height: 25px">
+                              <div align="center">:</div>
+                            </td>
+                            <td>&nbsp;{{setudentCompleteDetails?.cname}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Duration</div>
+                            </td>
+                            <td valign="middle">
+                              <div align="center">:</div>
+                            </td>
+                            <td>&nbsp;{{setudentCompleteDetails?.duration}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Course Status </div>
+                            </td>
+                            <td>
+                              <div align="center">:</div>
+                            </td>
+                            <td>&nbsp;{{setudentCompleteDetails?.r3}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Remarks </div>
+                            </td>
+                            <td>
+                              <div align="center">:</div>
+                            </td>
+                            <td>&nbsp;Pass</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Theory(M1) </div>
+                            </td>
+                            <td>
+                              <div align="center">:</div>
+                            </td>
+                            <td>&nbsp;{{setudentCompleteDetails?.theory}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Practical(M2) </div>
+                            </td>
+                            <td>
+                              <div align="center">:</div>
+                            </td>
+                            <td>&nbsp;{{setudentCompleteDetails?.practical}}</td>
+                          </tr>
+                          <tr>
+                            <td valign="middle" style="height: 25px">
+                              <div align="right">Center Name </div>
+                            </td>
+                            <td>
+                              <div align="center">:</div>
+                            </td>
+                            <td>&nbsp;{{setudentCompleteDetails?.center_name}}</td>
+                          </tr>
+                          <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <button *ngIf="isVisibleComp" (click)="print()" class="btn btn-danger">print</button> &nbsp;&nbsp;
+                    <!--<input *ngIf="isVisibleComp" type="button" value="Download(without picture)" class="btn btn-success" (click)="SavePDF()">-->
+                    <div class="form-group mt-4" *ngIf="isVisiblepaymentDetails">
+                      <ag-grid-angular [domLayout]="'autoHeight'"
+                                       class="ag-theme-quartz"
+                                       [pagination]="true"
+                                       [rowData]="studentPaymentDetails"
+                                       [columnDefs]="columnDefs"
+                                       [paginationPageSize]="pageSize">
+                      </ag-grid-angular>
+                    </div>
+
+                    <span id="verifylb" *ngIf="isVisibleNotComp"><b style='color:red'>{{notissued}}</b></span>
+                    <span id="verifylb" *ngIf="isVisibleNotStudent"><b style='color:red'>{{notstudent}}</b></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <!-- /.content_holder -->
+        <a href="{{originalsite}}" target="_blank" rel="noopener noreferrer">
+          click here to show original website
+        </a>
+        <span> &copy; 2024 - All Rights Reserved</span>
+        <!--<a class="btn btn-danger" style="cursor:pointer;" routerLink="/" >Back To Login</a>-->
+      </div>
+      <!-- /.tabs_holder -->
+    </div>
+  </div>
+

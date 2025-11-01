@@ -1,0 +1,21 @@
+F:\rgapplication\rg.framework\bin\Debug\gr.framework.dll
+F:\rgapplication\rg.framework\bin\Debug\gr.framework.pdb
+F:\rgapplication\rg.framework\obj\Debug\rg.framework.csprojResolveAssemblyReference.cache
+F:\rgapplication\rg.framework\obj\Debug\gr.framework.dll
+F:\rgapplication\rg.framework\obj\Debug\gr.framework.pdb
+E:\Projects\rgapplication\rg.framework\bin\Debug\gr.framework.dll
+E:\Projects\rgapplication\rg.framework\bin\Debug\gr.framework.pdb
+E:\Projects\rgapplication\rg.framework\obj\Debug\gr.framework.dll
+E:\Projects\rgapplication\rg.framework\obj\Debug\gr.framework.pdb
+F:\Projects\rgapplication\rg.framework\bin\Debug\gr.framework.dll
+F:\Projects\rgapplication\rg.framework\bin\Debug\gr.framework.pdb
+F:\Projects\rgapplication\rg.framework\obj\Debug\rg.framework.csproj.CoreCompileInputs.cache
+F:\Projects\rgapplication\rg.framework\obj\Debug\gr.framework.dll
+F:\Projects\rgapplication\rg.framework\obj\Debug\gr.framework.pdb
+F:\Projects\rgapplication\rg.framework\obj\Debug\rg.framework.csprojAssemblyReference.cache
+F:\kaushik hansda\nationalyouth.co.in\rg.framework\bin\Debug\gr.framework.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.framework\bin\Debug\gr.framework.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.framework\obj\Debug\rg.framework.csproj.CoreCompileInputs.cache
+F:\kaushik hansda\nationalyouth.co.in\rg.framework\obj\Debug\gr.framework.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.framework\obj\Debug\gr.framework.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.framework\obj\Debug\rg.framework.csprojAssemblyReference.cache

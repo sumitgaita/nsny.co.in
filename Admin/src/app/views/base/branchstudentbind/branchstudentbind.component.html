@@ -1,0 +1,196 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Add Course to Student</strong>
+      </c-card-header>
+      <c-card-body>
+     
+        <form [formGroup]="addCourseStudentForm" (ngSubmit)="onAddCourseStudentSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="scstid" class="col-sm-4 control-label">Select Student Id</label>
+                <div class="col-sm-8 mt-2">
+                  <!--<input type="text" formControlName="scstid" class="form-control" tabindex="1" id="" placeholder="Type Couse Name">-->
+                  <select name="selectedscstid" formControlName="scstid" id="scstid" class="form-control">
+                    <option *ngFor="let nss of nssCodeList" [value]="nss.nssY_code">{{nss.nssY_code}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scsjoin" class="col-sm-4 control-label"> Date of Joining  </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" readonly formControlName="scsjoin" class="form-control" tabindex="2" id="scsjoin" placeholder="Type Date of Joining">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="amount_crpay" class="col-sm-4 control-label">HQ Payment</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" readonly formControlName="amount_crpay" class="form-control" tabindex="3" id="amount_crpay" placeholder="Type HQ Payment">
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scamountremaing" class="col-sm-4 control-label">Amount Remaining</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" readonly formControlName="scamountremaing" class="form-control" tabindex="4" id="scamountremaing" placeholder="Type Amount Remaining">
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sccid" class="col-sm-4 control-label">
+                  Select Course
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedsccid" formControlName="sccid" (ngModelChange)="getSelectedCourse()" id="sccid" class="form-control">
+                    <option *ngFor="let co of courseList" [value]="co.id">{{co.cname}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sclastamountpay" class="col-sm-4 control-label">
+                  Last Amount Pay
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" readonly formControlName="sclastamountpay" class="form-control" tabindex="6" id="sclastamountpay" placeholder="Type Last Amount Pay">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scctype" class="col-sm-4 control-label">
+                  Payment Mode
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedreligion" formControlName="scctype" (ngModelChange)="getSelectedPaymentMode()" id="scctype" class="form-control">
+                    <option *ngFor="let pay of paymentModeList" [value]="pay">{{pay}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sctotalInstallment" class="col-sm-4 control-label">Total Installment</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" readonly formControlName="sctotalInstallment" class="form-control" id="sctotalInstallment" tabindex="8" placeholder="Type Total Installment">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scctotal" class="col-sm-4 control-label">
+                  Total Payment
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="scctotal" class="form-control" tabindex="9" id="scctotal" placeholder="Type Total Payment">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scremainginstallment" class="col-sm-4 control-label">
+                  Installment Remaining
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" readonly formControlName="scremainginstallment" class="form-control" tabindex="9" id="scremainginstallment" placeholder="Type Installment Remaining">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sccdiscount" class="col-sm-4 control-label">
+                  Discount Amount
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="sccdiscount" (blur)="amountRemaingCalculation()" class="form-control" tabindex="10" id="sccdiscount" placeholder="Type Discount Amount">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scpaymentclear" class="col-sm-4 control-label">
+                  Payment Status
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" readonly formControlName="scpaymentclear" class="form-control" tabindex="11" id="scpaymentclear" placeholder="Type Payment Status">
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5>Marks Optain</h5>
+          <hr />
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="theory" class="col-sm-4 control-label">
+                  Theory(M1)
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="theory" class="form-control" tabindex="12" id="theory" placeholder="Type theory(m1)">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="practical" class="col-sm-4 control-label">
+                  Practical(M2)
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="practical" class="form-control" tabindex="13" id="practical" placeholder="Type practical(m2)">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="FormBottom mt-2">
+            <div class="form-group">
+              <div class="col-12-12 text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

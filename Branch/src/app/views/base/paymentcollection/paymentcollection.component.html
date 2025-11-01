@@ -1,0 +1,171 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Payment collection</strong>
+      </c-card-header>
+      <c-card-body>
+        <ag-grid-angular [domLayout]="'autoHeight'"
+                         class="ag-theme-quartz"
+                         [pagination]="true"
+                         [rowData]="PaymentCollectionList"
+                         [columnDefs]="columnDefs"
+                         [paginationPageSize]="pageSize"
+                         suppressCellSelection="true">
+        </ag-grid-angular>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>
+
+
+
+<ng-template #editModel let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Student Fees Collection
+    </h4>
+    <!--<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="outline:0;">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <form [formGroup]="editFeesCollectionForm" (ngSubmit)="onEditFeesCollectionSubmit()">
+    <div class="modal-body">
+      <div class="FormArea">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="stid">Student ID</label>
+              <input type="text" id="stid" name="stid" readonly formControlName="stid" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="stbalance">Balance</label>
+              <input type="number" formControlName="stbalance" class="form-control" id="stbalance" name="stbalance">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="cid">Course</label>
+              <input type="text" readonly formControlName="cid" class="form-control" id="cid" name="cid">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="dateofpayment">Payment Date</label>
+              <input type="text" readonly formControlName="dateofpayment" class="form-control" id="dateofpayment" name="dateofpayment">
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="ctotal">Fees</label>
+              <input type="number" readonly formControlName="ctotal" class="form-control" id="ctotal" name="ctotal">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="totalInstallment">Total Installment</label>
+              <input type="number" readonly formControlName="totalInstallment" class="form-control" id="totalInstallment" name="totalInstallment">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="cdiscount">Discount</label>
+              <input type="number" readonly formControlName="cdiscount" class="form-control" id="cdiscount" name="cdiscount">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="remainginstallment">Installment Remaining</label>
+              <input type="number" readonly formControlName="remainginstallment" class="form-control" id="remainginstallment" name="remainginstallment">
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="amountremaing">
+                Amount Remaining
+              </label>
+              <input type="number" formControlName="amountremaing" class="form-control" id="amountremaing" name="amountremaing">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="cpaid">
+                Amount Paid
+              </label>
+              <input type="number" formControlName="cpaid" (blur)="amountRemaingCalculation()" [ngClass]="{ 'is-invalid': submitted && f.cpaid.errors }" class="form-control" id="cpaid" name="cpaid">
+              <div *ngIf="submitted && f.cpaid.errors" class="invalid-feedback">
+                <div *ngIf="f.cpaid.errors.required">Enter Amount Paid</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="FormBottom">
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </form>
+</ng-template>
+
+
+<ng-template #receiptModel let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Genarate Student ICard</h4>
+    <!--<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="outline:0;">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="modal-body">
+    <div class="FormArea">
+
+      <ag-grid-angular [domLayout]="'autoHeight'"
+                       class="ag-theme-quartz"
+                       [pagination]="true"
+                       [rowData]="PaymentRecivedList"
+                       [columnDefs]="recivedColumnDefs"
+                       [paginationPageSize]="pageSize"
+                       suppressCellSelection="true">
+      </ag-grid-angular>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>

@@ -1,0 +1,105 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Add Branch</strong>
+      </c-card-header>
+      <c-card-body>
+     
+        <form [formGroup]="addBranchForm" (ngSubmit)="onAddBranchSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="bname" class="col-sm-4 control-label">Name <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="bname"  class="form-control" tabindex="1"  id="bname">
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="bcontact" class="col-sm-4 control-label">Contact <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <textarea class="form-control" formControlName="bcontact" rows="3" tabindex="2" id="bcontact" ></textarea>
+                
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="bcommission" class="col-sm-4 control-label">Commission <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="bcommission" class="form-control" tabindex="3" id="bcommission">
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="bemail" class="col-sm-4 control-label">Email (Username) <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="bemail" class="form-control" tabindex="4"  id="bemail">
+                 
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="bpass" class="col-sm-4 control-label">Password <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="bpass" tabindex="5" class="form-control" id="bpass">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cbpass" class="col-sm-4 control-label">Confirm password <span class="red-star">★</span></label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="cbpass" class="form-control" tabindex="6"  id="cbpass">
+                 
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="paymentmode" class="col-sm-4 control-label">
+                  Payment Mode <span class="red-star">★</span>
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedpaymentmode" formControlName="paymentmode" id="paymentmode" class="form-control">
+                    <option *ngFor="let pay of paymentModeList" [value]="pay">{{pay}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="FormBottom mt-4">
+            <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-success">Submit&nbsp;<span color="warning" class="ms-auto badge bg-warning" ng-reflect-color="warning"> <b>{{crrentBranchId}}</b></span></button>
+                
+              </div>
+            </div>
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

@@ -1,0 +1,154 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Edit Course</strong>
+      </c-card-header>
+      <c-card-body>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="mt-2">Select Course :</div>
+            <select name="selectedCourse" [(ngModel)]="selectedCourseId" (ngModelChange)="getCourseDetails()" id="selectedCourse" class="form-control">
+              <option *ngFor="let ut of courseList" [value]="ut.id">{{ut.cname}}</option>
+            </select>
+          </div>
+        </div>
+        <form [formGroup]="editCourseForm" (ngSubmit)="onEditCourseSubmit()">
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cname">Couse Name <span class="red-star">★</span></label>
+
+                <input type="text" formControlName="cname" class="form-control mt-2" tabindex="1" id="cname">
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cinspay_f">Installment Amount <span class="red-star">★</span></label>
+
+                <input type="number" formControlName="cinspay_f" class="form-control mt-2" tabindex="2" id="cinspay_f">
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cabb">Course Abbreviation <span class="red-star">★</span></label>
+
+                <input type="text" formControlName="cabb" class="form-control mt-2" tabindex="3" id="cabb">
+
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cr3">Installment First Payment <span class="red-star">★</span></label>
+
+                <input type="number" formControlName="cr3" class="form-control mt-2" tabindex="4" id="cr3">
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cmodules">Modules</label>
+
+                <input type="text" formControlName="cmodules" tabindex="5" class="form-control mt-2" id="cmodules">
+
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cinspay_m">Installment Monthly Amount <span class="red-star">★</span></label>
+
+                <input type="number" formControlName="cinspay_m" class="form-control mt-2" tabindex="6" id="cinspay_m">
+
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cduration">Duration</label>
+
+                <input type="text" formControlName="cduration" class="form-control mt-2" tabindex="7" id="cduration">
+
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cinspay_xm">Installment No. of Months</label>
+
+                <input type="number" formControlName="cinspay_xm" class="form-control mt-2" id="cinspay_xm" tabindex="8">
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="cfullpay">Lump sum Couse Fees</label>
+
+                <input type="number" formControlName="cfullpay" class="form-control mt-2" tabindex="9" id="cfullpay">
+              </div>
+
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="hqamount">HO Amount</label>
+
+                <input type="number" formControlName="hqamount" class="form-control mt-2" tabindex="10" id="hqamount">
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="c1">C1</label>
+
+                <input type="text" formControlName="c1" class="form-control mt-2" tabindex="11" id="c1">
+              </div>
+
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="c2">C2</label>
+
+                <input type="text" formControlName="c2" class="form-control mt-2" tabindex="12" id="c2">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="FormBottom">
+            <div class="form-group mt-4">
+              <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-success">Submit</button> &nbsp;
+                <button type="button" class="btn btn-danger" (click)="courseDelete()">Delete</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

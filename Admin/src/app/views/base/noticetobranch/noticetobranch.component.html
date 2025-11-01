@@ -1,0 +1,44 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Notice To Branch</strong>
+      </c-card-header>
+      <c-card-body>
+        <div class="form-group mt-2">
+          Select Branch :
+
+          <ng-multiselect-dropdown [placeholder]="'custom placeholder'"
+                                   [data]="branchList"
+                                   [(ngModel)]="selectedItems"
+                                   [settings]="dropdownSettings"
+                                   (onSelect)="onItemSelect($event)"
+                                   (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+        </div>
+        <div class="form-group mt-4">
+          <input autofocus autocomplete="none" type="text" name="UserName" placeholder="Enter Title"
+                 [(ngModel)]="title" class="form-control" required #PageContentTitle="ngModel"
+                 id="PageContentTitle">
+        </div>
+        <div class="mt-4">
+          <div class="NgxEditor__Wrapper">
+            <ngx-editor-menu [editor]="editor" > </ngx-editor-menu>
+            <ngx-editor [editor]="editor" [ngModel]="content"
+                        [disabled]="false" [placeholder]="'Type here...'"  (ngModelChange)="editorChange($event)"></ngx-editor>
+          </div>
+         
+        </div>
+        <div class="form-group mt-4">
+          <div class="row">
+            <div class="col-3 col-md-3 mb-3">
+              <button type="submit" (click)="onSubmit()" class="btn btn-info">Submit</button>
+            </div>
+          </div>
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

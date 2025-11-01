@@ -1,0 +1,14 @@
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\rg.service.dll.config
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\rg.service.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\rg.service.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\gr.framework.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\itextsharp.pdfa.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\Microsoft.AspNet.Identity.Core.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\gr.framework.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\Microsoft.AspNet.Identity.Core.xml
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Release\rg.servicetoken.csproj.CoreCompileInputs.cache
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Release\rg.service.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Release\rg.service.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\System.Net.Http.Formatting.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Release\rg.servicetoken.csproj.AssemblyReference.cache
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Release\rg.servi.EA521647.Up2Date

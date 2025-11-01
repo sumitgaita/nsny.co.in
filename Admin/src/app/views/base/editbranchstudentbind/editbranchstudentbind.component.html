@@ -1,0 +1,214 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Edit Course to Student</strong>
+      </c-card-header>
+      <c-card-body>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="nSSYcode" class="col-sm-4 control-label">Ener Student Id</label>
+            <div class="row from-group">
+              <div class="col-sm-5 mt-2">
+                <input type="text" [(ngModel)]="nSSYcode" class="form-control" tabindex="1" id="nSSYcode">
+              </div>
+              <div class="col-sm-2 mt-2">
+                <button type="submit" class="btn btn-info" (click)="getStudentCourseBindDetails()">Search Details</button>
+              </div>
+              <div class="col-sm-6 mt-2">
+                Student name: <strong>{{studentname}}</strong>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <hr />
+        <form [formGroup]="editCourseStudentForm" (ngSubmit)="onEditCourseStudentSubmit()">
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sccid" class="col-sm-4 control-label">
+                  Branch Select Course
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedsccid" formControlName="sccid" (ngModelChange)="getSelectedCourse()" id="sccid" class="form-control">
+                    <option *ngFor="let co of coursebindDetails" [value]="co.cid">{{co.cname}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="changesccid" class="col-sm-4 control-label">
+                  Select Change Course
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedsccid" formControlName="changesccid" (ngModelChange)="getSelectedChangeCourse()" id="changesccid" class="form-control">
+                    <option [value]="0">All</option>
+                    <option *ngFor="let co of courseList" [value]="co.id">{{co.cname}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="amount_crpay" class="col-sm-4 control-label">HQ Payment</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="amount_crpay" class="form-control" tabindex="3" id="amount_crpay">
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scamountremaing" class="col-sm-4 control-label">Amount Remaining</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="scamountremaing" class="form-control" tabindex="4" id="scamountremaing">
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scsjoin" class="col-sm-4 control-label"> Date of Joining  </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="scsjoin" class="form-control" tabindex="2" id="scsjoin">(YYYY-MM-DD)
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sclastamountpay" class="col-sm-4 control-label">
+                  Last Amount Pay
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="sclastamountpay" class="form-control" tabindex="6" id="sclastamountpay">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scctype" class="col-sm-4 control-label">
+                  Payment Mode
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedreligion" formControlName="scctype" (ngModelChange)="getSelectedPaymentMode()" id="scctype" class="form-control">
+                    <option *ngFor="let pay of paymentModeList" [value]="pay">{{pay}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sctotalInstallment" class="col-sm-4 control-label">Total Installment</label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="sctotalInstallment"  class="form-control" id="sctotalInstallment" tabindex="8">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scctotal" class="col-sm-4 control-label">
+                  Total Payment
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="scctotal" class="form-control" tabindex="9" id="scctotal">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scremainginstallment" class="col-sm-4 control-label">
+                  Installment Remaining
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="scremainginstallment" class="form-control" tabindex="9" id="scremainginstallment">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sccdiscount" class="col-sm-4 control-label">
+                  Discount Amount
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="sccdiscount" (blur)="amountRemaingCalculation()"  class="form-control" tabindex="9" id="sccdiscount">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="scpaymentclear" class="col-sm-4 control-label">
+                  Payment Status
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="text" formControlName="scpaymentclear" class="form-control" tabindex="9" id="scpaymentclear">
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-4">Marks Optain</h5>
+          <hr />
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="theory" class="col-sm-4 control-label">
+                  Theory(M1)
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number" formControlName="theory" class="form-control" tabindex="12" id="theory" placeholder="Type theory(m1)">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="practical" class="col-sm-4 control-label">
+                  Practical(M2)
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="number"  class="form-control" formControlName="practical" tabindex="13" id="practical" placeholder="Type practical(m2)">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="FormBottom mt-4">
+            <div class="form-group">
+              <div class="col-12-12 text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

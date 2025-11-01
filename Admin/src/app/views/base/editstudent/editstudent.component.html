@@ -1,0 +1,255 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Edit Student</strong>
+      </c-card-header>
+      <c-card-body>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="nSSYcode" class="col-sm-4 control-label">Select Student</label>
+            <div class="row from-group">
+              <div class="col-sm-5 mt-2">
+                <input type="text" [(ngModel)]="nSSYcode" class="form-control" tabindex="1" id="nSSYcode">
+
+
+              </div>
+              <div class="col-sm-2 mt-2">
+                <button type="submit" class="btn btn-info" (click)="getStudentDetails()">Search Details</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <hr />
+        <div class="FormArea">
+          <form [formGroup]="editStudentForm" (ngSubmit)="onEditStudentSubmit()">
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group required">
+                  <label for="stu_name" class="control-label">&#160;Name</label>
+                  <input type="text" formControlName="stu_name" class="form-control mt-2" tabindex="1" id="stu_name">
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group required">
+                  <label for="paddress" class="control-label">&#160;Present Address</label>
+                  <textarea class="form-control mt-2" formControlName="paddress" rows="3" tabindex="2" id="paddress"></textarea>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="peraddress">Permanent Address</label>
+                  <input type="text" class="form-control mt-2" formControlName="peraddress" tabindex="3" id="peraddress">
+
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="nationality">Nationality</label>
+                  <input type="text" class="form-control mt-2" formControlName="nationality" tabindex="4" id="nationality">
+
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group required">
+                  <label for="mobile" class="control-label">&#160;Mobile</label>
+                  <input type="text" tabindex="5" formControlName="mobile" class="form-control mt-2" id="mobile">
+
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group required">
+                  <label for="guardian" class="control-label">&#160;Father Name</label>
+                  <input type="text" class="form-control mt-2" formControlName="guardian" tabindex="6" id="guardian">
+
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="emaiid">Email</label>
+                  <input type="text" tabindex="5" formControlName="emaiid" class="form-control mt-2" id="emaiid">
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="religion">Religion</label>
+                  <select name="selectedreligion" formControlName="religion" id="aantal" class="form-control">
+                    <option *ngFor="let re of religiousList" [value]="re">{{re}}</option>
+                  </select>
+
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group required">
+                  <label for="dob" class="control-label">&#160;Date of birth</label>
+                  <input type="text" class="form-control mt-2 disabledData" formControlName="dob"
+                         name="dob" id="dob">(MM/DD/YYYY)
+
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="selectedcast">Casts</label>
+                  <select name="selectedcast" formControlName="casts" id="selectedcast" class="form-control">
+                    <option *ngFor="let ca of castRList" [value]="ca">{{ca}}</option>
+                  </select>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="sex">Gender</label>
+                  <select name="sex" formControlName="sex" id="sex" class="form-control">
+                    <option *ngFor="let se of sexList" [value]="se">{{se}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="exam">Last Exam Passed</label>
+                  <input type="text" tabindex="5" formControlName="exam" class="form-control mt-2" id="exam">
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="university">Board/University</label>
+                  <input type="text" class="form-control mt-2" formControlName="university" tabindex="6" id="university">
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="percentage">Percentage</label>
+                  <input type="text" tabindex="5" formControlName="percentage" class="form-control mt-2" id="percentage">
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="fileup_ins" class="col-sm-4 control-label">Upload Pic Name</label>
+                  <input type="text" tabindex="5" formControlName="fileup_ins" class="form-control mt-2" id="fileup_ins">
+
+                  <!-- Image Preview -->
+                  <div class="imagePreview mt-2" *ngIf="imageURL && imageURL !== ''">
+                    <img [src]="imageURL" [alt]="editStudentForm.value.name" width="100" height="150">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="center_code">Center Code</label>
+
+                  <input type="text" tabindex="5" formControlName="center_code" class="form-control mt-2" id="center_code">
+
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="center_name">Center Name</label>
+
+                  <input type="text" formControlName="center_name" class="form-control mt-2" tabindex="6" id="center_name">
+
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="nssY_code">Student Id</label>
+                  <input type="text" tabindex="5" formControlName="nssY_code" class="form-control mt-2" id="nssY_code">
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="selectedCourseStatus">Course Status</label>
+                  <select name="selectedCourseStatus" formControlName="r3" id="selectedCourseStatus" class="form-control">
+                    <option *ngFor="let cs of courseStatusList" [value]="cs">{{cs}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="r1">Grade Optain</label>
+                  <input type="text" formControlName="r1" tabindex="5" class="form-control mt-2" id="r1">
+                </div>
+              </div>
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="r2">Hologram Code</label>
+                  <input type="text" tabindex="5" formControlName="r2" class="form-control mt-2" id="r2">
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="r4">Certificate ( Use value '2' )</label>
+                  <input type="text" tabindex="5" formControlName="r4" class="form-control mt-2" id="r4">
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="FormBottom mt-4">
+              <div class="col-12-12 text-center">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

@@ -1,0 +1,70 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Wallet history</strong>
+      </c-card-header>
+      <c-card-body>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="selectedBranch">Select Branch:</label>
+              <select name="selectedBranch" [(ngModel)]="branchId" id="selectedBranch" class="form-control">
+                <option [value]="0">All</option>
+                <option *ngFor="let ut of branchList" [value]="ut.id">{{ut.bname}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="paymentnote">Wallet Note:</label>
+              <select name="selectedpaymentmode" [(ngModel)]="paymentNote" id="paymentnote" tabindex="8" class="form-control">
+                <option *ngFor="let pay of paymentNoteList" [value]="pay">{{pay}}</option>
+              </select>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--<div class="col-sm-6">
+      <div class="form-group">
+        <label for="txtTo" >Select Branch:</label>
+          <select name="selectedCourse" [(ngModel)]="branchId" id="id" class="form-control">
+            <option [value]="0">All</option>
+            <option *ngFor="let ut of branchList" [value]="ut.id">{{ut.bname}}</option>
+          </select>
+      </div>
+    </div>-->
+          <div class="col-sm-12">
+            <div class="mt-3">
+
+              <button type="submit" class="btn btn-info" (click)="getWalletHistory()">View Wallet History Details</button>&nbsp;&nbsp;
+
+              <button *ngIf="wallethistoryDetailsList.length>0" class="btn btn-primary" (click)="printData()"><i class="fa fa-print" aria-hidden="true"></i> Print</button>&nbsp;&nbsp;
+              <button *ngIf="wallethistoryDetailsList.length>0" class="btn btn-danger" (click)="excelFileData()"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Export to MS Excel File</button>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div class="mt-2">
+
+          <ag-grid-angular [domLayout]="'autoHeight'"
+                           class="ag-theme-quartz"
+                           [pagination]="true"
+                           [rowData]="wallethistoryDetailsList"
+                           [columnDefs]="columnDefs"
+                           [paginationPageSize]="pageSize"
+                           >
+          </ag-grid-angular>
+
+
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

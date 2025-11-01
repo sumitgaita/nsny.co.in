@@ -1,0 +1,39 @@
+
+
+
+<h3 class="text-center mb-4">Wellcome to dashboard</h3>
+
+
+<div class="row justify-content-md-center">
+  <div class="col col-md-3">
+    <div class="bg-warning card text-white mb-3">
+      <div class="card-body text-center">
+        <p class="h6">Number of Students</p>
+        <h3 class="high-light mt-3">{{dashboard?.numberofStudents}}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-3">
+    <div class="bg-danger card text-white mb-3">
+      <div class="card-body text-center">
+        <p class="h6"> Number of Course</p>
+        <h3 class="high-light mt-3">{{dashboard?.numberofCourse}}</h3>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<div class="row justify-content-md-center">
+  <span style="font-size:20px; color: red; padding-bottom:10px; font-weight:bolder">Notice &nbsp;<span class="badge badge-light"><b>{{noticeList.length}}</b></span></span>
+  <div class="col col-md-12" *ngFor="let res of noticeList;index as i">
+    <div class="card gray-card">
+      <div class="card-body">
+        <h5 class="card-title"><span class="badge badge-light"><b>{{i+1}}</b></span>{{res.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted" [innerHTML]="res.content_details"></h6>
+
+      </div>
+    </div>
+  </div>
+ 
+</div>

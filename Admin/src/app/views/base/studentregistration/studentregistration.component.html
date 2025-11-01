@@ -1,0 +1,83 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Student Registration</strong>
+      </c-card-header>
+      <c-card-body>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="from">From Date:</label>
+              <div class="mt-2">
+                <input class="form-control"
+                       placeholder="yyyy-mm-dd"
+                       name="from"
+                       id="from"
+                       [(ngModel)]="searchFromDate"
+                       (ngModelChange)="onSelectFromDate($event)"
+                       (click)="from.toggle()"
+                       ngbDatepicker
+                       #from="ngbDatepicker" />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="to">To date:</label>
+              <div class="mt-2">
+                <input class="form-control"
+                       placeholder="yyyy-mm-dd"
+                       name="to"
+                       id="to"
+                       [(ngModel)]="searchToDate"
+                       (ngModelChange)="onSelectToDate($event)"
+                       (click)="to.toggle()"
+                       ngbDatepicker
+                       #to="ngbDatepicker" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 mt-2">
+            <div class="form-group">
+              <label for="selectedBranch">Select Branch:</label>
+              <div class="mt-2">
+                <select name="selectedBranch" [(ngModel)]="branchId" id="selectedBranch" class="form-control">
+                  <option [value]="0">All</option>
+                  <option *ngFor="let ut of branchList" [value]="ut.id">{{ut.bname}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 mt-2">
+            <div class="form-group mt-4">
+              <button class="btn btn-success btn-ladda" data-style="contract-overlay" style="z-index: 10;" (click)="getPaymentEaning()">View Student Registration</button>
+              <!--<button type="submit" class="btn btn-info" (click)="getPaymentEaning()">View Student Registration</button>-->
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div>
+          <div class="mt-3">
+            <ag-grid-angular [domLayout]="'autoHeight'"
+                             class="ag-theme-quartz"
+                             [pagination]="true"
+                             [rowData]="paymenteraningList"
+                             [columnDefs]="columnDefs"
+                             [paginationPageSize]="pageSize">
+            </ag-grid-angular>
+          </div>
+
+        </div>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

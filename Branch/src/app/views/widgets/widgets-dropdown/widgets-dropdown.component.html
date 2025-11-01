@@ -1,0 +1,39 @@
+<c-row class="g-3">
+  <c-col sm="6" xl="4">
+    <c-widget-stat-a color="primary"
+                     [title]="'Number of Students'">
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span class="fw-normal" style="font-size: 20px;"> {{dashboard?.numberofStudents}} </span>
+      </ng-template>
+
+    </c-widget-stat-a>
+  </c-col>
+  <c-col sm="6" xl="4">
+    <c-widget-stat-a [title]="'Number of Course'"
+                     color="info">
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span class="fw-normal" style="font-size: 20px;">{{dashboard?.numberofCourse}}</span>
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+  <c-col sm="6" xl="4">
+    <c-widget-stat-a [title]="'Number of Branche'"
+                     color="warning">
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        <span class="fw-normal" style="font-size: 20px;">{{dashboard?.numberofBranche}}</span>
+      </ng-template>
+
+    </c-widget-stat-a>
+  </c-col>
+
+</c-row>
+
+<c-row class="mt-4">
+  <c-col sm="12" xl="12" class="justify-content-md-center">
+    <iframe src="http://nsny.org/efileupload/elFinder/elFinder.html" style="width: 90%; height: 420px"
+            scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0">
+      Sorry your browser does not support inline frames.
+    </iframe>
+
+  </c-col>
+</c-row>

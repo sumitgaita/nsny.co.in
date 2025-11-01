@@ -1,0 +1,66 @@
+F:\Projects\rgapplication\rg.servicetoken\bin\rg.service.dll.config
+F:\Projects\rgapplication\rg.servicetoken\bin\rg.service.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\rg.service.pdb
+F:\Projects\rgapplication\rg.servicetoken\bin\gr.framework.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\itextsharp.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\itextsharp.pdfa.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\itextsharp.xmlworker.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.AspNet.Identity.Core.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Cors.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Security.Cookies.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Security.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Security.OAuth.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Web.Infrastructure.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Newtonsoft.Json.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.Web.Common.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.Web.WebApi.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.Web.WebApi.WebHost.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\Owin.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Net.Http.Formatting.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Web.Cors.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Web.Http.Cors.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Web.Http.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Web.Http.WebHost.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\WebActivatorEx.dll
+F:\Projects\rgapplication\rg.servicetoken\bin\gr.framework.pdb
+F:\Projects\rgapplication\rg.servicetoken\bin\itextsharp.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.AspNet.Identity.Core.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Cors.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Security.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Security.Cookies.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Microsoft.Owin.Security.OAuth.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Newtonsoft.Json.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.Web.Common.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.Web.WebApi.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\Ninject.Web.WebApi.WebHost.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Net.Http.Formatting.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Web.Http.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Web.Http.Cors.xml
+F:\Projects\rgapplication\rg.servicetoken\bin\System.Web.Http.WebHost.xml
+F:\Projects\rgapplication\rg.servicetoken\obj\Debug\rg.servicetoken.csprojAssemblyReference.cache
+F:\Projects\rgapplication\rg.servicetoken\obj\Debug\rg.servicetoken.csproj.CoreCompileInputs.cache
+F:\Projects\rgapplication\rg.servicetoken\obj\Debug\rg.servicetoken.csproj.CopyComplete
+F:\Projects\rgapplication\rg.servicetoken\obj\Debug\rg.service.dll
+F:\Projects\rgapplication\rg.servicetoken\obj\Debug\rg.service.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Debug\rg.servicetoken.csproj.CoreCompileInputs.cache
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\rg.service.dll.config
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\rg.service.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\rg.service.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\gr.framework.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\itextsharp.pdfa.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\Microsoft.AspNet.Identity.Core.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\gr.framework.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\Microsoft.AspNet.Identity.Core.xml
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Debug\rg.service.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Debug\rg.service.pdb
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\bin\System.Net.Http.Formatting.dll
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Debug\rg.servicetoken.csproj.AssemblyReference.cache
+F:\kaushik hansda\nationalyouth.co.in\rg.servicetoken\obj\Debug\rg.servi.EA521647.Up2Date

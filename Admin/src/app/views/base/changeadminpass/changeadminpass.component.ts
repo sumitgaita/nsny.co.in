@@ -1,0 +1,56 @@
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common'
+import { DocsExampleComponent } from '@docs-components/public-api';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective, FormSelectDirective } from '@coreui/angular';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
+
+@Component({
+  selector: 'change-adminpass',
+  templateUrl: './changeadminpass.component.html',
+  styleUrls: ['./changeadminpass.component.scss'],
+  standalone: true,
+  imports: [RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent,
+    CardBodyComponent, DocsExampleComponent, InputGroupComponent, InputGroupTextDirective,
+    FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective,
+    ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective,
+    DropdownItemDirective, RouterLink, DropdownDividerDirective, FormSelectDirective,
+    ReactiveFormsModule, CommonModule, FormsModule]
+})
+export class ChangeAdminPassComponent {
+  loading = false;
+  currentUser: any;
+  password!: string;
+  username!: string;
+  constructor(
+    private authenticationService: AuthenticationService,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
+  ngOnInit() {
+    this.loading = true;
+    this.password = this.currentUser.password;
+    this.username = this.currentUser.username;
+  }
+  changeBranchPassword() {
+    this.spinner.show();
+    this.authenticationService.changeAdminPassword(this.currentUser.id, this.username, this.password).subscribe((res: any) => {
+      if (res) {
+        this.toastr.success('Successfully', 'Updated');
+        this.spinner.hide();
+        this.router.navigate(['/']);
+      }
+      else {
+        this.spinner.hide();
+      }
+    });
+  }
+
+}

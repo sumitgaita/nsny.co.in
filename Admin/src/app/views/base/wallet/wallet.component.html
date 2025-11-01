@@ -1,0 +1,118 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Existing Wallet Amount<span [ngClass]="{'badge badge-success': totalWalletAmount > 0, 'badge badge-danger' : totalWalletAmount < 0 }"><b> {{totalWalletAmount}}</b></span></strong>
+      </c-card-header>
+      <c-card-body>
+     
+        <form [formGroup]="addwalletForm" (ngSubmit)="onAddwalletSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branchId" class="col-sm-4 control-label">&#160;Center Code</label>
+                <div class="col-sm-8">
+                  <select name="selectedbranchId" formControlName="branchId" tabindex="1" (change)="onBranchChange($event)" id="branchId" class="form-control">
+                    <option [value]="0">All</option>
+                    <option *ngFor="let ut of branchList" [value]="ut.id">{{ut.bname}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="paymentnote" class="col-sm-4 control-label">
+                  Payment Note
+                </label>
+                <div class="col-sm-8">
+                  <select name="selectedpaymentmode" formControlName="paymentnote" id="paymentnote" (change)="onPaymentNoteChange()" tabindex="2" class="form-control">
+                    <option *ngFor="let pay of paymentNoteList" [value]="pay">{{pay}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="walletamount" class="col-sm-4 control-label">Add Billing Amount for Wallet</label>
+                <div class="col-sm-8">
+                  <input type="number" formControlName="walletamount" (change)="onWalletAmountChange()" class="form-control" tabindex="3" id="walletamount">
+
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="extrachargesfine" class="col-sm-4 control-label">Extra Charges + Fine</label>
+                <div class="col-sm-8">
+                  <input type="number" formControlName="extrachargesfine" (change)="onExtraChargesFineChange()" class="form-control" tabindex="4" id="extrachargesfine">
+
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="extraoffer" class="col-sm-4 control-label">Extra Offer</label>
+                <div class="col-sm-8">
+                  <input type="number" formControlName="extraoffer" class="form-control" (change)="onExtraOfferChange()" tabindex="5" id="extraoffer">
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="comment" class="col-sm-4 control-label">Comment</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control" formControlName="comment" rows="1" tabindex="6" id="comment"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="totalamount" class="col-sm-4 control-label">Total Amount</label>
+                <div class="col-sm-8">
+                  <input type="number" readonly formControlName="totalamount" tabindex="7" class="form-control" id="totalamount">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="existingamount" class="col-sm-4 control-label">Existing Amount</label>
+                <div class="col-sm-8">
+                  <input type="number" readonly formControlName="existingamount" class="form-control" tabindex="8" id="existingamount">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="FormBottom">
+            <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-8">
+                <button type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

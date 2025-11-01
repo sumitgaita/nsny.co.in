@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\App_Start",
+    "\\NinjectModules",
+    "\\Providers",
+    "\\Utility"
+  ],
+  "SelectedNode": "\\App_Start\\WebApiConfig.cs",
+  "PreviewInSolutionExplorer": false
+}
