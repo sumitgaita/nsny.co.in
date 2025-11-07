@@ -13,5 +13,6 @@ namespace rg.service.Manager
         int NumberofCourse();
         int NumberofBranche();
         int NumberofBranchStudents(string Center_code, string likestr);
+        List<Student> GetStudentImage(string name, string nssy_code, string Center_code);
     }
 }

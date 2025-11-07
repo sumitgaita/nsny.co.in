@@ -57,6 +57,22 @@ namespace rg.service.Controllers
 
         }
 
+        [HttpGet]
+        [Route("image")]
+        public HttpResponseMessage Get(string name, string nssycode, string centercode)
+        {
+            try
+            {
+                System.Collections.Generic.List<Student> student = _dashboardManager.GetStudentImage(name, nssycode, centercode);
+                return _httpResponseMessage.ReturnOk(student);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         //[HttpGet]
         //[Route("")]
         //public HttpResponseMessage NumberofCourse()

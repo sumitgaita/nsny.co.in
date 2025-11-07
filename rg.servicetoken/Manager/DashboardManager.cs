@@ -31,5 +31,11 @@ namespace rg.service.Manager
             return data.NumberofBranchStudents(Center_code, likestr);
         }
 
+
+        public List<Student> GetStudentImage(string name, string nssy_code, string Center_code)
+        {
+            var data = new DashboardData();
+            return data.GetStudentImage(name, nssy_code, Center_code);
+        }
     }
 }

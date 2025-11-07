@@ -33,10 +33,58 @@
 </div>
 
 <div class="row justify-content-md-center">
-  <iframe src="http://nsny.co.in/efileupload/elFinder/elFinder.html" style="width: 90%; height: 420px"
-          scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0">
-    Sorry your browser does not support inline frames.
-  </iframe>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="from">Name:</label>
+        <div class="mt-1">
+          <input class="form-control" type="text"
+                 placeholder="Student Name"
+                 name="from"
+                 id="name"
+                 [(ngModel)]="name" />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="to">Student Id:</label>
+        <div class="mt-1">
+          <input class="form-control" type="text"
+                 placeholder="Student Id"
+                 name="id"
+                 id="s_id"
+                 [(ngModel)]="nssycode" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 mt-3">
+      <div class="form-group">
+        <label for="selectedBranch">Select Branch:</label>
+        <select name="selectedBranch" [(ngModel)]="centercode" id="selectedBranch" class="form-control">
+          <option [value]="0">All</option>
+          <option *ngFor="let ut of branchList" [value]="ut.id">{{ut.bname}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group mt-4" style="padding-top: 12px;">
+        <button type="submit" class="btn btn-info" (click)="getAllImage()">Genarate Image</button>
+
+      </div>
+    </div>
+
+  </div>
+ 
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-4 bg-gray-50 rounded-2xl border border-gray-300 mt-4">
+    <div *ngFor="let img of images; let i = index" class="card">
+      <img [src]="img.pic" alt="Image {{i}}" />{{img.nssY_code}}<br /> <button (click)="editImage(img.pic,img.nssY_code)">Download</button>
+    </div>
+  </div>
+
 </div>
+
 
 
