@@ -31,7 +31,10 @@ namespace rg.service.Data
                 myFactory.GetParameter("@r2", ""),
                 myFactory.GetParameter("@r3", Convert.ToInt32(0)),
                 myFactory.GetParameter("@act", Convert.ToInt32(1)),
-                myFactory.GetParameter("@paymentmode", branch.Paymentmode)
+                myFactory.GetParameter("@paymentmode", branch.Paymentmode),
+                myFactory.GetParameter("@code", branch.Code),
+                myFactory.GetParameter("@address", branch.Address),
+                myFactory.GetParameter("@coursecatagory", branch.CourseCatagory)
             };
             return hlpr.ExecuteStoredProcedure("BranchInsert", ref parameters);
         }
@@ -62,8 +65,9 @@ namespace rg.service.Data
                 myFactory.GetParameter("@r2", ""),
                 myFactory.GetParameter("@r3", Convert.ToInt32(0)),
                 myFactory.GetParameter("@act", Convert.ToInt32(1)),
-                myFactory.GetParameter("@paymentmode", branch.Paymentmode)
-
+                myFactory.GetParameter("@paymentmode", branch.Paymentmode),
+                myFactory.GetParameter("@address", branch.Address),
+                myFactory.GetParameter("@coursecatagory", branch.CourseCatagory)
              };
             return hlpr.ExecuteStoredProcedure("BranchUpdate", ref parameters);
 
@@ -121,8 +125,11 @@ namespace rg.service.Data
                     Bemail = row["email"].ToString(),
                     Bcommission = !row.IsNull("commission") ? Convert.ToInt32(row["commission"]) : 0,
                     Bpass = row["pass"].ToString(),
-                    Paymentmode= row["paymentmode"].ToString()
-
+                    Paymentmode= row["paymentmode"].ToString(),
+                    Code = row["code"].ToString(),
+                    Address= row["address"].ToString(),
+                    CourseCatagory = !row.IsNull("coursecatagory") ? Convert.ToInt32(row["coursecatagory"]) : 0,
+                    
                 });
             }
             return brach;

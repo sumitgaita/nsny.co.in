@@ -172,6 +172,20 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="paymentmode" class="col-sm-4 control-label">
+                  Course Catagory <span class="red-star">★</span>
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
+                    <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
           <h5 class="mt-4">Marks Optain</h5>
           <hr />
           <div class="row">

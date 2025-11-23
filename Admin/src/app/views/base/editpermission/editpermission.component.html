@@ -1,0 +1,92 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Edit Permission</strong>
+      </c-card-header>
+      <c-card-body>
+        <ag-grid-angular [domLayout]="'autoHeight'"
+                         class="ag-theme-quartz"
+                         [pagination]="true"
+                         [rowData]="permissionList"
+                         [columnDefs]="columnDefs"
+                         [paginationPageSize]="pageSize"
+                         suppressCellSelection="true">
+        </ag-grid-angular>
+
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>
+
+
+
+<ng-template #editModel let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Student Fees Collection
+    </h4>
+    <!--<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="outline:0;">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <form [formGroup]="editPermissionForm" (ngSubmit)="onEditUserPermissionSubmit()">
+    <div class="modal-body">
+      <div class="FormArea">
+
+        <div class="row">
+          <div class="col">
+            <label for="username">Username</label>
+            <input id="username" name="username" formControlName="username" type="text" maxlength="256" placeholder="jdoe" required />
+          </div>
+          <div class="col">
+            <label for="pass">Password</label>
+            <input id="pass" name="pass" type="text" formControlName="pass" maxlength="256" placeholder="••••••••" required />
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" formControlName="name" maxlength="200" placeholder="John Doe" />
+          </div>
+        </div>
+
+
+        <fieldset style="border:0;padding:0;margin-top:6px">
+          <legend style="font-weight:600;margin-bottom:8px">Permissions</legend>
+          <div class="permissions">
+            <label class="perm"><input type="checkbox" formControlName="addcatagory" id="addcatagory" name="addcatagory" /> <span>Add Category</span></label>
+            <label class="perm"><input type="checkbox" formControlName="editcatagory" id="editcatagory" name="editcatagory" /> <span>Edit Category</span></label>
+            <label class="perm"><input type="checkbox" formControlName="addcourse" id="addcourse" name="addcourse" /> <span>Add Course</span></label>
+            <label class="perm"><input type="checkbox" formControlName="editcourse" id="editcourse" name="editcourse" /> <span>Edit Course</span></label>
+            <label class="perm"><input type="checkbox" formControlName="addbranch" id="addbranch" name="addbranch" /> <span>Add Branch</span></label>
+            <label class="perm"><input type="checkbox" formControlName="editbranch" id="editbranch" name="editbranch" /> <span>Edit Branch</span></label>
+            <label class="perm"><input type="checkbox" formControlName="editstudent" id="editstudent" name="editstudent" /> <span>Edit Student</span></label>
+            <label class="perm"><input type="checkbox" formControlName="editbranchstudentbind" id="editbranchstudentbind" name="editbranchstudentbind" /> <span>Bind Student ↔ Branch</span></label>
+            <label class="perm"><input type="checkbox" formControlName="noticetobranch" id="noticetobranch" name="noticetobranch" /> <span>Notice to Branch</span></label>
+            <label class="perm"><input type="checkbox" formControlName="allnoticetobranch" id="allnoticetobranch" name="allnoticetobranch" /> <span>All Notice to Branch</span></label>
+            <label class="perm"><input type="checkbox" formControlName="studentregistration" id="studentregistration" name="studentregistration" /> <span>Student Registration</span></label>
+            <label class="perm"><input type="checkbox" formControlName="studenticard" id="studenticard" name="studenticard" /> <span>Student I-Card</span></label>
+            <label class="perm"><input type="checkbox" formControlName="active" id="active" name="active" /> <span>Active</span></label>
+          </div>
+        </fieldset>
+
+        <div class="FormBottom">
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </form>
+</ng-template>

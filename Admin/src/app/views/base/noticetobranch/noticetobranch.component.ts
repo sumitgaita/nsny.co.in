@@ -52,7 +52,7 @@ export class NoticetoBranchComponent {
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id',
-      textField: 'bname',
+      textField: 'code',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 10,

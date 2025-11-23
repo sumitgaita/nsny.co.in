@@ -9,6 +9,38 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'addpermission',
+        loadComponent: () => import('./addPermission/addpermission.component').then(m => m.addpermissionComponent),
+        data: {
+          title: 'addpermission'
+        },
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'editpermission',
+        loadComponent: () => import('./editpermission/editpermission.component').then(m => m.EditpermissionComponent),
+        data: {
+          title: 'editpermission'
+        },
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'addcatagory',
+        loadComponent: () => import('./addcatagory/addcatagory.component').then(m => m.AddCatagoryComponent),
+        data: {
+          title: 'Addcatagory'
+        },
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'editcatagory',
+        loadComponent: () => import('./editcatagory/editcatagory.component').then(m => m.EditCatagoryComponent),
+        data: {
+          title: 'Editcatagory'
+        },
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'addcourse',
         loadComponent: () => import('./addcourse/addcourse.component').then(m => m.AddCourseComponent),
         data: {

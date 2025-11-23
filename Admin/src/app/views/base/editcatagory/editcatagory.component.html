@@ -1,0 +1,66 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Edit Catagory</strong>
+      </c-card-header>
+      <c-card-body>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              Select Branch :
+              <select name="selectedCourse" [(ngModel)]="selectedCaragoryId" (ngModelChange)="getCatagoryDetails()" id="selectedCourse" class="form-control">
+                <option *ngFor="let ut of catagoryList" [value]="ut.id">{{ut.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="FormArea">
+          <form [formGroup]="editCatagoryForm" (ngSubmit)="onEditCatagorySubmit()">
+            <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="bname" class="col-sm-4 control-label">Name <span class="red-star">★</span></label>
+                  <div class="col-sm-8 mt-2">
+                    <input type="text" formControlName="name" class="form-control" tabindex="1" id="name">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="Status" class="col-sm-4 control-label">Status <span class="red-star">★</span></label>
+                  <div class="col-sm-8 mt-2">
+                    <select id="active"
+                            formControlName="active"
+                            class="form-select mt-2">
+                      <option value="" disabled>Select Active Status</option>
+                      <option value="1">Active</option>
+                      <option value="0">Inactive</option>
+                    </select>
+
+
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="FormBottom mt-4">
+              <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                  <button type="submit" class="btn btn-success">Submit</button> &nbsp;
+                  <a class="btn btn-danger" (click)="branchDelete()">Delete</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+</c-row>

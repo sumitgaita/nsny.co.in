@@ -59,7 +59,8 @@ namespace rg.service.Data
                 myFactory.GetParameter("@remainginstallment", branchStudentBind.Scremainginstallment),
                 myFactory.GetParameter("@paymentclear", branchStudentBind.Scpaymentclear),
                 myFactory.GetParameter("@theory", branchStudentBind.Theory==null?"0":branchStudentBind.Theory),
-                myFactory.GetParameter("@practical", branchStudentBind.Practical==null?"0":branchStudentBind.Practical)
+                myFactory.GetParameter("@practical", branchStudentBind.Practical==null?"0":branchStudentBind.Practical),
+                myFactory.GetParameter("@coursecatagory", branchStudentBind.CourseCatagory)
              };
             return hlpr.ExecuteStoredProcedure("StudentCourseBindUpdate", ref parameters);
         }
@@ -98,7 +99,8 @@ namespace rg.service.Data
                     Amount_repay = !row.IsNull("amount_re") ? Convert.ToInt32(row["amount_re"]) : 0,
                     Theory = !row.IsNull("theory") ? row["theory"].ToString() : "0",
                     Practical = !row.IsNull("practical") ? row["practical"].ToString() : "0",
-                    stname = !row.IsNull("name") ? row["name"].ToString() : ""
+                    stname = !row.IsNull("name") ? row["name"].ToString() : "",
+                    CourseCatagory = !row.IsNull("coursecatagory") ? Convert.ToInt32(row["coursecatagory"]) : 0,
                 });
             }
             return branchcollection;
@@ -333,7 +335,8 @@ namespace rg.service.Data
                     Dob = row["dob"].ToString(),
                     RemoveExtention = row["pic"].ToString().Replace(".jpg", ""),
                     Theory = row["theory"].ToString(),
-                    Practical = row["practical"].ToString()
+                    Practical = row["practical"].ToString(),
+                    BnAddress= row["bnadress"].ToString()
 
                 });
             }

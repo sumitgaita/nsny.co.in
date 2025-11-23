@@ -6,9 +6,11 @@ import { DocsExampleComponent } from '@docs-components/public-api';
 import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective, FormSelectDirective } from '@coreui/angular';
 import { ToastrService } from "ngx-toastr";
 import { CourseService } from '../../../services/course.service';
+import { CatagoryService } from '../../../services/catagory.service';
 import { CommissionPayService } from '../../../services/commissionpay.service';
 import { BranchstudentbindService } from '../../../services/branchstudentbind.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Catagory } from '../../../model/Catagory';
 
 @Component({
   selector: 'edit-branchs-tudent-bind',
@@ -30,9 +32,11 @@ export class EditBranchStudentBindComponent {
   courseList: any = [];
   editCourseStudentForm: FormGroup | any;
   studentname!: string;
+  catagoryList: Catagory[] = [];
   paymentModeList: string[] = ['Full Payment', 'Installment Payment'];
   constructor(private courseService: CourseService,
     private commissionPayService: CommissionPayService,
+    private catagoryService: CatagoryService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private branchstudentbindService: BranchstudentbindService,
@@ -65,13 +69,28 @@ export class EditBranchStudentBindComponent {
       paymentId: [''],
       binddateofpayment: [''],
       theory: [0.00],
-      practical: [0.00]
+      practical: [0.00],
+      courseCatagory:[]
     });
+    this.getAllCatagory();
     this.getActiveCourseList();
 
   }
   get f() { return this.editCourseStudentForm.controls; }
-
+  private getAllCatagory() {
+    this.spinner.show();
+    this.catagoryList = [];
+    this.catagoryService.getAllCatagory().subscribe((res: any) => {
+      if (res && res.length > 0) {
+        this.catagoryList = res;
+        this.editCourseStudentForm.get('courseCatagory').setValue(res[0].id);
+        this.spinner.hide();
+      }
+      else {
+        this.spinner.hide();
+      }
+    });
+  }
   getStudentCourseBindDetails() {
     this.spinner.show();
     this.editCourseStudentForm.get('changesccid').setValue(0);
@@ -96,6 +115,7 @@ export class EditBranchStudentBindComponent {
         this.editCourseStudentForm.get('scpaymentclear').setValue(res[0].paymentclear);
         this.editCourseStudentForm.get('theory').setValue(res[0].theory);
         this.editCourseStudentForm.get('practical').setValue(res[0].practical);
+        this.editCourseStudentForm.get('courseCatagory').setValue(res[0].courseCatagory);
         this.spinner.hide();
       }
       else {
@@ -221,7 +241,8 @@ export class EditBranchStudentBindComponent {
       scpaymentclear: this.f.scpaymentclear.value,
       scdateofpayment: this.f.scsjoin.value,
       theory: this.f.theory.value,
-      practical: this.f.practical.value
+      practical: this.f.practical.value,
+      courseCatagory: this.f.courseCatagory.value
     }
     this.branchstudentbindService.studentCourseBindUpdate(addBranchStudentBind).subscribe((res: any) => {
       this.toastr.success('Successfully', 'Updated');

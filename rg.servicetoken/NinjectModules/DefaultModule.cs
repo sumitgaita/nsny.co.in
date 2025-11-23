@@ -13,16 +13,6 @@ namespace rg.service.NinjectModules
         public override void Load()
         {
             Bind<IHttpResponseMessage>().To<BasicHttpResponseMessage>();
-            // Bind<IProductManager>().To<ProductManager>();
-            //Bind<IUserManager>().To<UserManager>();
-            //Bind<IProjectManager>().To<ProjectManager>();
-            //Bind<IPermissionsManager>().To<PermissionsManager>();
-            //Bind<IResourceManager>().To<ResourceManager>();
-            //Bind<ICostCodeManager>().To<CostCodeManager>();
-            //Bind<ICostsVsBudgetManager>().To<CostsVsBudgetManager>();
-            //Bind<ICostCalculationManager>().To<CostCalculationManager>();
-            //Bind<IUserTypeManager>().To<UserTypeManager>();
-            //Bind<IProjectNoteManager>().To<ProjectNoteManager>();
             Bind<IAdminLoginManager>().To<AdminLoginManager>();
             Bind<IDashboardManager>().To<DashboardManager>();
             Bind<ICourseManager>().To<CourseManager>();
@@ -31,6 +21,8 @@ namespace rg.service.NinjectModules
             Bind<IBranchStudentBindManager>().To<BranchStudentBindManager>();
             Bind<ICommissionPayManager>().To<CommissionPayManager>();
             Bind<IWalletManager>().To<WalletManager>();
+            Bind<ICatagoryManager>().To<CatagoryManager>();
+            Bind<IUserPermissionManager>().To<UserPermissionManager>();
 
         }
     }

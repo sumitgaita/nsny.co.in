@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ConfirmedValidator } from './confirmed.validator'
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { CatagoryService } from '../../../services/catagory.service';
+import { Catagory } from '../../../model/Catagory';
 @Component({
   selector: 'edit-branch',
   templateUrl: './editbranch.component.html',
@@ -27,9 +29,11 @@ export class EditBranchComponent {
   editBranchForm: FormGroup | any;
   selectedBranchId: number = 0;
   branchList: Branch[] = [];
+  catagoryList: Catagory[] = [];
   paymentModeList: string[] = ['Wallet', 'General'];
   constructor(private branchService: BranchService,
     private confirmationDialogService: ConfirmationDialogService,
+    private catagoryService: CatagoryService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder) { }
@@ -43,10 +47,14 @@ export class EditBranchComponent {
       bpass: [''],
       paymentmode: [''],
       cbpass: ['', Validators.required],
-      bcommission: ['', Validators.required]
+      bcommission: ['', Validators.required],
+      code: ['', Validators.required],
+      address: ['', Validators.required],
+      courseCatagory: ['', Validators.required]
     }, {
       validator: ConfirmedValidator('bpass', 'cbpass')
     });
+    this.getAllCatagory();
     this.getAllBranch();
   }
   get f() { return this.editBranchForm.controls; }
@@ -63,7 +71,11 @@ export class EditBranchComponent {
         this.editBranchForm.get('cbpass').setValue(res[0].bpass);
         this.editBranchForm.get('bcommission').setValue(res[0].bcommission);
         this.editBranchForm.get('paymentmode').setValue(res[0].paymentmode);
+        this.editBranchForm.get('address').setValue(res[0].address);
+        this.editBranchForm.get('code').setValue(res[0].code);
+        this.editBranchForm.get('courseCatagory').setValue(res[0].courseCatagory);
         this.selectedBranchId = res[0].id;
+        this.editBranchForm.get('code')?.disable();
         this.spinner.hide();
       }
       else {
@@ -71,6 +83,21 @@ export class EditBranchComponent {
       }
     });
   }
+
+  private getAllCatagory() {
+    this.spinner.show();
+    this.catagoryList = [];
+    this.catagoryService.getAllCatagory().subscribe((res: any) => {
+      if (res && res.length > 0) {
+        this.catagoryList = res;
+        this.spinner.hide();
+      }
+      else {
+        this.spinner.hide();
+      }
+    });
+  }
+
   getBranchDetails() {
     for (const key in this.branchList) {
       if (this.branchList[key].id === Number(this.selectedBranchId)) {
@@ -81,6 +108,9 @@ export class EditBranchComponent {
         this.editBranchForm.get('cbpass').setValue(this.branchList[key].bpass);
         this.editBranchForm.get('bcommission').setValue(this.branchList[key].bcommission);
         this.editBranchForm.get('paymentmode').setValue(this.branchList[key].paymentmode);
+        this.editBranchForm.get('address').setValue(this.branchList[key].address);
+        this.editBranchForm.get('code').setValue(this.branchList[key].code);
+        this.editBranchForm.get('courseCatagory').setValue(this.branchList[key].courseCatagory);
         break;
       }
     }
@@ -102,7 +132,9 @@ export class EditBranchComponent {
       bpass: this.f.bpass.value,
       bcommission: this.f.bcommission.value,
       id: this.selectedBranchId,
-      paymentmode: this.f.paymentmode.value
+      paymentmode: this.f.paymentmode.value,
+      address: this.f.address.value,
+      courseCatagory: this.f.courseCatagory.value
     }
     this.branchService.updateBranch(editbranch).subscribe((res: any) => {
       this.toastr.success('Successfully', 'Updated');
@@ -119,6 +151,8 @@ export class EditBranchComponent {
         this.branchList[key].bpass = this.f.bpass.value;
         this.branchList[key].bcommission = this.f.bcommission.value;
         this.branchList[key].paymentmode = this.f.paymentmode.value;
+        this.branchList[key].address = this.f.address.value;
+        this.branchList[key].courseCatagory = this.f.courseCatagory.value;
         break;
       }
     }

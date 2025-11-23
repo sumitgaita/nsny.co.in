@@ -30,9 +30,9 @@
               </div>
               <div class="col-md-6 mt-2">
                 <div class="form-group">
-                  <label for="bcontact" class="col-sm-4 control-label">Contact <span class="red-star">★</span></label>
+                  <label for="bcontact" class="col-sm-4 control-label">Address <span class="red-star">★</span></label>
                   <div class="col-sm-8 mt-2">
-                    <textarea class="form-control" formControlName="bcontact" rows="3" tabindex="2" id="bcontact"></textarea>
+                    <textarea class="form-control" formControlName="address" rows="3" tabindex="2" id="address"></textarea>
 
                   </div>
                 </div>
@@ -41,6 +41,15 @@
             </div>
 
             <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="bcontact" class="col-sm-4 control-label">Contact <span class="red-star">★</span></label>
+                  <div class="col-sm-8 mt-2">
+                    <textarea class="form-control" formControlName="bcontact" rows="3" tabindex="2" id="bcontact"></textarea>
+
+                  </div>
+                </div>
+              </div>
               <div class="col-md-6 mt-2">
                 <div class="form-group">
                   <label for="bcommission" class="col-sm-4 control-label">Commission <span class="red-star">★</span></label>
@@ -50,6 +59,12 @@
                   </div>
                 </div>
               </div>
+             
+
+
+            </div>
+
+            <div class="row">
               <div class="col-md-6 mt-2">
                 <div class="form-group">
                   <label for="bemail" class="col-sm-4 control-label">Email (Username) <span class="red-star">★</span></label>
@@ -59,12 +74,6 @@
                   </div>
                 </div>
               </div>
-
-
-            </div>
-
-            <div class="row">
-
               <div class="col-md-6 mt-2">
                 <div class="form-group">
                   <label for="bpass" class="col-sm-4 control-label">Password <span class="red-star">★</span></label>
@@ -74,18 +83,19 @@
                 </div>
               </div>
 
-              <div class="col-md-6 mt-2">
-                <div class="form-group">
-                  <label for="cbpass" class="col-sm-4 control-label">Confirm password <span class="red-star">★</span></label>
-                  <div class="col-sm-8 mt-2">
-                    <input type="text" formControlName="cbpass"  class="form-control" tabindex="6" id="cbpass">
-                  </div>
-                </div>
-              </div>
+           
 
             </div>
 
             <div class="row">
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="cbpass" class="col-sm-4 control-label">Confirm password <span class="red-star">★</span></label>
+                  <div class="col-sm-8 mt-2">
+                    <input type="text" formControlName="cbpass" class="form-control" tabindex="6" id="cbpass">
+                  </div>
+                </div>
+              </div>
               <div class="col-md-6 mt-2">
                 <div class="form-group">
                   <label for="paymentmode" class="col-sm-4 control-label">
@@ -99,7 +109,30 @@
                 </div>
               </div>
             </div>
+            <div class="row">
 
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="cbpass" class="col-sm-4 control-label">Code <span class="red-star">★</span></label>
+                  <div class="col-sm-8 mt-2">
+                    <input type="text" formControlName="code" class="form-control" tabindex="8" id="code">
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mt-2">
+                <div class="form-group">
+                  <label for="paymentmode" class="col-sm-4 control-label">
+                    Course Catagory <span class="red-star">★</span>
+                  </label>
+                  <div class="col-sm-8 mt-2">
+                    <select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
+                      <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="FormBottom mt-4">
               <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">

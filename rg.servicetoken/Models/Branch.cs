@@ -10,5 +10,8 @@
         public int Bcommission { get; set; }
 
         public string Paymentmode { get; set; }
+        public string Code { get; set; }
+        public string Address { get; set; }
+        public int CourseCatagory { get; set; }
     }
 }

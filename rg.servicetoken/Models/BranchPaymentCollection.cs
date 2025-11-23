@@ -44,6 +44,7 @@ namespace rg.service.Models
         public string Theory { get; set; }
         public string Practical { get; set; }
         public string stname { get; set; }
-
+        public int CourseCatagory { get; set; }
+        public string BnAddress { get; set; }
     }
 }

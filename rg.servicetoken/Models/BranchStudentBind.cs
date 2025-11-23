@@ -21,5 +21,7 @@ namespace rg.service.Models
         public string Scpaymentclear { get; set; }
         public string Theory { get; set; }
         public string Practical { get; set; }
+        public int CourseCatagory { get; set; }
+        
     }
 }

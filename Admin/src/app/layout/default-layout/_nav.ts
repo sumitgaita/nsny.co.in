@@ -17,7 +17,26 @@ export const navItems: INavData[] = [
     url: '/base',
     iconComponent: { name: 'cil-puzzle' },
     children: [
-
+      {
+        name: 'Add Permission',
+        url: '/base/addpermission',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Edit Permission',
+        url: '/base/editpermission',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Add catagory',
+        url: '/base/addcatagory',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Edit catagory',
+        url: '/base/editcatagory',
+        icon: 'nav-icon-bullet'
+      },
       {
         name: 'Add course',
         url: '/base/addcourse',
