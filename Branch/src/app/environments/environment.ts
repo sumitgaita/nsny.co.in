@@ -5,8 +5,9 @@
 export const environment = {
   production: true,
   //apiUrl: 'http://demo.nationalyouth.co.in',
-  //apiUrl: 'http://localhost/nationalyouth',
-  apiUrl: 'http://nsny.co.in',//use this link
+  apiUrl: 'http://localhost/nationalyouth',
+  //apiUrl: 'https://qmabacus.in',
+  //apiUrl: 'http://nsny.co.in',//use this link
   //apiUrl: 'http://nationalyouthcomputer.org',
   //apiUrl: 'http://nationalyouth.co.in',
   websitetitle: 'Netaji Subhas National Youth',
