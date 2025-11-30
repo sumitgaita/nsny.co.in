@@ -105,7 +105,7 @@ namespace rg.service.Data
                     Allnoticetobranch = row["allnoticetobranch"] != DBNull.Value ? Convert.ToBoolean(row["allnoticetobranch"]) : (bool)false,
                     Studentregistration = row["studentregistration"] != DBNull.Value ? Convert.ToBoolean(row["studentregistration"]) : (bool)false,
                     Studenticard = row["studenticard"] != DBNull.Value ? Convert.ToBoolean(row["studenticard"]) : (bool)false,
-                    Active = row["active"] != DBNull.Value ? Convert.ToBoolean(row["active"]) : (bool)false,
+                    Active = row["active"] != DBNull.Value ? Convert.ToBoolean(row["active"]) : (bool)false
 
                 });
             }

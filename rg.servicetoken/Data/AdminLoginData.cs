@@ -21,21 +21,58 @@ namespace rg.service.Data
             AdminLogin details = new AdminLogin();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>();
             string[] usernameList = login.Bemail.Split('$');
-            parameters.Add(myFactory.GetParameter("@mm_Auth_Username", usernameList[1]));
-            parameters.Add(myFactory.GetParameter("@mm_Auth_Pass", login.Bpass));
-            parameters.Add(myFactory.GetParameter("@login_type", usernameList[0]));
-            string query = "AddminBranchPass";
-            DataTable tbl = hlpr.GetDataTable(query, ref parameters);
-
-            foreach (DataRow row in tbl.Rows)
+            if (usernameList[0] == "Admin")
             {
-                details.Id = Convert.ToInt32(row["id"]);
-                details.Bname = row["name"].ToString();
-                details.Bcontact = row["contact"].ToString();
-                details.Bemail = row["email"].ToString();
-                // details.Bcommission = Convert.ToInt32(row["commission"].ToString());
-                details.Bpass = row["pass"].ToString();
-                details.Paymentmode = row["paymentmode"].ToString();
+                parameters.Add(myFactory.GetParameter("@mm_Auth_Username", usernameList[1]));
+                parameters.Add(myFactory.GetParameter("@mm_Auth_Pass", login.Bpass));
+                parameters.Add(myFactory.GetParameter("@login_type", usernameList[0]));
+                string query = "AddminBranchPass";
+                DataTable tbl = hlpr.GetDataTable(query, ref parameters);
+
+                foreach (DataRow row in tbl.Rows)
+                {
+                    details.Id = Convert.ToInt32(row["id"]);
+                    details.Bname = row["name"].ToString();
+                    details.Bcontact = row["contact"].ToString();
+                    details.Bemail = row["email"].ToString();
+                    // details.Bcommission = Convert.ToInt32(row["commission"].ToString());
+                    details.Bpass = row["pass"].ToString();
+                    details.Paymentmode = row["paymentmode"].ToString();
+                    details.AdminPermission.Addcatagory = row["addcatagory"] != DBNull.Value ? Convert.ToBoolean(row["addcatagory"]) : (bool)false;
+                    details.AdminPermission.Editcatagory = row["editcatagory"] != DBNull.Value ? Convert.ToBoolean(row["editcatagory"]) : (bool)false;
+                    details.AdminPermission.Addcourse = row["addcourse"] != DBNull.Value ? Convert.ToBoolean(row["addcourse"]) : (bool)false;
+                    details.AdminPermission.Editcourse = row["editcourse"] != DBNull.Value ? Convert.ToBoolean(row["editcourse"]) : (bool)false;
+                    details.AdminPermission.Addbranch = row["addbranch"] != DBNull.Value ? Convert.ToBoolean(row["addbranch"]) : (bool)false;
+                    details.AdminPermission.Editbranch = row["editbranch"] != DBNull.Value ? Convert.ToBoolean(row["editbranch"]) : (bool)false;
+                    details.AdminPermission.Editstudent = row["editstudent"] != DBNull.Value ? Convert.ToBoolean(row["editstudent"]) : (bool)false;
+                    details.AdminPermission.Editbranchstudentbind = row["editbranchstudentbind"] != DBNull.Value ? Convert.ToBoolean(row["editbranchstudentbind"]) : (bool)false;
+                    details.AdminPermission.Noticetobranch = row["noticetobranch"] != DBNull.Value ? Convert.ToBoolean(row["noticetobranch"]) : (bool)false;
+                    details.AdminPermission.Allnoticetobranch = row["allnoticetobranch"] != DBNull.Value ? Convert.ToBoolean(row["allnoticetobranch"]) : (bool)false;
+                    details.AdminPermission.Studentregistration = row["studentregistration"] != DBNull.Value ? Convert.ToBoolean(row["studentregistration"]) : (bool)false;
+                    details.AdminPermission.Studenticard = row["studenticard"] != DBNull.Value ? Convert.ToBoolean(row["studenticard"]) : (bool)false;
+                    details.AdminPermission.IsAdmin = row["isAdmin"] != DBNull.Value ? Convert.ToBoolean(row["isAdmin"]) : (bool)false;
+                    details.AdminPermission.Active = row["active"] != DBNull.Value ? Convert.ToBoolean(row["active"]) : (bool)false;
+
+                }
+            }
+            else
+            {
+                parameters.Add(myFactory.GetParameter("@mm_Auth_Username", usernameList[1]));
+                parameters.Add(myFactory.GetParameter("@mm_Auth_Pass", login.Bpass));
+                parameters.Add(myFactory.GetParameter("@login_type", usernameList[0]));
+                string query = "AddminBranchPass";
+                DataTable tbl = hlpr.GetDataTable(query, ref parameters);
+
+                foreach (DataRow row in tbl.Rows)
+                {
+                    details.Id = Convert.ToInt32(row["id"]);
+                    details.Bname = row["name"].ToString();
+                    details.Bcontact = row["contact"].ToString();
+                    details.Bemail = row["email"].ToString();
+                    // details.Bcommission = Convert.ToInt32(row["commission"].ToString());
+                    details.Bpass = row["pass"].ToString();
+                    details.Paymentmode = row["paymentmode"].ToString();
+                }
             }
             return details;
 

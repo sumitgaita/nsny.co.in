@@ -19,5 +19,6 @@
         public bool Studentregistration { get; set; }
         public bool Studenticard { get; set; }
         public bool Active { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

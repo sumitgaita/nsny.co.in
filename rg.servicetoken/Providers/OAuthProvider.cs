@@ -33,7 +33,7 @@ namespace rg.service.Providers
                     ClaimsIdentity oAuthIdentity = new ClaimsIdentity(claims,
                                 Startup.OAuthOptions.AuthenticationType);
 
-                    var properties = CreateProperties(user.Bemail, Convert.ToString(user.Id),user.Bpass, user.Bname,user.Paymentmode,user.Bcontact);
+                    var properties = CreateProperties(user.Bemail, Convert.ToString(user.Id), user.Bpass, user.Bname, user.Paymentmode, user.Bcontact, user);
                     var ticket = new AuthenticationTicket(oAuthIdentity, properties);
                     context.Validated(ticket);
 
@@ -68,7 +68,7 @@ namespace rg.service.Providers
         #endregion
 
         #region[CreateProperties]
-        public static AuthenticationProperties CreateProperties(string loginUserName, string loginId, string loginPassword, string branchName,string paymentMode, string bcontact)
+        public static AuthenticationProperties CreateProperties(string loginUserName, string loginId, string loginPassword, string branchName, string paymentMode, string bcontact, AdminLogin user)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
@@ -77,7 +77,21 @@ namespace rg.service.Providers
                 { "password", loginPassword },
                 { "bname", branchName },
                 { "paymentMode", paymentMode },
-                { "branchContact", bcontact }
+                { "branchContact", bcontact },
+                { "addcatagory", Convert.ToString(user.AdminPermission.Addcatagory)},
+                { "editcatagory", Convert.ToString(user.AdminPermission.Editcatagory)},
+                { "addcourse", Convert.ToString(user.AdminPermission.Addcourse)},
+                { "editcourse", Convert.ToString(user.AdminPermission.Editcourse)},
+                { "addbranch", Convert.ToString(user.AdminPermission.Addbranch)},
+                { "editbranch", Convert.ToString(user.AdminPermission.Editbranch)},
+                { "editstudent", Convert.ToString(user.AdminPermission.Editstudent)},
+                { "editbranchstudentbind", Convert.ToString(user.AdminPermission.Editbranchstudentbind)},
+                { "noticetobranch", Convert.ToString(user.AdminPermission.Noticetobranch)},
+                { "allnoticetobranch", Convert.ToString(user.AdminPermission.Allnoticetobranch)},
+                { "studentregistration", Convert.ToString(user.AdminPermission.Studentregistration)},
+                { "studenticard", Convert.ToString(user.AdminPermission.Studenticard)},
+                { "isAdmin", Convert.ToString(user.AdminPermission.IsAdmin)},
+                { "active", Convert.ToString(user.AdminPermission.Active)}
             };
             return new AuthenticationProperties(data);
         }
