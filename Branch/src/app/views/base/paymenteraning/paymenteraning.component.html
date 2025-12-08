@@ -11,7 +11,7 @@
               <div class="form-group">
                 <label for="from" class="col-sm-4 control-label">From Date:</label>
                 <div class="col-sm-8 mt-2">
-                  <input type="text" readonly class="form-control" placeholder="yyyy-mm-dd" [minDate]="minDate" [maxDate]="maxDate" [startDate]="startDate"
+                  <input type="text" readonly class="form-control" placeholder="yyyy-mm-dd" [minDate]="minDate" 
                          name="from" id="from" [(ngModel)]="searchFromDate" (ngModelChange)="onSelectFromDate($event)" (click)="from.toggle()" ngbDatepicker #from="ngbDatepicker">
                 </div>
               </div>
@@ -20,7 +20,7 @@
               <div class="form-group">
                 <label for="to" class="col-sm-4 control-label">To date:</label>
                 <div class="col-sm-8 mt-2">
-                  <input type="text" readonly class="form-control" placeholder="yyyy-mm-dd" [minDate]="minDate" [maxDate]="maxDate" [startDate]="startDate"
+                  <input type="text" readonly class="form-control" placeholder="yyyy-mm-dd" [minDate]="minDate" 
                          name="to" id="to" [(ngModel)]="searchToDate" (ngModelChange)="onSelectToDate($event)" (click)="to.toggle()" ngbDatepicker #to="ngbDatepicker">
                 </div>
               </div>

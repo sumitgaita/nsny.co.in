@@ -8,7 +8,23 @@ export const routes: Routes = [
       title: 'Base'
     },
     children: [
-      
+      {
+        path: 'addcenter',
+        loadComponent: () => import('./addcenter/addcenter.component').then(m => m.AddCenterComponent),
+        data: {
+          title: 'Addcenter'
+        },
+        canActivate: [AuthGuard]
+      },
+
+      {
+        path: 'editcenter',
+        loadComponent: () => import('./editcenter/editcenter.component').then(m => m.EditCenterComponent),
+        data: {
+          title: 'editcenter'
+        },
+        canActivate: [AuthGuard]
+      },
       {
         path: 'addstudent',
         loadComponent: () => import('./addstudent/addstudent.component').then(m => m.AddStudentComponent),

@@ -10,10 +10,10 @@ namespace rg.service.Manager
             AdminLoginData data = new AdminLoginData();
             return data.LoginDetails(login);
         }
-        public bool ChangeBranchPassword(int id, string password)
+        public bool ChangeBranchPassword(int id, string password,string isBranch)
         {
             AdminLoginData data = new AdminLoginData();
-            return data.ChangeBranchPassword(id, password);
+            return data.ChangeBranchPassword(id, password,isBranch);
         }
         public bool ChangeAdminPassword(int id, string username, string password)
         {

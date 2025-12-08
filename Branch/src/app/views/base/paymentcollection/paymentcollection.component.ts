@@ -204,7 +204,9 @@ export class PaymentCollectionComponent implements OnInit, OnDestroy {
   private getPaymentCollection() {
     this.spinner.show();
     this.PaymentCollectionList = [];
-    this.branchstudentbindService.getPaymentCollection(this.currentUser.id).subscribe((res: any) => {
+    const branchId = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
+    const isBranch = this.currentUser.isBranch === 'True' ? 'Branch' : 'Center';
+    this.branchstudentbindService.getPaymentCollection(branchId, this.currentUser.id, isBranch).subscribe((res: any) => {
       if (res && res.length > 0) {
         this.PaymentCollectionList = res;
         this.spinner.hide();
@@ -226,7 +228,7 @@ export class PaymentCollectionComponent implements OnInit, OnDestroy {
       }
       else {
         this.zone.run(() => {
-        this.spinner.hide();
+          this.spinner.hide();
           this.toastr.info('Receipt', 'Not avabilable');
         });
       }
@@ -244,7 +246,7 @@ export class PaymentCollectionComponent implements OnInit, OnDestroy {
             this.spinner.hide();
             this.toastr.info('Payment', 'Already Clear');
           });
-          
+
         }
       }));
       this.subscription.push(BranchstudentbindService.onEditReceiptRow.subscribe((item: any) => {
@@ -323,7 +325,7 @@ export class PaymentCollectionComponent implements OnInit, OnDestroy {
     this.spinner.show();
     const paymentCollection = {
       stid: this.f.stid.value,
-      bid: this.currentUser.id,
+      bid: this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid),
       cid: this.f.cid.value,
       ctotal: this.f.ctotal.value,
       cpaid: this.f.cpaid.value,
@@ -334,7 +336,8 @@ export class PaymentCollectionComponent implements OnInit, OnDestroy {
       remainginstallment: (this.f.remainginstallment.value - 1),
       amountremaing: this.f.stbalance.value,
       momono: this.f.momono.value,
-      paymentclear: this.f.paymentclear.value
+      paymentclear: this.f.paymentclear.value,
+      centerid: this.currentUser.isBranch === 'False' ? this.currentUser.id : 0
     }
     this.branchstudentbindService.paymentLastUpdate(paymentCollection).subscribe((res: any) => {
       if (res) {
@@ -364,7 +367,8 @@ export class PaymentCollectionComponent implements OnInit, OnDestroy {
   }
   public MomonoNumber() {
     let count = 0;
-    this.branchstudentbindService.getPaymenCount(this.currentUser.id, (new Date().getFullYear() % 100).toString()).subscribe((res: any) => {
+    const branchid = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
+    this.branchstudentbindService.getPaymenCount(branchid, (new Date().getFullYear() % 100).toString()).subscribe((res: any) => {
       if (res && res > 0) {
         count = res + 1;
       }
@@ -404,7 +408,7 @@ export class PaymentCollectionComponent implements OnInit, OnDestroy {
     strhtml += "  <td>";
     strhtml += "  <table width=\"643\" border =\"0\" cellpadding =\"0\" cellspacing =\"0\" style =\"border:#666666 1px solid;font-family:Tahoma\">";
     strhtml += "      <tr>";
-    strhtml += "      <td height=\"32\" colspan =\"5\" align =\"center\" valign =\"middle\" bgcolor =\"#333333\" style =\"color: #FFFFFF\"> <strong>MONEY RECEPT(" + environment.websitetitle +") </strong></td>";
+    strhtml += "      <td height=\"32\" colspan =\"5\" align =\"center\" valign =\"middle\" bgcolor =\"#333333\" style =\"color: #FFFFFF\"> <strong>MONEY RECEPT(" + environment.websitetitle + ") </strong></td>";
     strhtml += "        </tr>";
     strhtml += "        <tr>";
     strhtml += "        <td width=\"18\" height =\"9\"> </td>";

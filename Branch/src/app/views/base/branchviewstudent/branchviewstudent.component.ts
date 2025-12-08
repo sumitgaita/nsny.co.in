@@ -58,7 +58,9 @@ export class BranchViewStudentComponent {
   private getAllStudentByBranch() {
     this.spinner.show();
     this.branchviewstudentList = [];
-    this.studentService.getBranchViewStudent(this.currentUser.id).subscribe((res: any) => {
+    const branchId = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
+    const isBranch = this.currentUser.isBranch === 'True' ? 'Branch' : 'Center';
+    this.studentService.getBranchViewStudent(branchId, this.currentUser.id, isBranch).subscribe((res: any) => {
       if (res && res.length > 0) {
         this.branchviewstudentList = res;
         this.spinner.hide();

@@ -25,7 +25,7 @@ export class LoginComponent {
   submitted = false;
   returnUrl!: string;
   error = '';
-  loginType: string[] = ['Admin', 'Branch'];
+  loginType: string[] = ['Center', 'Branch'];
   public title = environment.websitetitle;
   constructor(
 
@@ -44,7 +44,7 @@ export class LoginComponent {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      loginType: ['Branch', Validators.required] //'Admin', 'Branch'
+      loginType: ['Center', Validators.required] //'Admin', 'Branch'
     });
     this.authenticationService.logout();
     this.router.navigate(['/']);

@@ -91,6 +91,10 @@ namespace rg.service.Providers
                 { "studentregistration", Convert.ToString(user.AdminPermission.Studentregistration)},
                 { "studenticard", Convert.ToString(user.AdminPermission.Studenticard)},
                 { "isAdmin", Convert.ToString(user.AdminPermission.IsAdmin)},
+                { "mastercode", Convert.ToString(user.Mastercode)},
+                { "centercode", Convert.ToString(user.Code)},
+                { "branchid", Convert.ToString(user.BranchId)},
+                { "isBranch", Convert.ToString(user.IsBranch)},
                 { "active", Convert.ToString(user.AdminPermission.Active)}
             };
             return new AuthenticationProperties(data);

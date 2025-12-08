@@ -129,7 +129,6 @@ export class DefaultLayoutComponent {
         this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Change Admin Pass.');
         this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Wallet');
         this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Wallet History');
-        console.log(this.navItems);
       }, 500);
     }
 

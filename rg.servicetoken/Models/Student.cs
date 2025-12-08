@@ -35,6 +35,6 @@
         public string Theory { get; set; }
         public string Practical { get; set; }
         public string Passingoutyear { get; set; }
-        
+        public int Subcenter { get; set; }
     }
 }

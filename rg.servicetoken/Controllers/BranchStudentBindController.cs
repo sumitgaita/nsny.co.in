@@ -28,11 +28,11 @@ namespace rg.service.Controllers
         //    return _httpResponseMessage.ReturnOk(projects);
         //}
         [Route("")]
-        public HttpResponseMessage Get(int branchId)
+        public HttpResponseMessage Get(int branchId, string centerId, string logintype,int name)
         {
             try
             {
-                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetBranchPaymentCollection(branchId);
+                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetBranchPaymentCollection(branchId, centerId, logintype);
                 return _httpResponseMessage.ReturnOk(resourceDetails);
             }
             catch (Exception ex)
@@ -43,11 +43,11 @@ namespace rg.service.Controllers
         }
 
         [Route("")]
-        public HttpResponseMessage Get(int branchId,string fromdate,string todate)
+        public HttpResponseMessage Get(int branchId, int centerid, string fromdate,string todate)
         {
             try
             {
-                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetBranchPaymenteraning(branchId, fromdate, todate);
+                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetBranchPaymenteraning(branchId,centerid, fromdate, todate);
                 return _httpResponseMessage.ReturnOk(resourceDetails);
             }
             catch (Exception ex)

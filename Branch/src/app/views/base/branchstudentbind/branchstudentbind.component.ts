@@ -79,7 +79,7 @@ export class BranchStudentBindComponent {
   get f() { return this.addCourseStudentForm.controls; }
 
   onBranchBalanceCheck() {
-    const branchId = Number(this.currentUser.id);
+    const branchId = this.currentUser.isBranch === 'True' ? Number(this.currentUser.id) : Number(this.currentUser.branchid);
     this.spinner.show();
     this.totalWalletAmount = 0;
     this.walletService.GetBranchWallet(branchId).subscribe((res: any) => {
@@ -94,7 +94,9 @@ export class BranchStudentBindComponent {
   }
   private getNssCode() {
     this.spinner.show();
-    this.studentService.getCenterCodeStudent(this.currentUser.id).subscribe((res: any) => {
+    const branchId = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
+    const isBranch = this.currentUser.isBranch === 'True' ? 'Branch' : 'Center';
+    this.studentService.getCenterCodeStudent(branchId, this.currentUser.id, isBranch).subscribe((res: any) => {
       if (res) {
         this.nssCodeList = res;
         this.addCourseStudentForm.get('scstid').setValue(res[0].nssY_code);
@@ -177,7 +179,7 @@ export class BranchStudentBindComponent {
       return;
     }
     const addBranchStudentBind = {
-      scbid: this.currentUser.id,
+      scbid: this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid),
       scbname: this.currentUser.bname,
       scstid: this.f.scstid.value,
       scsjoin: this.f.scsjoin.value,
@@ -222,7 +224,7 @@ export class BranchStudentBindComponent {
     this.spinner.show();
     this.getCourseName();
     const addBranchcommission = {
-      bidpay: this.currentUser.id,
+      bidpay: this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid),
       bnamepay: this.currentUser.bname,
       stidpay: this.f.scstid.value,
       cnamepay: this.f.cname.value,

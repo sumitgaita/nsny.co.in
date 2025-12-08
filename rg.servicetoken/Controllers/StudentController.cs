@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using iTextSharp.text.pdf.parser.clipper;
+using Newtonsoft.Json.Linq;
 using rg.service.Manager;
 using rg.service.Models;
 using rg.service.Utility;
@@ -31,16 +32,16 @@ namespace rg.service.Controllers
         }
 
         [Route("")]
-        public HttpResponseMessage Get(string center_code, int name)
+        public HttpResponseMessage Get(string center_code, string logintype,string centerid)
         {
-            System.Collections.Generic.List<Student> student = _studentManager.GetByCenterCodeStudent(center_code);
+            System.Collections.Generic.List<Student> student = _studentManager.GetByCenterCodeStudent(center_code,logintype, centerid);
             return _httpResponseMessage.ReturnOk(student);
         }
 
         [Route("")]
-        public HttpResponseMessage Get(int branchId)
+        public HttpResponseMessage Get(int branchId,string centerId, string logintype)
         {
-            System.Collections.Generic.List<BranchViewStudent> student = _studentManager.GetBranchViewStudent(branchId);
+            System.Collections.Generic.List<BranchViewStudent> student = _studentManager.GetBranchViewStudent(branchId, centerId, logintype);
             return _httpResponseMessage.ReturnOk(student.OrderByDescending(o => o.Stid));
         }
         //[Route("")]

@@ -36,20 +36,20 @@ namespace rg.service.Manager
             BranchStudentBindData data = new BranchStudentBindData();
             return data.PaymentLastUpdate(branchPaymentCollection);
         }
-        public List<BranchPaymentCollection> GetBranchPaymentCollection(int branchId)
+        public List<BranchPaymentCollection> GetBranchPaymentCollection(int branchId, string centerId, string logintype)
         {
             BranchStudentBindData data = new BranchStudentBindData();
-            return data.GetBranchPaymentCollection(branchId);
+            return data.GetBranchPaymentCollection(branchId, centerId, logintype);
         }
         public List<BranchPaymentCollection> GetRecivedPrint(string stid)
         {
             BranchStudentBindData data = new BranchStudentBindData();
             return data.GetRecivedPrint(stid);
         }
-        public List<BranchPaymentCollection> GetBranchPaymenteraning(int branchId, string fromdate, string todate)
+        public List<BranchPaymentCollection> GetBranchPaymenteraning(int branchId, int centerid, string fromdate, string todate)
         {
             BranchStudentBindData data = new BranchStudentBindData();
-            return data.GetBranchPaymenteraning(branchId, fromdate, todate);
+            return data.GetBranchPaymenteraning(branchId,centerid, fromdate, todate);
         }
         public int PaymenCount(int branchId, string dt)
         {

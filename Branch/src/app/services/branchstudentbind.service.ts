@@ -21,8 +21,8 @@ export class BranchstudentbindService {
   paymentLastUpdate(paymentObject: any): Observable<any> {
     return this.http.put<any>('PaymentCollection/update', paymentObject)
   }
-  getPaymentCollection(branchId: number): Observable<any> {
-    return this.http.get<any>('BranchStudentBind?branchId=' + branchId);
+  getPaymentCollection(branchId: number, centerId: string, logintype: string): Observable<any> {
+    return this.http.get<any>('BranchStudentBind?branchId=' + branchId + '&centerId=' + centerId + '&logintype=' + logintype + '&name=' + 0);
   }
   getPaymentPrintDetails(stid: string): Observable<any> {
     return this.http.get<any>('BranchStudentBind?stid=' + stid);
@@ -30,8 +30,8 @@ export class BranchstudentbindService {
   getPaymenCount(branchId: number, dt: string): Observable<any> {
     return this.http.get<any>('BranchStudentBind?branchId=' + branchId + '&dt=' + dt);
   }
-  getBranchPaymenteraning(branchId: number, fromdate: string, todate: string): Observable<any> {
-    return this.http.get<any>('BranchStudentBind?branchId=' + branchId + '&fromdate=' + fromdate + '&todate=' + todate);
+  getBranchPaymenteraning(branchId: number, centerid: number, fromdate: string, todate: string): Observable<any> {
+    return this.http.get<any>('BranchStudentBind?branchId=' + branchId + '&centerid=' + centerid +'&fromdate=' + fromdate + '&todate=' + todate);
   }
 
   getStuRegistrationList(branchId: number, fromdate: string, todate: string): Observable<any> {

@@ -54,9 +54,10 @@ function isOverflown(element: HTMLElement) {
   ]
 })
 export class DefaultLayoutComponent {
-  public navItems = navItems;
+  public navItems: any;
   currentUser: any;
   public title = environment.websitetitle;
+  navItemsRemove: any;
   onScrollbarUpdate($event: any) {
     // if ($event.verticalUsed) {
     // console.log('verticalUsed', $event.verticalUsed);
@@ -64,5 +65,18 @@ export class DefaultLayoutComponent {
   }
   constructor(private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+  ngOnInit() {
+    if (this.currentUser.isBranch === 'True') {
+      this.navItems = navItems;
+    }
+    else {
+      setTimeout(() => {
+        this.navItemsRemove = navItems?.find((x: any) => x.name === 'Base');
+        this.navItems = [...this.navItemsRemove.children]; // start with full list        
+        this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Add Center');
+        this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Edit Center');
+      }, 500);
+    }
   }
 }

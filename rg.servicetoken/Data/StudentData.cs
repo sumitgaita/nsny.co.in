@@ -49,7 +49,8 @@ namespace rg.service.Data
                 myFactory.GetParameter("@r3", "Couse Ongoing"),
                 myFactory.GetParameter("@r5", ""),
                 myFactory.GetParameter("@act", 1),
-                myFactory.GetParameter("@passingoutyear", student.Passingoutyear)
+                myFactory.GetParameter("@passingoutyear", student.Passingoutyear),
+                myFactory.GetParameter("@subcenter", student.Subcenter)
         };
             return hlpr.ReturnStoredProcedure("Admission_StudentInsert", ref parameters);
         }
@@ -232,12 +233,14 @@ namespace rg.service.Data
             return student;
 
         }
-        public List<Student> GetByCenterCodeStudent(string center_code)
+        public List<Student> GetByCenterCodeStudent(string center_code,string logintype,string centerid)
         {
             List<Student> student = new List<Student>();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
-                myFactory.GetParameter("@Center_code", center_code)
+                myFactory.GetParameter("@Center_code", center_code),
+                myFactory.GetParameter("@logintype", logintype),
+                 myFactory.GetParameter("@centerid", centerid)
             };
             string query = "GetStudentByCentercode";
             DataTable tbl = hlpr.GetDataTable(query, ref parameters);
@@ -415,12 +418,14 @@ namespace rg.service.Data
             return student;
         }
 
-        public List<BranchViewStudent> GetBranchViewStudent(int branchId)
+        public List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype)
         {
             List<BranchViewStudent> branch = new List<BranchViewStudent>();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
-                myFactory.GetParameter("@bid", branchId)
+                myFactory.GetParameter("@bid", branchId),
+                myFactory.GetParameter("@logintype", logintype),
+                myFactory.GetParameter("@centerid", centerId)
             };
             string query = "Select_Studetails";
             DataTable tbl = hlpr.GetDataTable(query, ref parameters);

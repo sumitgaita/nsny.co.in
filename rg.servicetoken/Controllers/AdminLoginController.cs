@@ -26,7 +26,7 @@ namespace rg.service.Controllers
         {
             try
             {
-                AdminLogin det = new AdminLogin() { Bname = username, Bpass = password,LoginType= loginType };
+                AdminLogin det = new AdminLogin() { Bname = username, Bpass = password, LoginType = loginType };
                 AdminLogin loginDetails = _loginManager.LoginDetails(det);
                 return _httpResponseMessage.ReturnOk(loginDetails);
             }
@@ -37,12 +37,12 @@ namespace rg.service.Controllers
 
         }
         [Route("")]
-        public HttpResponseMessage Get(int id, string password)
+        public HttpResponseMessage Get(int id, string password, string isBranch, string name)
         {
             try
             {
 
-                bool changePass = _loginManager.ChangeBranchPassword(id, password);
+                bool changePass = _loginManager.ChangeBranchPassword(id, password, isBranch);
                 return _httpResponseMessage.ReturnOk(changePass);
             }
             catch (Exception ex)

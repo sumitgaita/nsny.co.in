@@ -121,7 +121,8 @@ namespace rg.service.Data
                 myFactory.GetParameter("@stbalance", branchPaymentCollection.Stbalance),
                 myFactory.GetParameter("@stinstall", branchPaymentCollection.TotalInstallment),
                 myFactory.GetParameter("@stinstallremain", branchPaymentCollection.Remainginstallment),
-                myFactory.GetParameter("@momono", branchPaymentCollection.Momono)
+                myFactory.GetParameter("@momono", branchPaymentCollection.Momono),
+                myFactory.GetParameter("@centerid", branchPaymentCollection.Centerid)
             };
             return hlpr.ExecuteStoredProcedure("StudentPaymentInsert", ref parameters);
         }
@@ -167,12 +168,14 @@ namespace rg.service.Data
         //    return hlpr.ExecuteStoredProcedure("DeleteCourse", ref parameters);
 
         //}
-        public List<BranchPaymentCollection> GetBranchPaymentCollection(int branchId)
+        public List<BranchPaymentCollection> GetBranchPaymentCollection(int branchId, string centerId, string logintype)
         {
             List<BranchPaymentCollection> branchcollection = new List<BranchPaymentCollection>();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
-                myFactory.GetParameter("@bid", branchId)
+                myFactory.GetParameter("@bid", branchId),
+                myFactory.GetParameter("@logintype", logintype),
+                myFactory.GetParameter("@centerid", centerId)
             };
             string query = "Select_StuPayment";
             DataTable tbl = hlpr.GetDataTable(query, ref parameters);
@@ -203,12 +206,13 @@ namespace rg.service.Data
 
         }
 
-        public List<BranchPaymentCollection> GetBranchPaymenteraning(int branchId, string fromdate, string todate)
+        public List<BranchPaymentCollection> GetBranchPaymenteraning(int branchId, int centerid, string fromdate, string todate)
         {
             List<BranchPaymentCollection> branchpaymenteraning = new List<BranchPaymentCollection>();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@bid", branchId),
+                myFactory.GetParameter("@centerid", centerid),
                 myFactory.GetParameter("@fromdate", Convert.ToDateTime(fromdate)),
                 myFactory.GetParameter("@todate", Convert.ToDateTime(todate))
             };

@@ -13,8 +13,8 @@ namespace rg.service.Manager
         List<Student> GetStudent(string nssy_code);
         int BranchStudentRegisCount(Student student);
         bool UpdateStudentImageName(Student student);
-        List<Student> GetByCenterCodeStudent(string center_code);
-        List<BranchViewStudent> GetBranchViewStudent(int branchId);
+        List<Student> GetByCenterCodeStudent(string center_code,string logintype,string centerid);
+        List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype);
         List<Student> GetAdminVerifyStudent();
         List<BranchPaymentCollection> GetStudentIDJdate(string nssy_code);
         List<Student> GetStudentVerification(string name, string nssy_code);

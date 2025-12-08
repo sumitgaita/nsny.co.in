@@ -35,8 +35,8 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
-  changeBranchPassword(id: number, password: string): Observable<any> {
-    return this.http.get<any>('Login?id=' + id + '&password=' + password);
+  changeBranchPassword(id: number, password: string, isBranch: string): Observable<any> {
+    return this.http.get<any>('Login?id=' + id + '&password=' + password + '&isBranch=' + isBranch + '&name=' + 0);
   }
   changeAdminPassword(id: number, username: string, password: string): Observable<any> {
     return this.http.get<any>('Login?id=' + id + '&username=' + username + '&password=' + password);

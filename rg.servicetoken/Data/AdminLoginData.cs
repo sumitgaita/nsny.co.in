@@ -52,10 +52,12 @@ namespace rg.service.Data
                     details.AdminPermission.Studenticard = row["studenticard"] != DBNull.Value ? Convert.ToBoolean(row["studenticard"]) : (bool)false;
                     details.AdminPermission.IsAdmin = row["isAdmin"] != DBNull.Value ? Convert.ToBoolean(row["isAdmin"]) : (bool)false;
                     details.AdminPermission.Active = row["active"] != DBNull.Value ? Convert.ToBoolean(row["active"]) : (bool)false;
+                    details.Mastercode = row["id"].ToString();
+                    details.Code = row["id"].ToString();
 
                 }
             }
-            else
+            else if (usernameList[0] == "Branch")
             {
                 parameters.Add(myFactory.GetParameter("@mm_Auth_Username", usernameList[1]));
                 parameters.Add(myFactory.GetParameter("@mm_Auth_Pass", login.Bpass));
@@ -72,6 +74,32 @@ namespace rg.service.Data
                     // details.Bcommission = Convert.ToInt32(row["commission"].ToString());
                     details.Bpass = row["pass"].ToString();
                     details.Paymentmode = row["paymentmode"].ToString();
+                    details.Mastercode = row["code"].ToString();
+                    details.Code = row["code"].ToString();
+                    details.IsBranch = true;
+                }
+            }
+            else if (usernameList[0] == "Center")
+            {
+                parameters.Add(myFactory.GetParameter("@mm_Auth_Username", usernameList[1]));
+                parameters.Add(myFactory.GetParameter("@mm_Auth_Pass", login.Bpass));
+                parameters.Add(myFactory.GetParameter("@login_type", usernameList[0]));
+                string query = "AddminBranchPass";
+                DataTable tbl = hlpr.GetDataTable(query, ref parameters);
+
+                foreach (DataRow row in tbl.Rows)
+                {
+                    details.Id = Convert.ToInt32(row["id"]);
+                    details.BranchId = Convert.ToInt32(row["branchid"]);
+                    details.Bname = row["name"].ToString();
+                    details.Bcontact = row["contact"].ToString();
+                    details.Bemail = row["email"].ToString();
+                    // details.Bcommission = Convert.ToInt32(row["commission"].ToString());
+                    details.Bpass = row["pass"].ToString();
+                    details.Paymentmode = row["paymentmode"].ToString();
+                    details.Mastercode = row["mastercode"].ToString();
+                    details.Code = row["code"].ToString();
+                    details.IsBranch = false;
                 }
             }
             return details;
@@ -108,16 +136,17 @@ namespace rg.service.Data
 
         //}
 
-        public bool ChangeBranchPassword(int id, string password)
+        public bool ChangeBranchPassword(int id, string password, string logintype)
         {
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@id", id),
-                myFactory.GetParameter("@password", password)
+                myFactory.GetParameter("@password", password),
+                myFactory.GetParameter("@logintype", logintype)
             };
             return hlpr.ExecuteStoredProcedure("ChangeBranchPassword", ref parameters);
         }
-        public bool ChangeAdminPassword(int id, string username,string password)
+        public bool ChangeAdminPassword(int id, string username, string password)
         {
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {

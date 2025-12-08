@@ -8,12 +8,12 @@ namespace rg.service.Manager
         //List<Project> GetAllProducts();
         //List<Project> GetAllHiddenProjects();
         bool CreateBranchStudentBind(BranchStudentBind branchStudentBind);
-        List<BranchPaymentCollection> GetBranchPaymentCollection(int branchId);
+        List<BranchPaymentCollection> GetBranchPaymentCollection(int branchId, string centerId, string logintype);
         int PaymenCount(int branchId, string dt);
         bool CreatePaymentollection(BranchPaymentCollection branchPaymentCollection);
         bool PaymentLastUpdate(BranchPaymentCollection branchPaymentCollection);
         List<BranchPaymentCollection> GetRecivedPrint(string stid);
-        List<BranchPaymentCollection> GetBranchPaymenteraning(int branchId, string fromdate, string todate);
+        List<BranchPaymentCollection> GetBranchPaymenteraning(int branchId, int centerid, string fromdate, string todate);
         List<BranchPaymentCollection> GetStuRegistrationList(int branchId, string fromdate, string todate);
         List<BranchPaymentCollection> GetAdminStudentIcard(int branchId, string fromdate, string todate);
         List<BranchPaymentCollection> GetCourseBindList(string stid);

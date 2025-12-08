@@ -7,4 +7,7 @@ export class Branch {
   cbpass?: string;
   bcommission?: number;
   paymentmode?: string;
+  address?: string;
+  code?: string;
+  courseCatagory?: number;
 }

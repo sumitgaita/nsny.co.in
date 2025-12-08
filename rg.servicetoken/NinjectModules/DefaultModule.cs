@@ -23,7 +23,7 @@ namespace rg.service.NinjectModules
             Bind<IWalletManager>().To<WalletManager>();
             Bind<ICatagoryManager>().To<CatagoryManager>();
             Bind<IUserPermissionManager>().To<UserPermissionManager>();
-
+            Bind<ICenterManager>().To<CenterManager>();
         }
     }
 }

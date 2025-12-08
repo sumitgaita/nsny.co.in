@@ -52,9 +52,17 @@
         <c-card-group>
           <c-card class="p-4">
             <c-card-body>
-              <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <h1>Login</h1>
                 <p class="text-body-secondary">Sign In to your account</p>
+                <c-input-group class="mb-3">
+                  <span cInputGroupText>
+                    <svg cIcon name="cilUser"></svg>
+                  </span>
+                  <select name="selectedloginType" formControlName="loginType" id="loginType" class="form-control">
+                    <option *ngFor="let pay of loginType" [value]="pay">{{pay}}</option>
+                  </select>
+                </c-input-group>
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
@@ -78,8 +86,8 @@
                   </c-col>
                   <c-col class="text-right" xs="6">
                     <!--<button cButton class="px-0" color="link">
-                      Forgot password?
-                    </button>-->
+        Forgot password?
+      </button>-->
                   </c-col>
                 </c-row>
               </form>

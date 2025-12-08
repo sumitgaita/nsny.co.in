@@ -12,6 +12,7 @@ export const environment = {
   //apiUrl: 'http://nationalyouth.co.in',
   websitetitle: 'Netaji Subhas National Youth',
   branchcode: 'NSWB',//---NSWB(nsny.org) SNYWB(Youth) NYCE1(computer)
+  centercode: 'CENTER',
   originalsite:'https://www.nsny.org',
   secure: false,
   changeOrigin: true

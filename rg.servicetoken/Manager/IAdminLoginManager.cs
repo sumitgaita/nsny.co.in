@@ -10,7 +10,7 @@ namespace rg.service.Manager
     {
 
         AdminLogin LoginDetails(AdminLogin login);
-        bool ChangeBranchPassword(int id, string password);
+        bool ChangeBranchPassword(int id, string password, string logintype);
         bool ChangeAdminPassword(int id, string username, string password);
         // List<User> GetAllUsers();
 

@@ -45,7 +45,7 @@ export class PaymenteraningComponent {
     private datePipe: DatePipe) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     this.columnDefs = [
-      { headerName: 'Student ID', field: 'stid', sortable: true, filter: true },
+      { headerName: 'Student ID', width: 250, field: 'stid', sortable: true, filter: true },
       { headerName: 'Course Fees', field: 'ctotal', sortable: true, filter: true },
       { headerName: 'Paid Amount', field: 'cpaid', sortable: true, filter: true },
       { headerName: 'Discount Given', field: 'cdiscount', sortable: true, filter: true },
@@ -67,7 +67,9 @@ export class PaymenteraningComponent {
     if (this.searchFromDate && this.searchToDate) {
       const searchFromDate = this.datePipe.transform(new Date(this.searchFromDate.year, this.searchFromDate.month - 1, this.searchFromDate.day), 'yyyy-MM-dd')!;
       const searchToDate = this.datePipe.transform(new Date(this.searchToDate.year, this.searchToDate.month - 1, this.searchToDate.day), 'yyyy-MM-dd')!;
-      this.branchstudentbindService.getBranchPaymenteraning(this.currentUser.id, searchFromDate, searchToDate).subscribe((res: any) => {
+      const bid = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
+      const centerid = this.currentUser.isBranch === 'False' ? this.currentUser.id : 0;
+      this.branchstudentbindService.getBranchPaymenteraning(bid, centerid, searchFromDate, searchToDate).subscribe((res: any) => {
         this.paymenteraningList = res;
         this.spinner.hide();
       });
