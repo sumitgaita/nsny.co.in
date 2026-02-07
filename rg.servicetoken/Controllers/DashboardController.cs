@@ -2,7 +2,9 @@
 using rg.service.Models;
 using rg.service.Utility;
 using System;
+using System.IO;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace rg.service.Controllers
@@ -73,101 +75,35 @@ namespace rg.service.Controllers
 
         }
 
-        //[HttpGet]
-        //[Route("")]
-        //public HttpResponseMessage NumberofCourse()
-        //{
-        //    try
-        //    {
-        //        Dashboard loginDetails = _dashboardManager.NumberofCourse();
-        //        return _httpResponseMessage.ReturnOk(loginDetails);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
+        [HttpPost]
+        [Route("")]
+        public HttpResponseMessage UploadJsonFile()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            HttpRequest httpRequest = HttpContext.Current.Request;
+            Student student = new Student() { };
+            //student.Id = Convert.ToInt32(HttpContext.Current.Request.Form["id"]);
+            student.NSSY_code = HttpContext.Current.Request.Form["nssycode"];
+            string pic = student.NSSY_code.Replace("/", "");
+            if (httpRequest.Files.Count > 0)
+            {
+                foreach (string file in httpRequest.Files)
+                {
+                    HttpPostedFile postedFile = httpRequest.Files[file];
+                    student.Fileup_ins = pic + ".jpg";// postedFile.FileName;
+                    string filePath = HttpContext.Current.Server.MapPath("~/Files/" + pic + ".jpg");
+                    if (File.Exists(filePath))
+                    {
+                        File.Delete(filePath);
+                    }
+                    postedFile.SaveAs(filePath);
+                }
+            }
 
-        //}
+           // bool response1 = _studentManager.UpdateStudentImageName(student);
+            return _httpResponseMessage.ReturnOk(true);
+        }
 
-        //[HttpGet]
-        //[Route("")]
-        //public HttpResponseMessage NumberofStudents()
-        //{
-        //    try
-        //    {
-        //        Dashboard loginDetails = _dashboardManager.NumberofBranche();
-        //        return _httpResponseMessage.ReturnOk(loginDetails);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-
-        //}
-        //[Route("")]
-        //public HttpResponseMessage Get(int loginId)
-        //{
-        //    try
-        //    {
-        //        User det = new User() { LoginId = loginId };
-        //        User userDetails = _loginManager.UserDetails(det);
-        //        return _httpResponseMessage.ReturnOk(userDetails);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-        //[Route("")]
-        //public HttpResponseMessage Get()
-        //{
-        //    try
-        //    {
-        //        System.Collections.Generic.List<User> users = _loginManager.GetAllUsers();
-        //        return _httpResponseMessage.ReturnOk(users);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-        //[HttpPost]
-        //[Route("")]
-        //public HttpResponseMessage CreateUser([FromBody] JObject jsonData)
-        //{
-        //    try
-        //    {
-        //        User users = jsonData.ToObject<User>();
-        //        bool response = _loginManager.CreateUser(users);
-        //        return _httpResponseMessage.ReturnOk(response);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-
-        //[HttpPut]
-        //[Route("update")]
-        //public HttpResponseMessage UpdateUser([FromBody] JObject jsonData)
-        //{
-        //    User users = jsonData.ToObject<User>();
-        //    bool response = _loginManager.UpdateUser(users);
-        //    return _httpResponseMessage.ReturnOk(response);
-        //}
-
-
-        //[HttpDelete]
-        //[Route("")]
-        //public HttpResponseMessage Delete(int loginId)
-        //{
-        //    User det = new User() { LoginId = loginId };
-        //    bool response = _loginManager.DeleteUser(det);
-        //    return _httpResponseMessage.ReturnOk(response);
-        //}
 
     }
 }

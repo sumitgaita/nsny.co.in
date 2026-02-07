@@ -78,13 +78,71 @@
 
   </div>
  
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-4 bg-gray-50 rounded-2xl border border-gray-300 mt-4">
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 p-2 bg-gray-50 rounded-2xl border border-gray-300 mt-2">
     <div *ngFor="let img of images; let i = index" class="card">
-      <img [src]="img.pic" alt="Image {{i}}" />{{img.nssY_code}}<br /> <button (click)="editImage(img.pic,img.nssY_code)">Download</button>
+      <img [src]="img.pic" alt="Image {{i}}" />{{img.nssY_code}}<br />
+      <div class="p-4">
+        <!--<p class="text-sm font-semibold text-gray-800 mb-3">
+          {{ img.nssY_code }}
+        </p>-->
+
+        <button class="w-full mb-1 px-2 py-1 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition"
+                (click)="editImage(img.pic, img.nssY_code)">
+          Download
+        </button>
+
+        <button class="w-full px-2 py-1 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 transition"
+                (click)="UploadImageClick(img.pic, img.nssY_code)">
+          Upload
+        </button>
+      </div>
     </div>
-  </div>
+    </div>
 
 </div>
+<ng-template #imageUploadModel let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">ImageUpload</h4>
+    <!--<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="outline:0;">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+  </div>
+  <div class="modal-body">
+    <div class="FormArea">
+
+      <div class="row">
+        <div class="col-md-6 mt-2">
+          <div class="form-group">
+            <label for="passingoutyear" class="col-sm-4 control-label">Student Id</label>
+            <div class="col-sm-8 mt-2">
+              {{uploadnssycode}}
+              <!--<input type="text" tabindex="15" formControlName="passingoutyear" class="form-control" id="passingoutyear">-->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-2">
+          <div class="form-group">
+            <label for="file" class="col-sm-8 control-label">Upload student picture (50kb to 250kb) <span class="red-star">★</span></label>
+            <div class="col-sm-8 mt-2">
+              <input type="file" id="file" data-max-size="1024" (change)="showPreview($event)" tabindex="16" #inputFile />
+
+
+              <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                <img [src]="imageURL" [alt]="" width="100" height="150">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" (click)="SaveImage()">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</ng-template>
 
 
 

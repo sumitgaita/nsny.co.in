@@ -20,4 +20,7 @@ export class DashBoardService {
   };
     return this.http.get<any>('dashboard/image?name=' + params.name + '&nssycode=' + params.nssycode+ '&centercode=' + params.centercode);
   }
+  uploadStudentImage(studentObject: any): Observable<any> {
+    return this.http.upload<any>('dashboard', studentObject)
+  }
 }

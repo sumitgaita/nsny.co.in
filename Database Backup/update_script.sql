@@ -7,3 +7,16 @@ SELECT id, code,LEN(id) AS bcode, CASE
 --        ELSE 'NSWB0' + CAST(id AS VARCHAR(10))
 --    END
 FROM BranchDetails;
+
+
+========================
+--SELECT  [id]
+--      ,[name]
+  
+--      ,[pic]
+--      ,[NSSY_code]
+--      ,[Center_code]
+--      ,[Center_name],
+--     REPLACE(NSSY_code,'/','')+'.jpg' as rr
+update [Addmission_Student] set pic=REPLACE(NSSY_code,'/','')+'.jpg'
+  FROM [qmabacus_http_test].[dbo].[Addmission_Student] where pic<>REPLACE(NSSY_code,'/','')+'.jpg'  order by id desc -- 10826
