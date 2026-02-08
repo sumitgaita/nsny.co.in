@@ -9,6 +9,22 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'addmastercode',
+        loadComponent: () => import('./addmastercode/addmastercode.component').then(m => m.AddMastercodeComponent),
+        data: {
+          title: 'Addmastercode'
+        },
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'editmastercode',
+        loadComponent: () => import('./editmastercode/editmastercode.component').then(m => m.EditMasterCodeComponent),
+        data: {
+          title: 'Editmastercode'
+        },
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'addpermission',
         loadComponent: () => import('./addPermission/addpermission.component').then(m => m.addpermissionComponent),
         data: {

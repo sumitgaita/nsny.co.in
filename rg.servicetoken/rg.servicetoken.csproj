@@ -3320,6 +3320,7 @@
     <Compile Include="App_Start\RequireHttpsAttribute.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\MasterCodeController.cs" />
     <Compile Include="Controllers\CenterController.cs" />
     <Compile Include="Controllers\UserPermissionController.cs" />
     <Compile Include="Controllers\CatagoryController.cs" />
@@ -3338,6 +3339,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Data\MasterCodeData.cs" />
     <Compile Include="Data\CenterData.cs" />
     <Compile Include="Data\UserPermissionData.cs" />
     <Compile Include="Data\CatagoryData.cs" />
@@ -3349,7 +3351,9 @@
     <Compile Include="Data\DashboardData.cs" />
     <Compile Include="Data\AdminLoginData.cs" />
     <Compile Include="Data\CourseData.cs" />
+    <Compile Include="Manager\MasterCodeManager.cs" />
     <Compile Include="Manager\CenterManager.cs" />
+    <Compile Include="Manager\IMasterCodeManager.cs" />
     <Compile Include="Manager\ICenterManager.cs" />
     <Compile Include="Manager\IUserPermissionManager.cs" />
     <Compile Include="Manager\UserPermissionManager.cs" />
@@ -3371,6 +3375,7 @@
     <Compile Include="Manager\AdminLoginManager.cs" />
     <Compile Include="Manager\CourseManager.cs" />
     <Compile Include="Manager\ICourseManager.cs" />
+    <Compile Include="Models\MasterCode.cs" />
     <Compile Include="Models\UserPermission.cs" />
     <Compile Include="Models\Catagory.cs" />
     <Compile Include="Models\Wallet.cs" />

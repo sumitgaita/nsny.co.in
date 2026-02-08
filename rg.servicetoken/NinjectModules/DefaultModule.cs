@@ -24,6 +24,7 @@ namespace rg.service.NinjectModules
             Bind<ICatagoryManager>().To<CatagoryManager>();
             Bind<IUserPermissionManager>().To<UserPermissionManager>();
             Bind<ICenterManager>().To<CenterManager>();
+            Bind<IMasterCodeManager>().To<MasterCodeManager>();
         }
     }
 }
