@@ -72,7 +72,7 @@ export class LoginComponent {
           this.router.navigate(['/base/branchdashboard']);
         }
         else {
-          this.toastr.error('Worng', 'Username and Password');
+          this.toastr.warning('Worng', 'Username and Password');
           this.loading = false;
           this.spinner.hide();
         }

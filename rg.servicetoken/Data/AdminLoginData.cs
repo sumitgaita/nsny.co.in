@@ -76,6 +76,7 @@ namespace rg.service.Data
                     details.Paymentmode = row["paymentmode"].ToString();
                     details.Mastercode = row["code"].ToString();
                     details.Code = row["code"].ToString();
+                    details.CourseCatagory = row["coursecatagory"].ToString();
                     details.IsBranch = true;
                 }
             }
@@ -99,6 +100,7 @@ namespace rg.service.Data
                     details.Paymentmode = row["paymentmode"].ToString();
                     details.Mastercode = row["mastercode"].ToString();
                     details.Code = row["code"].ToString();
+                    details.CourseCatagory = row["coursecatagory"].ToString();
                     details.IsBranch = false;
                 }
             }

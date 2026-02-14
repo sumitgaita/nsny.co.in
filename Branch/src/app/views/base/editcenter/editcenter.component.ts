@@ -13,6 +13,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { CatagoryService } from '../../../services/catagory.service';
 import { Catagory } from '../../../model/Catagory';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 @Component({
   selector: 'edit-center',
   templateUrl: './editcenter.component.html',
@@ -22,7 +24,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
     CardBodyComponent, DocsExampleComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective,
     FormLabelDirective, FormCheckInputDirective, ButtonDirective, ThemeDirective, DropdownComponent,
     DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink,
-    DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule, FormsModule, CommonModule]
+    DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule, FormsModule, CommonModule, NgMultiSelectDropDownModule]
 })
 export class EditCenterComponent {
   loading = false;
@@ -33,6 +35,8 @@ export class EditCenterComponent {
   catagoryList: Catagory[] = [];
   paymentModeList: string[] = ['Wallet', 'General'];
   currentUser: any;
+  selectedItems: any[] = [];
+  dropdownSettings: IDropdownSettings = {};
   constructor(private centerService: CenterService,
     private confirmationDialogService: ConfirmationDialogService,
     private catagoryService: CatagoryService,
@@ -55,7 +59,7 @@ export class EditCenterComponent {
       bcommission: ['', Validators.required],
       code: ['', Validators.required],
       address: ['', Validators.required],
-      courseCatagory: ['', Validators.required],
+      //courseCatagory: ['', Validators.required],
       branchId: [],
       mastercode: ['', Validators.required]
     }, {
@@ -63,6 +67,15 @@ export class EditCenterComponent {
     });
     this.getAllCatagory();
     this.getAllCenter();
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: true
+    };
   }
   get f() { return this.editCenterForm.controls; }
   private getAllCenter() {
@@ -81,7 +94,9 @@ export class EditCenterComponent {
         this.editCenterForm.get('paymentmode').setValue(res[0].paymentmode);
         this.editCenterForm.get('address').setValue(res[0].address);
         this.editCenterForm.get('code').setValue(res[0].code);
-        this.editCenterForm.get('courseCatagory').setValue(res[0].courseCatagory);
+        //this.editCenterForm.get('courseCatagory').setValue(res[0].courseCatagory);
+        const selectedIds = res[0].courseCatagory.split(',').map(Number);
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
         this.editCenterForm.get('mastercode').setValue(res[0].mastercode);
         this.selectedCenterId = res[0].id;
         this.editCenterForm.get('code')?.disable();
@@ -99,7 +114,12 @@ export class EditCenterComponent {
     this.catagoryList = [];
     this.catagoryService.getAllCatagory().subscribe((res: any) => {
       if (res && res.length > 0) {
-        this.catagoryList = res;
+        const idSet = new Set(
+          this.currentUser.coursecatagory.split(",").map(Number).map((obj: any) => obj)
+        );
+        this.catagoryList = res.filter((item: any) =>
+          idSet.has(item.id)
+        );
         this.spinner.hide();
       }
       else {
@@ -120,7 +140,9 @@ export class EditCenterComponent {
         this.editCenterForm.get('paymentmode').setValue(this.branchList[key].paymentmode);
         this.editCenterForm.get('address').setValue(this.branchList[key].address);
         this.editCenterForm.get('code').setValue(this.branchList[key].code);
-        this.editCenterForm.get('courseCatagory').setValue(this.branchList[key].courseCatagory);
+        // this.editCenterForm.get('courseCatagory').setValue(this.branchList[key].courseCatagory);
+        const selectedIds = (this.branchList[key]?.courseCatagory?.split(',').map(Number)) as any;
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
         break;
       }
     }
@@ -129,9 +151,12 @@ export class EditCenterComponent {
     this.submitted = true;
     if (this.f.bpass.value !== this.f.cbpass.value) {
       this.toastr.warning('Password & Confirm Password not match', 'Password');
+      this.spinner.hide();
       return;
     }
-    if (this.editCenterForm.invalid) {
+    if (this.editCenterForm.invalid || this.selectedItems.length === 0) {
+      this.toastr.info('Enter required filed.', 'Required');
+      this.spinner.hide();
       return;
     }
     this.spinner.show();
@@ -144,7 +169,7 @@ export class EditCenterComponent {
       id: this.selectedCenterId,
       paymentmode: this.f.paymentmode.value,
       address: this.f.address.value,
-      courseCatagory: this.f.courseCatagory.value
+      courseCatagory: this.selectedItems.map(item => item.id).join(',') //this.f.courseCatagory.value
     }
     this.centerService.updateCenter(editbranch).subscribe((res: any) => {
       this.toastr.success('Successfully', 'Updated');
@@ -162,7 +187,8 @@ export class EditCenterComponent {
         this.branchList[key].bcommission = this.f.bcommission.value;
         this.branchList[key].paymentmode = this.f.paymentmode.value;
         this.branchList[key].address = this.f.address.value;
-        this.branchList[key].courseCatagory = this.f.courseCatagory.value;
+        //this.branchList[key].courseCatagory = this.f.courseCatagory.value;
+        this.branchList[key].courseCatagory = this.selectedItems.map(item => item.id).join(',');
         break;
       }
     }
@@ -186,5 +212,10 @@ export class EditCenterComponent {
       })
       .catch(() => console.log('User dismissed the dialog '));
   }
-
+  onItemSelect(item: any) {
+    console.log('onItemSelect', item);
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
+  }
 }

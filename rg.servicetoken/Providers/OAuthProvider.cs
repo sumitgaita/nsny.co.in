@@ -95,7 +95,8 @@ namespace rg.service.Providers
                 { "centercode", Convert.ToString(user.Code)},
                 { "branchid", Convert.ToString(user.BranchId)},
                 { "isBranch", Convert.ToString(user.IsBranch)},
-                { "active", Convert.ToString(user.AdminPermission.Active)}
+                { "active", Convert.ToString(user.AdminPermission.Active)},
+                { "coursecatagory", Convert.ToString(user.CourseCatagory)}
             };
             return new AuthenticationProperties(data);
         }

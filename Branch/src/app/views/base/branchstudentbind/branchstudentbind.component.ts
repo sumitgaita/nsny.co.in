@@ -97,7 +97,7 @@ export class BranchStudentBindComponent {
     const branchId = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
     const isBranch = this.currentUser.isBranch === 'True' ? 'Branch' : 'Center';
     this.studentService.getCenterCodeStudent(branchId, this.currentUser.id, isBranch).subscribe((res: any) => {
-      if (res) {
+      if (res && res.length > 0) {
         this.nssCodeList = res;
         this.addCourseStudentForm.get('scstid').setValue(res[0].nssY_code);
         this.spinner.hide();
@@ -111,10 +111,17 @@ export class BranchStudentBindComponent {
 
   private getActiveCourseList() {
     this.spinner.show();
+    const coursecatagory = this.currentUser.coursecatagory.split(",").map(Number);
     this.courseService.GetAllActiveCourse().subscribe((res: any) => {
-      if (res) {
-        this.courseList = res;
-        this.addCourseStudentForm.get('sccid').setValue(res[0].id);
+      if (res && res.length > 0) {
+        this.courseList = res.filter((res:any) => {
+          const courseValues = res.courseCatagory
+            .split(",")
+            .map(Number);
+
+          return coursecatagory.some((val:any) => courseValues.includes(val));
+        });
+        this.addCourseStudentForm.get('sccid').setValue(this.courseList[0].id);
         this.getSelectedCourse();
         this.spinner.hide();
       }
@@ -128,7 +135,7 @@ export class BranchStudentBindComponent {
   getSelectedCourse() {
     this.spinner.show();
     this.courseService.GetByIdCourse(this.f.sccid.value).subscribe((res: any) => {
-      if (res) {
+      if (res && res.length > 0) {
         this.getPaymentStaus(res[0]);
         this.spinner.hide();
       }
@@ -140,7 +147,7 @@ export class BranchStudentBindComponent {
   getSelectedPaymentMode() {
     this.spinner.show();
     this.courseService.GetByIdCourse(this.f.sccid.value).subscribe((res: any) => {
-      if (res) {
+      if (res && res.length > 0) {
         this.getPaymentStaus(res[0]);
         this.spinner.hide();
       }

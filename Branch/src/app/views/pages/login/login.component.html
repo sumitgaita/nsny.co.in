@@ -59,7 +59,7 @@
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
                   </span>
-                  <select name="selectedloginType" formControlName="loginType" id="loginType" class="form-control">
+                  <select name="selectedloginType" formControlName="loginType" id="loginType" class="form-control form-select">
                     <option *ngFor="let pay of loginType" [value]="pay">{{pay}}</option>
                   </select>
                 </c-input-group>

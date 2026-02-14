@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common'
 import { DocsExampleComponent } from '@docs-components/public-api';
@@ -12,6 +12,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { environment } from '../../../environments/environment';
 import { Catagory } from '../../../model/Catagory';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+
 @Component({
   selector: 'add-center',
   templateUrl: './addcenter.component.html',
@@ -22,7 +25,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
     FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective,
     ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective,
     DropdownItemDirective, RouterLink, DropdownDividerDirective, FormSelectDirective,
-    ReactiveFormsModule, CommonModule]
+    ReactiveFormsModule, CommonModule, FormsModule, NgMultiSelectDropDownModule]
 })
 export class AddCenterComponent {
   submitted = false;
@@ -31,6 +34,8 @@ export class AddCenterComponent {
   catagoryList: Catagory[] = [];
   paymentModeList: string[] = ['Wallet', 'General'];
   currentUser: any;
+  selectedItems: any[] = [];
+  dropdownSettings: IDropdownSettings = {};
   constructor(private centerService: CenterService,
     private catagoryService: CatagoryService,
     private spinner: NgxSpinnerService,
@@ -52,8 +57,8 @@ export class AddCenterComponent {
       cbpass: ['', Validators.required],
       bcommission: ['', Validators.required],
       code: ['', Validators.required],
-      mastercode: [this.currentUser.mastercode],
-      courseCatagory: ['', Validators.required]
+      mastercode: [this.currentUser.mastercode]
+     
     }, {
       validator: ConfirmedValidator('bpass', 'cbpass')
     });
@@ -61,13 +66,22 @@ export class AddCenterComponent {
     this.addCenterForm.get('mastercode')?.disable();
     this.getCurrentCenterId();
     this.getAllCatagory();
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: true
+    };
   }
   get f() { return this.addCenterForm.controls; }
   getCurrentCenterId() {
     this.spinner.show();
     this.centerService.currntCenterId().subscribe((res: any) => {
       if (res) {
-        this.crrentCenterId = (res+1);
+        this.crrentCenterId = (res + 1);
         this.Idnumber();
         this.spinner.hide();
       }
@@ -83,8 +97,12 @@ export class AddCenterComponent {
     this.catagoryList = [];
     this.catagoryService.getAllCatagory().subscribe((res: any) => {
       if (res && res.length > 0) {
-        this.catagoryList = res;
-        this.addCenterForm.get('courseCatagory').setValue(res[0].id);
+        const idSet = new Set(
+          this.currentUser.coursecatagory.split(",").map(Number).map((obj: any) => obj)
+        );
+        this.catagoryList = res.filter((item: any) =>
+          idSet.has(item.id)
+        );
         this.spinner.hide();
       }
       else {
@@ -97,9 +115,12 @@ export class AddCenterComponent {
     this.submitted = true;
     if (this.f.bpass.value !== this.f.cbpass.value) {
       this.toastr.warning('Password & Confirm Password not match', 'Password');
+      this.spinner.hide();
       return;
     }
-    if (this.addCenterForm.invalid) {
+    if (this.addCenterForm.invalid || this.selectedItems.length === 0) {
+      this.toastr.info('Enter required filed.', 'Required');
+      this.spinner.hide();
       return;
     }
     this.spinner.show();
@@ -112,7 +133,7 @@ export class AddCenterComponent {
       paymentmode: this.f.paymentmode.value,
       code: this.f.code.value,
       address: this.f.address.value,
-      courseCatagory: this.f.courseCatagory.value,
+      courseCatagory: this.selectedItems.map(item => item.id).join(','), //this.f.courseCatagory.value,
       branchId: this.currentUser.id,
       mastercode: this.currentUser.mastercode
     }
@@ -139,6 +160,12 @@ export class AddCenterComponent {
   }
   private reset() {
     this.addCenterForm.reset();
+    this.selectedItems = [];
   }
-
+  onItemSelect(item: any) {
+    console.log('onItemSelect', item);
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
+  }
 }
