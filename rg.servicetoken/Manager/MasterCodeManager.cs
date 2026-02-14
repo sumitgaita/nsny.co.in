@@ -12,7 +12,7 @@ namespace rg.service.Manager
             return data.GetAllMasterCode();
         }
 
-        public bool CreateMasterCode(Master_Code masterCode)
+        public int CreateMasterCode(Master_Code masterCode)
         {
             MasterCodeData data = new MasterCodeData();
             return data.CreateMasterCode(masterCode);

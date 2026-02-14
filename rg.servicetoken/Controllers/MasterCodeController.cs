@@ -36,7 +36,7 @@ namespace rg.service.Controllers
             try
             {
                 Master_Code masterCode = jsonData.ToObject<Master_Code>();
-                bool response = _mastercodeManager.CreateMasterCode(masterCode);
+                int response = _mastercodeManager.CreateMasterCode(masterCode);
                 return _httpResponseMessage.ReturnOk(response);
             }
             catch (Exception ex)

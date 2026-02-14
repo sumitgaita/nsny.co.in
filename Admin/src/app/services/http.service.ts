@@ -58,7 +58,7 @@ export class HttpService {
       }, (error: HttpErrorResponse) => {
         this.onError(error, url, jsonData);
         this.spinner.hide();
-        this.toastr.error('Worng', 'Please enter a valid data type .....');
+        //this.toastr.error('Worng', 'Please enter a valid data type .....');
       }),
       );
   }
@@ -70,7 +70,7 @@ export class HttpService {
       }, (error: HttpErrorResponse) => {
         this.onError(error, url, data);
         this.spinner.hide();
-        this.toastr.error('Worng', 'Please enter a valid data type .....');
+       // this.toastr.error('Worng', 'Please enter a valid data type .....');
       }),
       );
   }
@@ -124,6 +124,9 @@ export class HttpService {
   }
 
   private onError(res: HttpErrorResponse, url: string, data?: any) {
+    if (res.error && res.error.exceptionMessage === 'Duplicate master code') {
+      this.toastr.warning(res.error.exceptionMessage);
+    }
     if (res.status === 0) {
       this.logError(res, url, data);
       // this.dialogService.alert('Network error', 'Unable to connect to the server. Please check your internet connection.');
@@ -132,6 +135,7 @@ export class HttpService {
       if (res.status >= 400 && res.status <= 499) {
         this.logError(res, url, data);
       }
+     
       //this.dialogService.error('Error Code ' + res.status, res.error.ExceptionMessage || res.error.Message
       //  || 'The system encoumtered an error processing this action. Please check your internet connection and try again later.');
     }

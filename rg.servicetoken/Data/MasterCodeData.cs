@@ -17,7 +17,7 @@ namespace rg.service.Data
             hlpr = new Helpers();
         }
 
-        public bool CreateMasterCode(Master_Code masterCode)
+        public int CreateMasterCode(Master_Code masterCode)
         {
 
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
@@ -27,7 +27,7 @@ namespace rg.service.Data
                 myFactory.GetParameter("@active", masterCode.Active)
                
             };
-            return hlpr.ExecuteStoredProcedure("Add_MasterCode", ref parameters);
+            return hlpr.ReturnStoredProcedure("Add_MasterCode", ref parameters);
         }
       
         public bool UpdateMasterCode(Master_Code masterCode)
