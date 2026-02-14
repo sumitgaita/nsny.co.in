@@ -110,7 +110,7 @@ namespace rg.service.Data
                     Bpass = row["pass"].ToString(),
                     Bcommission = !row.IsNull("commission") ? Convert.ToInt32(row["commission"]) : 0,
                     Paymentmode = row["paymentmode"].ToString(),
-                    CourseCatagory = !row.IsNull("coursecatagory") ? Convert.ToInt32(row["coursecatagory"]) : 0,
+                    CourseCatagory = row["coursecatagory"].ToString(),//!row.IsNull("coursecatagory") ? Convert.ToInt32(row["coursecatagory"]) : 0,
                     Code = row["code"].ToString(),
                     Mastercode = row["mastercode"].ToString(),
                     Address = row["address"].ToString()

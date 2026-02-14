@@ -12,6 +12,9 @@ import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-d
 import { NgxSpinnerService } from "ngx-spinner";
 import { CatagoryService } from '../../../services/catagory.service';
 import { Catagory } from '../../../model/Catagory';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+
 @Component({
   selector: 'edit-branch',
   templateUrl: './editbranch.component.html',
@@ -21,7 +24,7 @@ import { Catagory } from '../../../model/Catagory';
     CardBodyComponent, DocsExampleComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective,
     FormLabelDirective, FormCheckInputDirective, ButtonDirective, ThemeDirective, DropdownComponent,
     DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink,
-    DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule, FormsModule, CommonModule]
+    DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule, FormsModule, CommonModule, NgMultiSelectDropDownModule]
 })
 export class EditBranchComponent {
   loading = false;
@@ -31,6 +34,8 @@ export class EditBranchComponent {
   branchList: Branch[] = [];
   catagoryList: Catagory[] = [];
   paymentModeList: string[] = ['Wallet', 'General'];
+  selectedItems: any[] = [];
+  dropdownSettings: IDropdownSettings = {};
   constructor(private branchService: BranchService,
     private confirmationDialogService: ConfirmationDialogService,
     private catagoryService: CatagoryService,
@@ -49,13 +54,22 @@ export class EditBranchComponent {
       cbpass: ['', Validators.required],
       bcommission: ['', Validators.required],
       code: ['', Validators.required],
-      address: ['', Validators.required],
-      courseCatagory: ['', Validators.required]
+      address: ['', Validators.required]
+      // courseCatagory: ['', Validators.required]
     }, {
       validator: ConfirmedValidator('bpass', 'cbpass')
     });
     this.getAllCatagory();
     this.getAllBranch();
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: true
+    };
   }
   get f() { return this.editBranchForm.controls; }
   private getAllBranch() {
@@ -73,7 +87,8 @@ export class EditBranchComponent {
         this.editBranchForm.get('paymentmode').setValue(res[0].paymentmode);
         this.editBranchForm.get('address').setValue(res[0].address);
         this.editBranchForm.get('code').setValue(res[0].code);
-        this.editBranchForm.get('courseCatagory').setValue(res[0].courseCatagory);
+        const selectedIds = res[0].courseCatagory.split(',').map(Number);
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
         this.selectedBranchId = res[0].id;
         this.editBranchForm.get('code')?.disable();
         this.spinner.hide();
@@ -110,7 +125,10 @@ export class EditBranchComponent {
         this.editBranchForm.get('paymentmode').setValue(this.branchList[key].paymentmode);
         this.editBranchForm.get('address').setValue(this.branchList[key].address);
         this.editBranchForm.get('code').setValue(this.branchList[key].code);
-        this.editBranchForm.get('courseCatagory').setValue(this.branchList[key].courseCatagory);
+        const selectedIds = (this.branchList[key]?.courseCatagory?.split(',').map(Number)) as any;
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
+        //this.editBranchForm.get('courseCatagory').setValue(this.branchList[key].courseCatagory);
+
         break;
       }
     }
@@ -119,9 +137,12 @@ export class EditBranchComponent {
     this.submitted = true;
     if (this.f.bpass.value !== this.f.cbpass.value) {
       this.toastr.warning('Password & Confirm Password not match', 'Password');
+      this.spinner.hide();
       return;
     }
-    if (this.editBranchForm.invalid) {
+    if (this.editBranchForm.invalid || this.selectedItems.length === 0) {
+      this.toastr.info('Enter required filed.', 'Required');
+      this.spinner.hide();
       return;
     }
     this.spinner.show();
@@ -134,7 +155,7 @@ export class EditBranchComponent {
       id: this.selectedBranchId,
       paymentmode: this.f.paymentmode.value,
       address: this.f.address.value,
-      courseCatagory: this.f.courseCatagory.value
+      courseCatagory: this.selectedItems.map(item => item.id).join(',')
     }
     this.branchService.updateBranch(editbranch).subscribe((res: any) => {
       this.toastr.success('Successfully', 'Updated');
@@ -152,7 +173,7 @@ export class EditBranchComponent {
         this.branchList[key].bcommission = this.f.bcommission.value;
         this.branchList[key].paymentmode = this.f.paymentmode.value;
         this.branchList[key].address = this.f.address.value;
-        this.branchList[key].courseCatagory = this.f.courseCatagory.value;
+        this.branchList[key].courseCatagory = this.selectedItems.map(item => item.id).join(','); //this.f.courseCatagory.value;
         break;
       }
     }
@@ -176,5 +197,10 @@ export class EditBranchComponent {
       })
       .catch(() => console.log('User dismissed the dialog '));
   }
-
+  onItemSelect(item: any) {
+    console.log('onItemSelect', item);
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
+  }
 }

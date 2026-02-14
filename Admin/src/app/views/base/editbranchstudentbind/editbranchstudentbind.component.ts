@@ -11,7 +11,8 @@ import { CommissionPayService } from '../../../services/commissionpay.service';
 import { BranchstudentbindService } from '../../../services/branchstudentbind.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Catagory } from '../../../model/Catagory';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 @Component({
   selector: 'edit-branchs-tudent-bind',
   templateUrl: './editbranchstudentbind.component.html',
@@ -21,7 +22,7 @@ import { Catagory } from '../../../model/Catagory';
     CardBodyComponent, DocsExampleComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective,
     FormLabelDirective, FormCheckInputDirective, ButtonDirective, ThemeDirective, DropdownComponent,
     DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, RouterLink,
-    DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule, CommonModule, FormsModule]
+    DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule, CommonModule, FormsModule, NgMultiSelectDropDownModule]
 })
 export class EditBranchStudentBindComponent {
   loading = false;
@@ -34,6 +35,9 @@ export class EditBranchStudentBindComponent {
   studentname!: string;
   catagoryList: Catagory[] = [];
   paymentModeList: string[] = ['Full Payment', 'Installment Payment'];
+  selectedItems: any[] = [];
+  dropdownSettings: IDropdownSettings = {};
+  isDisabled = true;
   constructor(private courseService: CourseService,
     private commissionPayService: CommissionPayService,
     private catagoryService: CatagoryService,
@@ -74,7 +78,15 @@ export class EditBranchStudentBindComponent {
     });
     this.getAllCatagory();
     this.getActiveCourseList();
-
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: true
+    };
   }
   get f() { return this.editCourseStudentForm.controls; }
   private getAllCatagory() {
@@ -83,7 +95,7 @@ export class EditBranchStudentBindComponent {
     this.catagoryService.getAllCatagory().subscribe((res: any) => {
       if (res && res.length > 0) {
         this.catagoryList = res;
-        this.editCourseStudentForm.get('courseCatagory').setValue(res[0].id);
+       // this.editCourseStudentForm.get('courseCatagory').setValue(res[0].id);
         this.spinner.hide();
       }
       else {
@@ -115,7 +127,9 @@ export class EditBranchStudentBindComponent {
         this.editCourseStudentForm.get('scpaymentclear').setValue(res[0].paymentclear);
         this.editCourseStudentForm.get('theory').setValue(res[0].theory);
         this.editCourseStudentForm.get('practical').setValue(res[0].practical);
-        this.editCourseStudentForm.get('courseCatagory').setValue(res[0].courseCatagory);
+        const selectedIds = res[0].courseCatagory.split(',').map(Number);
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
+        //this.editCourseStudentForm.get('courseCatagory').setValue(res[0].courseCatagory);
         this.spinner.hide();
       }
       else {
@@ -141,9 +155,12 @@ export class EditBranchStudentBindComponent {
   getSelectedChangeCourse() {
     this.spinner.show();
     if (this.f.changesccid.value > 0) {
+      this.selectedItems = [];
       this.courseService.GetByIdCourse(this.f.changesccid.value).subscribe((res: any) => {
         if (res && res.length > 0) {
           this.getPaymentStaus(res[0]);
+          const selectedIds = res[0].courseCatagory.split(',').map(Number);
+          this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
           this.spinner.hide();
         }
         else {
@@ -173,6 +190,8 @@ export class EditBranchStudentBindComponent {
         this.editCourseStudentForm.get('theory').setValue(this.coursebindDetails[key].theory);
         this.editCourseStudentForm.get('practical').setValue(this.coursebindDetails[key].practical);
         this.editCourseStudentForm.get('changesccid').setValue(0);
+        const selectedIds = (this.coursebindDetails[key]?.courseCatagory?.split(',').map(Number)) as any;
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
         break;
       }
     }
@@ -242,7 +261,7 @@ export class EditBranchStudentBindComponent {
       scdateofpayment: this.f.scsjoin.value,
       theory: this.f.theory.value,
       practical: this.f.practical.value,
-      courseCatagory: this.f.courseCatagory.value
+      courseCatagory: 0
     }
     this.branchstudentbindService.studentCourseBindUpdate(addBranchStudentBind).subscribe((res: any) => {
       this.toastr.success('Successfully', 'Updated');
@@ -310,6 +329,7 @@ export class EditBranchStudentBindComponent {
   private reset() {
     this.editCourseStudentForm.reset();
     this.getActiveCourseList();
+    this.selectedItems = [];
   }
   getCourseName() {
     for (const key in this.courseList) {
@@ -318,6 +338,13 @@ export class EditBranchStudentBindComponent {
         break;
       }
     }
+  }
+
+  onItemSelect(item: any) {
+    console.log('onItemSelect', item);
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
   }
 
 }

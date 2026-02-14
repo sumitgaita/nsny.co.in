@@ -9,5 +9,5 @@ export class Branch {
   paymentmode?: string;
   address?: string;
   code?: string;
-  courseCatagory?: number;
+  courseCatagory?: string | undefined;
 }

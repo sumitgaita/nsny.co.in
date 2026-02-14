@@ -12,8 +12,8 @@
               <div class="form-group">
                 <label for="cname" class="col-sm-4 control-label">Couse Name <span class="red-star">★</span></label>
                 <div class="col-sm-8">
-                  <input type="text" formControlName="cname" class="form-control mt-2" tabindex="1"  id="cname">
-                
+                  <input type="text" formControlName="cname" class="form-control mt-2" tabindex="1" id="cname">
+
                 </div>
               </div>
             </div>
@@ -21,8 +21,8 @@
               <div class="form-group">
                 <label for="cinspay_f" class="col-sm-4 control-label">Installment Amount <span class="red-star">★</span></label>
                 <div class="col-sm-8">
-                  <input type="number" formControlName="cinspay_f" class="form-control mt-2" tabindex="2"  id="cinspay_f">
-                  
+                  <input type="number" formControlName="cinspay_f" class="form-control mt-2" tabindex="2" id="cinspay_f">
+
                 </div>
               </div>
             </div>
@@ -34,8 +34,8 @@
               <div class="form-group">
                 <label for="cabb" class="col-sm-4 control-label">Course Abbreviation <span class="red-star">★</span></label>
                 <div class="col-sm-8">
-                  <input type="text" formControlName="cabb" class="form-control mt-2" tabindex="3"  id="cabb">
-                
+                  <input type="text" formControlName="cabb" class="form-control mt-2" tabindex="3" id="cabb">
+
                 </div>
               </div>
             </div>
@@ -43,8 +43,8 @@
               <div class="form-group">
                 <label for="cr3" class="col-sm-6 control-label">Installment First Payment <span class="red-star">★</span></label>
                 <div class="col-sm-8">
-                  <input type="number" formControlName="cr3" class="form-control mt-2" tabindex="4"  id="cr3">
-                 
+                  <input type="number" formControlName="cr3" class="form-control mt-2" tabindex="4" id="cr3">
+
                 </div>
               </div>
             </div>
@@ -67,8 +67,8 @@
               <div class="form-group">
                 <label for="cinspay_m" class="col-sm-6 control-label">Installment Monthly Amount <span class="red-star">★</span></label>
                 <div class="col-sm-8">
-                  <input type="number" formControlName="cinspay_m" class="form-control mt-2" tabindex="6"  id="cinspay_m">
-                  
+                  <input type="number" formControlName="cinspay_m" class="form-control mt-2" tabindex="6" id="cinspay_m">
+
                 </div>
               </div>
             </div>
@@ -134,11 +134,30 @@
             </div>
 
           </div>
-
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="paymentmode" class="col-sm-4 control-label">
+                  Course Catagory <span class="red-star">★</span>
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <ng-multiselect-dropdown [placeholder]="'Selected Catagory'"
+                                           [data]="catagoryList"
+                                           class="form-control"
+                                           [(ngModel)]="selectedItems"
+                                           [ngModelOptions]="{standalone: true}"
+                                           [settings]="dropdownSettings"
+                                           (onSelect)="onItemSelect($event)"
+                                           (onSelectAll)="onSelectAll($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="FormBottom mt-4">
             <div class="form-group">
               <div class="col-sm-offset-4 col-sm-8">
-                <button type="submit" class="btn btn-success" >Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
               </div>
             </div>
           </div>

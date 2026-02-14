@@ -44,7 +44,7 @@
                   Select Change Course
                 </label>
                 <div class="col-sm-8 mt-2">
-                  <select name="selectedsccid" formControlName="changesccid" (ngModelChange)="getSelectedChangeCourse()" id="changesccid" class="form-control">
+                  <select name="selectedsccid" formControlName="changesccid" (ngModelChange)="getSelectedChangeCourse()" id="changesccid" class="form-control form-select">
                     <option [value]="0">All</option>
                     <option *ngFor="let co of courseList" [value]="co.id">{{co.cname}}</option>
                   </select>
@@ -176,12 +176,22 @@
             <div class="col-md-6 mt-2">
               <div class="form-group">
                 <label for="paymentmode" class="col-sm-4 control-label">
-                  Course Catagory <span class="red-star">★</span>
+                  Course Catagory 
                 </label>
                 <div class="col-sm-8 mt-2">
-                  <select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
-                    <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
-                  </select>
+                  <!--<select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
+    <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
+  </select>-->
+                  <ng-multiselect-dropdown [placeholder]="'Selected Catagory'"
+                                           [data]="catagoryList"
+                                           class="form-control"
+                                           [(ngModel)]="selectedItems"
+                                           [disabled]="isDisabled"
+                                           [ngModelOptions]="{standalone: true}"
+                                           [settings]="dropdownSettings"
+                                           (onSelect)="onItemSelect($event)"
+                                           (onSelectAll)="onSelectAll($event)">
+                  </ng-multiselect-dropdown>
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@
         public string Paymentmode { get; set; }
         public string Code { get; set; }
         public string Address { get; set; }
-        public int CourseCatagory { get; set; }
+        public string CourseCatagory { get; set; }
         public string Mastercode { get; set; }
         public int BranchId { get; set; }
         public bool IsBranch { get; set; }

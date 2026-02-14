@@ -100,7 +100,7 @@ namespace rg.service.Data
                     Theory = !row.IsNull("theory") ? row["theory"].ToString() : "0",
                     Practical = !row.IsNull("practical") ? row["practical"].ToString() : "0",
                     stname = !row.IsNull("name") ? row["name"].ToString() : "",
-                    CourseCatagory = !row.IsNull("coursecatagory") ? Convert.ToInt32(row["coursecatagory"]) : 0,
+                    CourseCatagory = row["coursecatagory"].ToString()
                 });
             }
             return branchcollection;
@@ -139,7 +139,7 @@ namespace rg.service.Data
             DataTable tbl = hlpr.GetDataTable(query, ref parameters);
             foreach (DataRow row in tbl.Rows)
             {
-                exitingBalance = !row.IsNull("exitingAmount") ? Convert.ToInt32(row["exitingAmount"]):0;
+                exitingBalance = !row.IsNull("exitingAmount") ? Convert.ToInt32(row["exitingAmount"]) : 0;
 
             }
             return exitingBalance;
@@ -183,7 +183,7 @@ namespace rg.service.Data
             {
                 branchcollection.Add(new BranchPaymentCollection()
                 {
-                    Id = !row.IsNull("id") ? Convert.ToInt32(row["id"]):0,
+                    Id = !row.IsNull("id") ? Convert.ToInt32(row["id"]) : 0,
                     Bid = !row.IsNull("bid") ? Convert.ToInt32(row["bid"]) : 0,
                     Bname = row["Bname"].ToString(),
                     Stid = row["Stid"].ToString(),
@@ -340,7 +340,7 @@ namespace rg.service.Data
                     RemoveExtention = row["pic"].ToString().Replace(".jpg", ""),
                     Theory = row["theory"].ToString(),
                     Practical = row["practical"].ToString(),
-                    BnAddress= row["bnadress"].ToString()
+                    BnAddress = row["bnadress"].ToString()
 
                 });
             }

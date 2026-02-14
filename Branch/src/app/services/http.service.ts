@@ -99,7 +99,7 @@ export class HttpService {
       }, (error: HttpErrorResponse) => {
         //this.onError(error, '', '');
         this.spinner.hide();
-        this.toastr.error('Worng', 'Username and Password');
+        this.toastr.warning('Worng', 'Username and Password');
       }),
       );
     

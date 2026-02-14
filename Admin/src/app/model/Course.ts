@@ -12,4 +12,5 @@ export class Course {
   hqamount?: number;
   c1?: string;
   c2?: string;
+  courseCatagory?: string | undefined;
 }

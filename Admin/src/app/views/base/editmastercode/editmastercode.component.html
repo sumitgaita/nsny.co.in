@@ -10,7 +10,7 @@
           <div class="col-md-6">
             <div class="form-group">
               Select Branch :
-              <select name="selectedCourse" [(ngModel)]="selectedmastercodeId" (ngModelChange)="getMasterCodeDetails()" id="selectedMastercode" class="form-control">
+              <select name="selectedCourse" [(ngModel)]="selectedmastercodeId" (ngModelChange)="getMasterCodeDetails()" id="selectedMastercode" class="form-control form-select">
                 <option *ngFor="let ut of masterCodeList" [value]="ut.id">{{ut.mastercode}}</option>
               </select>
             </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common'
 import { DocsExampleComponent } from '@docs-components/public-api';
@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
 import { environment } from '../../../environments/environment';
 import { Catagory } from '../../../model/Catagory';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'add-branch',
@@ -22,7 +24,7 @@ import { Catagory } from '../../../model/Catagory';
     FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective,
     ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective,
     DropdownItemDirective, RouterLink, DropdownDividerDirective, FormSelectDirective,
-    ReactiveFormsModule, CommonModule]
+    ReactiveFormsModule, CommonModule, NgMultiSelectDropDownModule, FormsModule]
 })
 export class AddBranchComponent {
   submitted = false;
@@ -30,6 +32,8 @@ export class AddBranchComponent {
   crrentBranchId: number = 0;
   catagoryList: Catagory[] = [];
   paymentModeList: string[] = ['Wallet', 'General'];
+  selectedItems: any[] = [];
+  dropdownSettings: IDropdownSettings = {};
   constructor(private branchService: BranchService,
     private catagoryService: CatagoryService,
     private spinner: NgxSpinnerService,
@@ -46,13 +50,22 @@ export class AddBranchComponent {
       paymentmode: ['Wallet', Validators.required],
       cbpass: ['', Validators.required],
       bcommission: ['', Validators.required],
-      code: ['', Validators.required],
-      courseCatagory: ['', Validators.required]
+      code: ['', Validators.required]
+     // courseCatagory: ['', Validators.required]
     }, {
       validator: ConfirmedValidator('bpass', 'cbpass')
     });
     this.getCurrentBranchId();
     this.getAllCatagory();
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: true
+    };
   }
   get f() { return this.addBranchForm.controls; }
   getCurrentBranchId() {
@@ -89,9 +102,12 @@ export class AddBranchComponent {
     this.submitted = true;
     if (this.f.bpass.value !== this.f.cbpass.value) {
       this.toastr.warning('Password & Confirm Password not match', 'Password');
+      this.spinner.hide();
       return;
     }
-    if (this.addBranchForm.invalid) {
+    if (this.addBranchForm.invalid || this.selectedItems.length === 0) {
+      this.toastr.info('Enter required filed.', 'Required');
+      this.spinner.hide();
       return;
     }
     this.spinner.show();
@@ -104,7 +120,7 @@ export class AddBranchComponent {
       paymentmode: this.f.paymentmode.value,
       code: this.f.code.value,
       address: this.f.address.value,
-      courseCatagory: this.f.courseCatagory.value
+      courseCatagory: this.selectedItems.map(item => item.id).join(',') //this.f.courseCatagory.value
     }
     this.branchService.createBranch(addbranch).subscribe((res: any) => {
       if (res) {
@@ -128,6 +144,12 @@ export class AddBranchComponent {
   }
   private reset() {
     this.addBranchForm.reset();
+    this.selectedItems = [];
   }
-
+  onItemSelect(item: any) {
+    console.log('onItemSelect', item);
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
+  }
 }

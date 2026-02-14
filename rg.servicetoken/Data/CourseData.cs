@@ -35,7 +35,9 @@ namespace rg.service.Data
                 myFactory.GetParameter("@c1", course.C1),
                 myFactory.GetParameter("@c2", course.C2),
                 myFactory.GetParameter("@act", Convert.ToInt32(1)),
-                myFactory.GetParameter("@hqamount", Convert.ToInt32(course.Hqamount))
+                myFactory.GetParameter("@hqamount", Convert.ToInt32(course.Hqamount)),
+                myFactory.GetParameter("@coursecatagory", course.CourseCatagory)
+                
             };
             return hlpr.ExecuteStoredProcedure("CouseInsert", ref parameters);
         }
@@ -58,7 +60,8 @@ namespace rg.service.Data
                 myFactory.GetParameter("@c1", course.C1),
                 myFactory.GetParameter("@c2", course.C2),
                 myFactory.GetParameter("@act", Convert.ToInt32(1)),
-                myFactory.GetParameter("@hqamount", Convert.ToInt32(course.Hqamount))
+                myFactory.GetParameter("@hqamount", Convert.ToInt32(course.Hqamount)),
+                myFactory.GetParameter("@coursecatagory", course.CourseCatagory)
 
              };
             return hlpr.ExecuteStoredProcedure("CouseUpdate", ref parameters);
@@ -101,7 +104,8 @@ namespace rg.service.Data
                     Cr3 = !row.IsNull("r3") ? Convert.ToInt32(row["r3"]) : 0,
                     Cinspay_m = !row.IsNull("inspay_m") ? Convert.ToInt32(row["inspay_m"]) : 0,
                     Cinspay_xm = !row.IsNull("inspay_xm") ? Convert.ToInt32(row["inspay_xm"]) : 0,
-                    Hqamount = !row.IsNull("hqamount") ? Convert.ToInt32(row["hqamount"]) : 0
+                    Hqamount = !row.IsNull("hqamount") ? Convert.ToInt32(row["hqamount"]) : 0,
+                    CourseCatagory = row["coursecatagory"].ToString()
                 });
             }
             return course;
@@ -133,7 +137,8 @@ namespace rg.service.Data
                     Cr3 = !row.IsNull("r3") ? Convert.ToInt32(row["r3"]) : 0,
                     Cinspay_m = !row.IsNull("inspay_m") ? Convert.ToInt32(row["inspay_m"]) : 0,
                     Cinspay_xm = !row.IsNull("inspay_xm") ? Convert.ToInt32(row["inspay_xm"]) : 0,
-                    Hqamount = !row.IsNull("hqamount") ? Convert.ToInt32(row["hqamount"]) : 0
+                    Hqamount = !row.IsNull("hqamount") ? Convert.ToInt32(row["hqamount"]) : 0,
+                    CourseCatagory = row["coursecatagory"].ToString()
                 });
             }
             return course;
@@ -166,7 +171,8 @@ namespace rg.service.Data
                     Cr3 = !row.IsNull("r3") ? Convert.ToInt32(row["r3"]) : 0,
                     Cinspay_m = !row.IsNull("inspay_m") ? Convert.ToInt32(row["inspay_m"]) : 0,
                     Cinspay_xm = !row.IsNull("inspay_xm") ? Convert.ToInt32(row["inspay_xm"]) : 0,
-                    Hqamount = !row.IsNull("hqamount") ? Convert.ToInt32(row["hqamount"]) : 0
+                    Hqamount = !row.IsNull("hqamount") ? Convert.ToInt32(row["hqamount"]) : 0,
+                    CourseCatagory = row["coursecatagory"].ToString()
                 });
             }
             return course;

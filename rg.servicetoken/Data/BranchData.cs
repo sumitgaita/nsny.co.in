@@ -128,7 +128,7 @@ namespace rg.service.Data
                     Paymentmode= row["paymentmode"].ToString(),
                     Code = row["code"].ToString(),
                     Address= row["address"].ToString(),
-                    CourseCatagory = !row.IsNull("coursecatagory") ? Convert.ToInt32(row["coursecatagory"]) : 0,
+                    CourseCatagory = row["coursecatagory"].ToString()
                     
                 });
             }

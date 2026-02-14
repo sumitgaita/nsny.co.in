@@ -9,7 +9,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <div class="mt-2">Select Course :</div>
-            <select name="selectedCourse" [(ngModel)]="selectedCourseId" (ngModelChange)="getCourseDetails()" id="selectedCourse" class="form-control">
+            <select name="selectedCourse" [(ngModel)]="selectedCourseId" (ngModelChange)="getCourseDetails()" id="selectedCourse" class="form-control form-select">
               <option *ngFor="let ut of courseList" [value]="ut.id">{{ut.cname}}</option>
             </select>
           </div>
@@ -137,7 +137,26 @@
               </div>
             </div>
           </div>
-
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="paymentmode" class="col-sm-4 control-label">
+                  Course Catagory <span class="red-star">★</span>
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <ng-multiselect-dropdown [placeholder]="'Selected Catagory'"
+                                           [data]="catagoryList"
+                                           class="form-control"
+                                           [(ngModel)]="selectedItems"
+                                           [ngModelOptions]="{standalone: true}"
+                                           [settings]="dropdownSettings"
+                                           (onSelect)="onItemSelect($event)"
+                                           (onSelectAll)="onSelectAll($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="FormBottom">
             <div class="form-group mt-4">
               <div class="col-sm-offset-4 col-sm-8">

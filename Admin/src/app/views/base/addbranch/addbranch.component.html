@@ -114,9 +114,18 @@
                     Course Catagory <span class="red-star">★</span>
                   </label>
                   <div class="col-sm-8 mt-2">
-                    <select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
-                      <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
-                    </select>
+                    <!--<select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
+    <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
+  </select>-->
+                    <ng-multiselect-dropdown [placeholder]="'Selected Catagory'"
+                                             [data]="catagoryList"
+                                             class="form-control"
+                                             [(ngModel)]="selectedItems"
+                                             [ngModelOptions]="{standalone: true}"
+                                             [settings]="dropdownSettings"
+                                             (onSelect)="onItemSelect($event)"
+                                             (onSelectAll)="onSelectAll($event)">
+                    </ng-multiselect-dropdown>
                   </div>
                 </div>
               </div>

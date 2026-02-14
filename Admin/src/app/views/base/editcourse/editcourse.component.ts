@@ -9,6 +9,10 @@ import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHead
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-dialog.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { CatagoryService } from '../../../services/catagory.service';
+import { Catagory } from '../../../model/Catagory';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'edit-course',
@@ -20,7 +24,7 @@ import { NgxSpinnerService } from "ngx-spinner";
     InputGroupTextDirective, FormControlDirective, FormLabelDirective, FormCheckInputDirective,
     ButtonDirective, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective,
     DropdownItemDirective, RouterLink, DropdownDividerDirective, FormSelectDirective, ReactiveFormsModule,
-    FormsModule, CommonModule]
+    FormsModule, CommonModule, NgMultiSelectDropDownModule]
 })
 export class EditcourseComponent {
   selectedCourseId: number = 0;
@@ -28,8 +32,11 @@ export class EditcourseComponent {
   editCourseForm: FormGroup | any;
   courseId: number | undefined;
   submitted = false;
+  catagoryList: Catagory[] = [];
+  selectedItems: any[] = [];
+  dropdownSettings: IDropdownSettings = {};
   constructor(private formBuilder: FormBuilder, private courseService: CourseService, private spinner: NgxSpinnerService,
-    private toastr: ToastrService, private confirmationDialogService: ConfirmationDialogService) { }
+    private toastr: ToastrService, private confirmationDialogService: ConfirmationDialogService, private catagoryService: CatagoryService) { }
   ngOnInit() {
     this.editCourseForm = this.formBuilder.group({
       cname: ['', Validators.required],
@@ -45,9 +52,32 @@ export class EditcourseComponent {
       c1: [''],
       c2: ['']
     });
+    this.getAllCatagory();
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id',
+      textField: 'name',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 10,
+      allowSearchFilter: true
+    };
     this.getAllCourse();
   }
   get f() { return this.editCourseForm.controls; }
+  private getAllCatagory() {
+    this.spinner.show();
+    this.catagoryList = [];
+    this.catagoryService.getAllCatagory().subscribe((res: any) => {
+      if (res && res.length > 0) {
+        this.catagoryList = res;
+        this.spinner.hide();
+      }
+      else {
+        this.spinner.hide();
+      }
+    });
+  }
   private getAllCourse() {
     this.spinner.show();
     this.courseList = [];
@@ -66,6 +96,8 @@ export class EditcourseComponent {
         this.editCourseForm.get('hqamount').setValue(res[0].hqamount);
         this.editCourseForm.get('c1').setValue(res[0].c1);
         this.editCourseForm.get('c2').setValue(res[0].c2);
+        const selectedIds = res[0].courseCatagory.split(',').map(Number);
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
         this.selectedCourseId = res[0].id;
         this.spinner.hide();
       }
@@ -89,6 +121,8 @@ export class EditcourseComponent {
         this.editCourseForm.get('hqamount').setValue(this.courseList[key].hqamount);
         this.editCourseForm.get('c1').setValue(this.courseList[key].c1);
         this.editCourseForm.get('c2').setValue(this.courseList[key].c2);
+        const selectedIds = (this.courseList[key]?.courseCatagory?.split(',').map(Number)) as any;
+        this.selectedItems = this.catagoryList.filter(item => selectedIds.includes(item.id));
         break;
       }
     }
@@ -96,7 +130,8 @@ export class EditcourseComponent {
   onEditCourseSubmit() {
     this.submitted = true;
     this.spinner.show();
-    if (this.editCourseForm.invalid) {
+    if (this.editCourseForm.invalid || this.selectedItems.length === 0) {
+      this.toastr.info('Enter required filed.', 'Required');
       this.spinner.hide();
       return;
     }
@@ -114,7 +149,8 @@ export class EditcourseComponent {
       hqamount: this.f.hqamount.value,
       c1: this.f.c1.value,
       c2: this.f.c2.value,
-      id: this.selectedCourseId
+      id: this.selectedCourseId,
+      courseCatagory: this.selectedItems.map(item => item.id).join(',')
     }
     this.courseService.updateCourse(editcourse).subscribe((res: any) => {
       this.toastr.success('Successfully', 'Updated');
@@ -137,6 +173,7 @@ export class EditcourseComponent {
         this.courseList[key].hqamount = this.f.hqamount.value;
         this.courseList[key].c1 = this.f.c1.value;
         this.courseList[key].c2 = this.f.c2.value;
+        this.courseList[key].courseCatagory = this.selectedItems.map(item => item.id).join(',');
         break;
       }
     }
@@ -159,5 +196,11 @@ export class EditcourseComponent {
         }
       })
       .catch(() => console.log('User dismissed the dialog '));
+  }
+  onItemSelect(item: any) {
+    console.log('onItemSelect', item);
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
   }
 }
