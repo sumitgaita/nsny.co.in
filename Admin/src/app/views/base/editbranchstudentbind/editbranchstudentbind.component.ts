@@ -31,6 +31,7 @@ export class EditBranchStudentBindComponent {
   nSSYcode!: string;
   coursebindDetails: any = [];
   courseList: any = [];
+  oldcourseList: any = [];
   editCourseStudentForm: FormGroup | any;
   studentname!: string;
   catagoryList: Catagory[] = [];
@@ -74,7 +75,8 @@ export class EditBranchStudentBindComponent {
       binddateofpayment: [''],
       theory: [0.00],
       practical: [0.00],
-      courseCatagory:[]
+      courseCatagory: [],
+      changecourse:[false]
     });
     this.getAllCatagory();
     this.getActiveCourseList();
@@ -89,13 +91,18 @@ export class EditBranchStudentBindComponent {
     };
   }
   get f() { return this.editCourseStudentForm.controls; }
+  getRefressCourse() {
+    this.isDisabled = false;
+    this.selectedItems = [];
+    this.editCourseStudentForm.get('changesccid')?.enable();
+  }
   private getAllCatagory() {
     this.spinner.show();
     this.catagoryList = [];
     this.catagoryService.getAllCatagory().subscribe((res: any) => {
       if (res && res.length > 0) {
         this.catagoryList = res;
-       // this.editCourseStudentForm.get('courseCatagory').setValue(res[0].id);
+        // this.editCourseStudentForm.get('courseCatagory').setValue(res[0].id);
         this.spinner.hide();
       }
       else {
@@ -105,6 +112,8 @@ export class EditBranchStudentBindComponent {
   }
   getStudentCourseBindDetails() {
     this.spinner.show();
+    this.editCourseStudentForm.get('changecourse').setValue(false);
+    this.editCourseStudentForm.get('changesccid')?.disable();
     this.editCourseStudentForm.get('changesccid').setValue(0);
     this.branchstudentbindService.getCourseBindList(this.nSSYcode).subscribe((res: any) => {
       if (res) {
@@ -142,7 +151,7 @@ export class EditBranchStudentBindComponent {
     this.spinner.show();
     this.courseService.GetAllActiveCourse().subscribe((res: any) => {
       if (res) {
-        this.courseList = res;
+        this.oldcourseList = res;
         this.editCourseStudentForm.get('changesccid').setValue(0);
         this.spinner.hide();
       }
@@ -239,9 +248,14 @@ export class EditBranchStudentBindComponent {
       return;
     }
     if (this.f.id.value == "") {
+      this.spinner.hide();
       return;
     }
-
+    if (this.selectedItems.length === 0) {
+      this.toastr.info('Go to the Course edit page and update or add courseCatagory then Change Course.');
+      this.spinner.hide();
+      return;
+    }
 
     const addBranchStudentBind = {
       id: this.f.id.value,
@@ -341,10 +355,14 @@ export class EditBranchStudentBindComponent {
   }
 
   onItemSelect(item: any) {
-    console.log('onItemSelect', item);
+    const select = this.selectedItems.map(item => item.id).join(',');
+    const oldc = this.oldcourseList;
+    this.courseList = oldc.filter((item: any) => item.courseCatagory.includes(select));
   }
   onSelectAll(items: any) {
-    console.log('onSelectAll', items);
+    const select = this.selectedItems.map(item => item.id).join(',');
+    const oldc = this.oldcourseList;
+    this.courseList = oldc.filter((item: any) => item.courseCatagory.includes(select));
   }
 
 }

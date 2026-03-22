@@ -80,6 +80,7 @@ export class BranchStudentBindComponent {
 
   onBranchBalanceCheck() {
     const branchId = this.currentUser.isBranch === 'True' ? Number(this.currentUser.id) : Number(this.currentUser.branchid);
+   // const centerid = this.currentUser.isBranch === 'False' ? Number(this.currentUser.id) : 0;
     this.spinner.show();
     this.totalWalletAmount = 0;
     this.walletService.GetBranchWallet(branchId).subscribe((res: any) => {
@@ -187,6 +188,7 @@ export class BranchStudentBindComponent {
     }
     const addBranchStudentBind = {
       scbid: this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid),
+      centerid: this.currentUser.isBranch === 'False' ? Number(this.currentUser.id) : 0,
       scbname: this.currentUser.bname,
       scstid: this.f.scstid.value,
       scsjoin: this.f.scsjoin.value,

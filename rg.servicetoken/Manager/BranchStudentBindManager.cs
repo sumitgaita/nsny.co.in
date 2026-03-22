@@ -57,15 +57,15 @@ namespace rg.service.Manager
             return data.PaymenCount(branchId, dt);
 
         }
-        public List<BranchPaymentCollection> GetStuRegistrationList(int branchId, string fromdate, string todate)
+        public List<BranchPaymentCollection> GetStuRegistrationList(int branchId,int centerId, string fromdate, string todate)
         {
             BranchStudentBindData data = new BranchStudentBindData();
-            return data.GetStuRegistrationList(branchId, fromdate, todate);
+            return data.GetStuRegistrationList(branchId, centerId, fromdate, todate);
         }
-        public List<BranchPaymentCollection> GetAdminStudentIcard(int branchId, string fromdate, string todate)
+        public List<BranchPaymentCollection> GetAdminStudentIcard(int branchId,int centerId, string fromdate, string todate)
         {
             BranchStudentBindData data = new BranchStudentBindData();
-            return data.GetAdminStudentIcard(branchId, fromdate, todate);
+            return data.GetAdminStudentIcard(branchId, centerId, fromdate, todate);
         }
         public List<BranchPaymentCollection> GetCourseBindList(string stid)
         {

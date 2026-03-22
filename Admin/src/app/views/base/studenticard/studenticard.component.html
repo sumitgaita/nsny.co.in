@@ -42,11 +42,22 @@
         <div class="row">
           <div class="col-sm-6 mt-3">
             <div class="form-group">
+              <label for="selectedBranch">Select Master Branch:</label>
+              <select name="selectedBranch" [(ngModel)]="branchId" id="selectedBranch" (ngModelChange)="getRefresscenter()" class="form-control">
+                <option [value]="0">All</option>
+                <option *ngFor="let ut of branchList" [value]="ut.id">{{ut.bname}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6 mt-2">
+            <div class="form-group">
               <label for="selectedBranch">Select Branch:</label>
-                <select name="selectedBranch" [(ngModel)]="branchId" id="selectedBranch" class="form-control">
+              <div class="mt-2">
+                <select name="selectedCenter" [(ngModel)]="centerId" id="selectedCenter" class="form-control">
                   <option [value]="0">All</option>
-                  <option *ngFor="let ut of branchList" [value]="ut.id">{{ut.bname}}</option>
+                  <option *ngFor="let ut of centerhList" [value]="ut.id">{{ut.bname}}</option>
                 </select>
+              </div>
             </div>
           </div>
           <div class="col-sm-6">

@@ -23,6 +23,7 @@ namespace rg.service.Data
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@bid", branchStudentBind.Scbid),
+                myFactory.GetParameter("@centerid", branchStudentBind.Centerid),
                 myFactory.GetParameter("@bname", branchStudentBind.Scbname),
                 myFactory.GetParameter("@stid", branchStudentBind.Scstid),
                 myFactory.GetParameter("@cid", branchStudentBind.Sccid),
@@ -80,6 +81,7 @@ namespace rg.service.Data
                 {
                     Id = !row.IsNull("id") ? Convert.ToInt32(row["id"]) : 0,
                     Bid = !row.IsNull("bid") ? Convert.ToInt32(row["bid"]) : 0,
+                    Centerid = !row.IsNull("centerid") ? Convert.ToInt32(row["centerid"]) : 0,
                     Bname = row["bname"].ToString(),
                     Stid = row["stid"].ToString(),
                     Cid = !row.IsNull("cid") ? Convert.ToInt32(row["cid"]) : 0,
@@ -280,12 +282,13 @@ namespace rg.service.Data
 
         }
 
-        public List<BranchPaymentCollection> GetStuRegistrationList(int branchId, string fromdate, string todate)
+        public List<BranchPaymentCollection> GetStuRegistrationList(int branchId,int centerId, string fromdate, string todate)
         {
             List<BranchPaymentCollection> branchpaymenteraning = new List<BranchPaymentCollection>();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@bid", branchId),
+                 myFactory.GetParameter("@centerId", centerId),
                 myFactory.GetParameter("@fromdate", Convert.ToDateTime(fromdate)),
                 myFactory.GetParameter("@todate", Convert.ToDateTime(todate))
             };
@@ -308,12 +311,13 @@ namespace rg.service.Data
             return branchpaymenteraning;
 
         }
-        public List<BranchPaymentCollection> GetAdminStudentIcard(int branchId, string fromdate, string todate)
+        public List<BranchPaymentCollection> GetAdminStudentIcard(int branchId,int centerId, string fromdate, string todate)
         {
             List<BranchPaymentCollection> branchpaymenteraning = new List<BranchPaymentCollection>();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@bid", branchId),
+                myFactory.GetParameter("@centerId", centerId),
                 myFactory.GetParameter("@fromdate", Convert.ToDateTime(fromdate)),
                 myFactory.GetParameter("@todate", Convert.ToDateTime(todate))
             };

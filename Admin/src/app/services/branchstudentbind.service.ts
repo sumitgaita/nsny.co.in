@@ -35,12 +35,12 @@ export class BranchstudentbindService {
     return this.http.get<any>('BranchStudentBind?branchId=' + branchId + '&fromdate=' + fromdate + '&todate=' + todate);
   }
 
-  getStuRegistrationList(branchId: number, fromdate: string, todate: string): Observable<any> {
-    return this.http.get<any>('PaymentCollection?branchId=' + branchId + '&fromdate=' + fromdate + '&todate=' + todate);
+  getStuRegistrationList(branchId: number, centerId:number, fromdate: string, todate: string): Observable<any> {
+    return this.http.get<any>('PaymentCollection?branchId=' + branchId + '&centerId=' + centerId + '&fromdate=' + fromdate + '&todate=' + todate);
   }
 
-  getAdminStudentIcard(branchId: number, fromdate: string, todate: string): Observable<any> {
-    return this.http.get<any>('PaymentCollection?branchId=' + branchId + '&fromdate=' + fromdate + '&todate=' + todate + '&studentId=' + 0);
+  getAdminStudentIcard(branchId: number, centerId:number, fromdate: string, todate: string): Observable<any> {
+    return this.http.get<any>('PaymentCollection?branchId=' + branchId + '&centerId=' + centerId + '&fromdate=' + fromdate + '&todate=' + todate + '&studentId=' + 0);
   }
   getAdminPaymentCollectionResult(branchId: number, fromdate: string, todate: string): Observable<any> {
     return this.http.get<any>('AdminPaymentCollection?branchId=' + branchId + '&fromdate=' + fromdate + '&todate=' + todate);

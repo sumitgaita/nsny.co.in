@@ -30,11 +30,11 @@ namespace rg.service.Controllers
             return _httpResponseMessage.ReturnOk(paymentCompleted);
         }
         [Route("")]
-        public HttpResponseMessage Get(int branchId, string fromdate, string todate)
+        public HttpResponseMessage Get(int branchId, int centerId, string fromdate, string todate)
         {
             try
             {
-                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetStuRegistrationList(branchId, fromdate, todate);
+                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetStuRegistrationList(branchId, centerId, fromdate, todate);
                 return _httpResponseMessage.ReturnOk(resourceDetails);
             }
             catch (Exception ex)
@@ -44,11 +44,11 @@ namespace rg.service.Controllers
             }
         }
         [Route("")]
-        public HttpResponseMessage Get(int branchId, string fromdate, string todate, int studentId)
+        public HttpResponseMessage Get(int branchId, int centerId, string fromdate, string todate, int studentId)
         {
             try
             {
-                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetAdminStudentIcard(branchId, fromdate, todate);
+                System.Collections.Generic.List<BranchPaymentCollection> resourceDetails = _branchStudentBind.GetAdminStudentIcard(branchId, centerId, fromdate, todate);
                 return _httpResponseMessage.ReturnOk(resourceDetails);
             }
             catch (Exception ex)

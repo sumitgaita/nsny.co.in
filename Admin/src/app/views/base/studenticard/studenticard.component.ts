@@ -37,7 +37,9 @@ export class StudentIcardComponent {
   paymenteraningList: any[] = [];
   pageSize: number = 10;
   branchList: any[] = [];
+  centerhList: any[] = [];
   branchId: number = 0;
+  centerId: number = 0;
   gridColumnApi: any;
   gridApi: any;
 
@@ -76,6 +78,20 @@ export class StudentIcardComponent {
     this.branchService.getAllBranch().subscribe((res: any) => {
       if (res && res.length > 0) {
         this.branchList = res;
+        this.getAllCenterByBranch(res[0].id);
+        this.spinner.hide();
+      }
+      else {
+        this.spinner.hide();
+      }
+    });
+  }
+  private getAllCenterByBranch(branchid: any) {
+    this.spinner.show();
+    this.centerhList = [];
+    this.branchService.getAllCenterbyBranch(branchid).subscribe((res: any) => {
+      if (res && res.length > 0) {
+        this.centerhList = res;
         this.spinner.hide();
       }
       else {
@@ -90,13 +106,16 @@ export class StudentIcardComponent {
   onSelectToDate(date: NgbDateStruct) {
     this.searchToDate = date;
   }
+  getRefresscenter() {
+    this.getAllCenterByBranch(this.branchId);
+  }
   getPaymentEaning() {
     this.spinner.show();
     this.paymenteraningList = [];
     if (this.searchFromDate && this.searchToDate) {
       const searchFromDate = this.datePipe.transform(new Date(this.searchFromDate.year, this.searchFromDate.month - 1, this.searchFromDate.day), 'yyyy-MM-dd')!;
       const searchToDate = this.datePipe.transform(new Date(this.searchToDate.year, this.searchToDate.month - 1, this.searchToDate.day), 'yyyy-MM-dd')!;
-      this.branchstudentbindService.getAdminStudentIcard(this.branchId, searchFromDate, searchToDate).subscribe((res: any) => {
+      this.branchstudentbindService.getAdminStudentIcard(this.branchId, this.centerId, searchFromDate, searchToDate).subscribe((res: any) => {
         this.paymenteraningList = res;
         this.spinner.hide();
       });

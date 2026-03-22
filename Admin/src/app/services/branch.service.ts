@@ -31,4 +31,7 @@ export class BranchService {
   getBranchNotification(bid: number): Observable<any> {
     return this.http.get<any>('Notification?bid=' + bid);
   }
+  getAllCenterbyBranch(bid: number): Observable<any> {
+    return this.http.get<any>('Center?bid=' + bid);
+  }
 }

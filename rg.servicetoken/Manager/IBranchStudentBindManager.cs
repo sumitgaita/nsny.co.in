@@ -14,8 +14,8 @@ namespace rg.service.Manager
         bool PaymentLastUpdate(BranchPaymentCollection branchPaymentCollection);
         List<BranchPaymentCollection> GetRecivedPrint(string stid);
         List<BranchPaymentCollection> GetBranchPaymenteraning(int branchId, int centerid, string fromdate, string todate);
-        List<BranchPaymentCollection> GetStuRegistrationList(int branchId, string fromdate, string todate);
-        List<BranchPaymentCollection> GetAdminStudentIcard(int branchId, string fromdate, string todate);
+        List<BranchPaymentCollection> GetStuRegistrationList(int branchId, int centerId, string fromdate, string todate);
+        List<BranchPaymentCollection> GetAdminStudentIcard(int branchId, int centerid, string fromdate, string todate);
         List<BranchPaymentCollection> GetCourseBindList(string stid);
         bool StudentCourseBindUpdate(BranchStudentBind branchStudentBind);
         //bool UpdateProject(Project project);

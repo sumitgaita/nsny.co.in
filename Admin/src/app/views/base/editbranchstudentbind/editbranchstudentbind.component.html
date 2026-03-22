@@ -37,7 +37,41 @@
                 </div>
               </div>
             </div>
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="sccid" class="col-sm-4 control-label">
+                  Are you sure you want to Change Course?
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <input type="checkbox" formControlName="changecourse" (ngModelChange)="getRefressCourse()"  tabindex="6" id="changecourse">
+                </div>
+              </div>
+            </div>
 
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2">
+              <div class="form-group">
+                <label for="paymentmode" class="col-sm-4 control-label">
+                  Course Catagory
+                </label>
+                <div class="col-sm-8 mt-2">
+                  <!--<select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
+          <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
+        </select>-->
+                  <ng-multiselect-dropdown [placeholder]="'Selected Catagory'"
+                                           [data]="catagoryList"
+                                           class="form-control"
+                                           [(ngModel)]="selectedItems"
+                                           [disabled]="isDisabled"
+                                           [ngModelOptions]="{standalone: true}"
+                                           [settings]="dropdownSettings"
+                                           (onSelect)="onItemSelect($event)"
+                                           (onSelectAll)="onSelectAll($event)">
+                  </ng-multiselect-dropdown>
+                </div>
+              </div>
+            </div>
             <div class="col-md-6 mt-2">
               <div class="form-group">
                 <label for="changesccid" class="col-sm-4 control-label">
@@ -52,7 +86,6 @@
               </div>
             </div>
           </div>
-
           <div class="row">
             <div class="col-md-6 mt-2">
               <div class="form-group">
@@ -118,7 +151,7 @@
               <div class="form-group">
                 <label for="sctotalInstallment" class="col-sm-4 control-label">Total Installment</label>
                 <div class="col-sm-8 mt-2">
-                  <input type="number" formControlName="sctotalInstallment"  class="form-control" id="sctotalInstallment" tabindex="8">
+                  <input type="number" formControlName="sctotalInstallment" class="form-control" id="sctotalInstallment" tabindex="8">
                 </div>
               </div>
             </div>
@@ -156,7 +189,7 @@
                   Discount Amount
                 </label>
                 <div class="col-sm-8 mt-2">
-                  <input type="number" formControlName="sccdiscount" (blur)="amountRemaingCalculation()"  class="form-control" tabindex="9" id="sccdiscount">
+                  <input type="number" formControlName="sccdiscount" (blur)="amountRemaingCalculation()" class="form-control" tabindex="9" id="sccdiscount">
                 </div>
               </div>
             </div>
@@ -172,30 +205,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 mt-2">
-              <div class="form-group">
-                <label for="paymentmode" class="col-sm-4 control-label">
-                  Course Catagory 
-                </label>
-                <div class="col-sm-8 mt-2">
-                  <!--<select name="selectedpaymentmode" formControlName="courseCatagory" id="courseCatagory" class="form-control">
-    <option *ngFor="let pay of catagoryList" [value]="pay.id">{{pay.name}}</option>
-  </select>-->
-                  <ng-multiselect-dropdown [placeholder]="'Selected Catagory'"
-                                           [data]="catagoryList"
-                                           class="form-control"
-                                           [(ngModel)]="selectedItems"
-                                           [disabled]="isDisabled"
-                                           [ngModelOptions]="{standalone: true}"
-                                           [settings]="dropdownSettings"
-                                           (onSelect)="onItemSelect($event)"
-                                           (onSelectAll)="onSelectAll($event)">
-                  </ng-multiselect-dropdown>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <h5 class="mt-4">Marks Optain</h5>
           <hr />
           <div class="row">
@@ -216,7 +226,7 @@
                   Practical(M2)
                 </label>
                 <div class="col-sm-8 mt-2">
-                  <input type="number"  class="form-control" formControlName="practical" tabindex="13" id="practical" placeholder="Type practical(m2)">
+                  <input type="number" class="form-control" formControlName="practical" tabindex="13" id="practical" placeholder="Type practical(m2)">
                 </div>
               </div>
             </div>

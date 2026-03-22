@@ -6,6 +6,7 @@ namespace rg.service.Models
     {
         public int Id { get; set; }
         public int Scbid { get; set; }
+        public int Centerid { get; set; }
         public string Scbname { get; set; }
         public string Scstid { get; set; }
         public int Sccid { get; set; }

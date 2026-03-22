@@ -72,16 +72,18 @@ export class DefaultLayoutComponent {
       this.navItemsRemove = navItems?.find((x: any) => x.name === 'Base');
       this.navItems = [...this.navItemsRemove.children];
       this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Add student');
+      this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Course Binding');
+      this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Payment Collection');
     }
     else {
-      setTimeout(() => {
+     // setTimeout(() => {
         this.navItemsRemove = navItems?.find((x: any) => x.name === 'Base');
         this.navItems = [...this.navItemsRemove.children]; // start with full list        
         //this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Add student');
        // this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Course Binding');
         //this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Payment Collection');
         //this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Payment Eraning');
-      }, 500);
+      //}, 500);
     }
   }
 }

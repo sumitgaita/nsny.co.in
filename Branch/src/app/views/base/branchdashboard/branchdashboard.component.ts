@@ -42,7 +42,7 @@ export class BranchDashboardComponent {
       });
 
     } else {
-      likestr = this.currentUser.mastercode + "/" + this.currentUser.centercode + "/" + new Date().getFullYear() % 100 + "/";
+      likestr = this.currentUser.centercode + "/" + new Date().getFullYear() % 100 + "/";
       this.dashBoardService.getAllBranchCount(this.currentUser.id, likestr).subscribe((res: any) => {
         this.dashboard = res;
         this.spinner.hide();

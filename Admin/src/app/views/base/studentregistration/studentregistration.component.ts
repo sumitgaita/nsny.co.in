@@ -37,7 +37,9 @@ export class StudentRegistrationComponent {
   paymenteraningList: any[] = [];
   pageSize: number = 50;
   branchList: any[] = [];
+  centerhList: any[] = [];
   branchId: number = 0;
+  centerId: number = 0;
   gridColumnApi: any;
   gridApi: any;
 
@@ -72,12 +74,29 @@ export class StudentRegistrationComponent {
     this.branchService.getAllBranch().subscribe((res: any) => {
       if (res && res.length > 0) {
         this.branchList = res;
+        this.getAllCenterByBranch(res[0].id);
         this.spinner.hide();
       }
       else {
         this.spinner.hide();
       }
     });
+  }
+  private getAllCenterByBranch(branchid:any) {
+    this.spinner.show();
+    this.centerhList = [];
+    this.branchService.getAllCenterbyBranch(branchid).subscribe((res: any) => {
+      if (res && res.length > 0) {
+        this.centerhList = res;
+        this.spinner.hide();
+      }
+      else {
+        this.spinner.hide();
+      }
+    });
+  }
+  getRefresscenter() {
+    this.getAllCenterByBranch(this.branchId);
   }
   onSelectFromDate(date: NgbDateStruct) {
     this.searchFromDate = date;
@@ -91,7 +110,7 @@ export class StudentRegistrationComponent {
     if (this.searchFromDate && this.searchToDate) {
       const searchFromDate = this.datePipe.transform(new Date(this.searchFromDate.year, this.searchFromDate.month - 1, this.searchFromDate.day), 'yyyy-MM-dd')!;
       const searchToDate = this.datePipe.transform(new Date(this.searchToDate.year, this.searchToDate.month - 1, this.searchToDate.day), 'yyyy-MM-dd')!;
-      this.branchstudentbindService.getStuRegistrationList(this.branchId, searchFromDate, searchToDate).subscribe((res: any) => {
+      this.branchstudentbindService.getStuRegistrationList(this.branchId, this.centerId, searchFromDate, searchToDate).subscribe((res: any) => {
         this.paymenteraningList = res;
         this.spinner.hide();
       });
