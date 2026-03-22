@@ -74,10 +74,13 @@ namespace rg.service.Data
         }
 
 
-        public int CurrntCenterId()
+        public int CurrntCenterId(int branchid)
         {
             int student = 0;
-            List<IDbDataParameter> parameters = new List<IDbDataParameter>();
+            List<IDbDataParameter> parameters = new List<IDbDataParameter>
+            {
+                myFactory.GetParameter("@branchid", branchid)
+            };
             string query = "GetcurrentCenterId";
             DataTable tbl = hlpr.GetDataTable(query, ref parameters);
             foreach (DataRow row in tbl.Rows)

@@ -23,6 +23,11 @@ namespace rg.service.Data
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@id", masterCode.Id),
+                myFactory.GetParameter("@name", masterCode.Name),
+                myFactory.GetParameter("@contact", masterCode.Contact),
+                myFactory.GetParameter("@email", masterCode.Email),
+                myFactory.GetParameter("@pass", masterCode.Pass),
+                myFactory.GetParameter("@address", masterCode.Address),
                 myFactory.GetParameter("@mastercode", masterCode.Mastercode),
                 myFactory.GetParameter("@active", masterCode.Active)
                
@@ -35,6 +40,11 @@ namespace rg.service.Data
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@id", masterCode.Id),
+                myFactory.GetParameter("@name", masterCode.Name),
+                myFactory.GetParameter("@contact", masterCode.Contact),
+                myFactory.GetParameter("@email", masterCode.Email),
+                myFactory.GetParameter("@pass", masterCode.Pass),
+                myFactory.GetParameter("@address", masterCode.Address),
                 myFactory.GetParameter("@mastercode", masterCode.Mastercode),
                 myFactory.GetParameter("@active", masterCode.Active)
                
@@ -67,6 +77,11 @@ namespace rg.service.Data
 
                     Id = Convert.ToInt32(row["id"]),
                     Mastercode = row["master_code"].ToString(),
+                    Name = row["name"].ToString(),
+                    Contact = row["contact"].ToString(),
+                    Email = row["email"].ToString(),
+                    Pass = row["pass"].ToString(),
+                    Address = row["address"].ToString(),
                     CreateDate = row["create_date"].ToString(),
                     Active =row["active"].ToString()
 

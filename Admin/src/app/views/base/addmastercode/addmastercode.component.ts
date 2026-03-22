@@ -7,6 +7,7 @@ import { MasterCodeService } from '../../../services/mastercode.service';
 import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective, FormSelectDirective } from '@coreui/angular';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from "ngx-spinner";
+import { ConfirmedValidator } from './confirmed.validator'
 
 @Component({
   selector: 'add-mastercode',
@@ -31,7 +32,15 @@ export class AddMastercodeComponent {
   ngOnInit() {
     this.addmastercodeForm = this.formBuilder.group({
       mastercode: ['', Validators.required],
-      active: ['', Validators.required]
+      active: ['', Validators.required],
+      name: ['', Validators.required],
+      contact: ['', Validators.required],
+      email: ['', Validators.required],
+      address: ['', Validators.required],
+      pass: [''],
+      cpass: ['', Validators.required]
+    }, {
+      validator: ConfirmedValidator('pass', 'cpass')
     });
   }
   get f() { return this.addmastercodeForm.controls; }
@@ -46,7 +55,12 @@ export class AddMastercodeComponent {
     this.spinner.show();
     const addmastercode = {
       mastercode: this.f.mastercode.value,
-      active: this.f.active.value
+      active: this.f.active.value,
+      name: this.f.name.value,
+      contact: this.f.contact.value,
+      email: this.f.email.value,
+      pass: this.f.pass.value,
+      address: this.f.address.value
     }
     this.masterCodeService.createMasterCode(addmastercode).subscribe((res: any) => {
       if (res) {

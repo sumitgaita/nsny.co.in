@@ -9,6 +9,24 @@ export const routes: Routes = [
     },
     children: [
       {
+        path: 'addcenter',
+        loadComponent: () => import('./addcenter/addcenter.component').then(m => m.AddCenterComponent),
+        data: {
+          title: 'Addcenter'
+        },
+        canActivate: [AuthGuard]
+      },
+
+      {
+        path: 'editcenter',
+        loadComponent: () => import('./editcenter/editcenter.component').then(m => m.EditCenterComponent),
+        data: {
+          title: 'editcenter'
+        },
+        canActivate: [AuthGuard]
+      },
+
+      {
         path: 'addmastercode',
         loadComponent: () => import('./addmastercode/addmastercode.component').then(m => m.AddMastercodeComponent),
         data: {

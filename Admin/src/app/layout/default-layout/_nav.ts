@@ -17,14 +17,34 @@ export const navItems: INavData[] = [
     url: '/base',
     iconComponent: { name: 'cil-puzzle' },
     children: [
+      //{
+      //  name: 'Add Master Code',
+      //  url: '/base/addmastercode',
+      //  icon: 'nav-icon-bullet'
+      //},
+      //{
+      //  name: 'Edit Master Code',
+      //  url: '/base/editmastercode',
+      //  icon: 'nav-icon-bullet'
+      //},
       {
-        name: 'Add Master Code',
-        url: '/base/addmastercode',
+        name: 'Add Master code/Branch',
+        url: '/base/addbranch',
         icon: 'nav-icon-bullet'
       },
       {
-        name: 'Edit Master Code',
-        url: '/base/editmastercode',
+        name: 'Edit Master code/Branch',
+        url: '/base/editbranch',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Add Branch',
+        url: '/base/addcenter',
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Edit Branch',
+        url: '/base/editcenter',
         icon: 'nav-icon-bullet'
       },
       {
@@ -55,16 +75,6 @@ export const navItems: INavData[] = [
       {
         name: 'Edit course',
         url: '/base/editcourse',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Add branch',
-        url: '/base/addbranch',
-        icon: 'nav-icon-bullet'
-      },
-      {
-        name: 'Edit branch',
-        url: '/base/editbranch',
         icon: 'nav-icon-bullet'
       },
       {

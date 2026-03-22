@@ -34,7 +34,7 @@ namespace rg.service.Controllers
         [Route("currentcenter")]
         public HttpResponseMessage Get(int currentId)
         {
-            int branch = _centerManager.CurrntCenterId();
+            int branch = _centerManager.CurrntCenterId(currentId);
             return _httpResponseMessage.ReturnOk(branch);
         }
        

@@ -36,14 +36,9 @@ export class ChangeBranchPasswordComponent {
   changeBranchPassword() {
     this.spinner.show();
     this.authenticationService.changeBranchPassword(this.currentUser.id, this.password).subscribe((res: any) => {
-      if (res) {
-        this.toastr.success('Successfully', 'Updated');
-        this.spinner.hide();
-        this.router.navigate(['/']);
-      }
-      else {
-        this.spinner.hide();
-      }
+      this.toastr.success('Successfully', 'Updated');
+      this.spinner.hide();
+      this.router.navigate(['/']);
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule,NgStyle,NgFor  } from '@angular/common';
+import { CommonModule, NgStyle, NgFor } from '@angular/common';
 import { DashBoardService } from '../../../services/dash-board.service';
 import { BranchService } from '../../../services/branch.service';
 import { AuthenticationService } from '../../../services/authentication.service';
@@ -29,14 +29,26 @@ export class BranchDashboardComponent {
   ngOnInit() {
     this.getAllCount();
     this.getNotification();
-   
+
   }
   getAllCount() {
     this.spinner.show(); //---NSWB(nsny.org) SNYWB(Youth) NYCE1(computer)
-    this.dashBoardService.getAllBranchCount(this.currentUser.id, `${environment.branchcode}` + ("000" + this.currentUser.id).slice(-3)).subscribe((res: any) => {
-      this.dashboard = res;
-      this.spinner.hide();
-    });
+    let likestr = '';
+    if (this.currentUser.isBranch === 'True') {
+      likestr = this.currentUser.mastercode + "/" + new Date().getFullYear() % 100 + "/";
+      this.dashBoardService.getAllBranchCount(this.currentUser.id, likestr).subscribe((res: any) => {
+        this.dashboard = res;
+        this.spinner.hide();
+      });
+
+    } else {
+      likestr = this.currentUser.mastercode + "/" + this.currentUser.centercode + "/" + new Date().getFullYear() % 100 + "/";
+      this.dashBoardService.getAllBranchCount(this.currentUser.id, likestr).subscribe((res: any) => {
+        this.dashboard = res;
+        this.spinner.hide();
+      });
+    }
+
   }
   getNotification() {
     this.spinner.show();

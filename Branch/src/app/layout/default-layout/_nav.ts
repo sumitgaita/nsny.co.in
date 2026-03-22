@@ -17,16 +17,16 @@ import { INavData } from '@coreui/angular';
       url: '/base',
       iconComponent: { name: 'cil-puzzle' },
       children: [
-        {
-          name: 'Add Center',
-          url: '/base/addcenter',
-          icon: 'nav-icon-bullet'
-        },
-        {
-          name: 'Edit Center',
-          url: '/base/editcenter',
-          icon: 'nav-icon-bullet'
-        },
+        //{
+        //  name: 'Add Center',
+        //  url: '/base/addcenter',
+        //  icon: 'nav-icon-bullet'
+        //},
+        //{
+        //  name: 'Edit Center',
+        //  url: '/base/editcenter',
+        //  icon: 'nav-icon-bullet'
+        //},
         {
           name: 'Add student',
           url: '/base/addstudent',

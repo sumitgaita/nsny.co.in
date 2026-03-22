@@ -68,14 +68,19 @@ export class DefaultLayoutComponent {
   }
   ngOnInit() {
     if (this.currentUser.isBranch === 'True') {
-      this.navItems = navItems;
+      // this.navItems = navItems;
+      this.navItemsRemove = navItems?.find((x: any) => x.name === 'Base');
+      this.navItems = [...this.navItemsRemove.children];
+      this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Add student');
     }
     else {
       setTimeout(() => {
         this.navItemsRemove = navItems?.find((x: any) => x.name === 'Base');
         this.navItems = [...this.navItemsRemove.children]; // start with full list        
-        this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Add Center');
-        this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Edit Center');
+        //this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Add student');
+       // this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Course Binding');
+        //this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Payment Collection');
+        //this.navItems = this.navItems.filter((x: { name: string; }) => x.name !== 'Payment Eraning');
       }, 500);
     }
   }

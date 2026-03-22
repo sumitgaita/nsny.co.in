@@ -60,7 +60,7 @@
                     <svg cIcon name="cilUser"></svg>
                   </span>
                   <select name="selectedloginType" formControlName="loginType" id="loginType" class="form-control form-select">
-                    <option *ngFor="let pay of loginType" [value]="pay">{{pay}}</option>
+                    <option *ngFor="let pay of loginType" [value]="pay.key">{{pay.value}}</option>
                   </select>
                 </c-input-group>
                 <c-input-group class="mb-3">

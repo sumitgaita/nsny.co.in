@@ -27,10 +27,10 @@ namespace rg.service.Manager
 
         }
 
-        public int CurrntCenterId()
+        public int CurrntCenterId(int branchid)
         {
             CenterData data = new CenterData();
-            return data.CurrntCenterId();
+            return data.CurrntCenterId(branchid);
         }
         
         public List<Branch> GetBranchCenter(int bid)

@@ -9,7 +9,7 @@ namespace rg.service.Manager
         bool CreateCenter(Branch branch);
         bool UpdateCenter(Branch branch);
         bool DeleteCenter(Branch per);
-        int CurrntCenterId();
+        int CurrntCenterId(int branchid);
         List<Branch> GetBranchCenter(int bid);
     }
 }
