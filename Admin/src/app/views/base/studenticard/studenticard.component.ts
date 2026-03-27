@@ -58,7 +58,15 @@ export class StudentIcardComponent {
       { headerName: 'Address', field: 'address', tooltipField: 'address', resizable: true, sortable: true, filter: true },
       { headerName: 'Mobile', field: 'mobile', sortable: true, filter: true },
       { headerName: 'Branch', field: 'bname', tooltipField: 'address', sortable: true, filter: true },
-      { headerName: 'Branch Code', field: 'bid', sortable: true },
+      /*{ headerName: 'Branch Code', field: 'bid', sortable: true },*/
+      {
+        headerName: 'Branch Code',
+        field: 'stid',
+        sortable: true,
+        valueFormatter: (params) => {
+          return params.value ? params.value.split('/').slice(0, 2).join('/') : '';
+        }
+      },
       { headerName: 'Branch Address', field: 'bnAddress', sortable: true },
       { headerName: 'Course', field: 'cname', sortable: true },
       { headerName: 'Duration', field: 'duration', sortable: true },
@@ -164,7 +172,7 @@ export class StudentIcardComponent {
       strhtml += "          <td>" + this.paymenteraningList[key].address + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].mobile + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].bname + "</td>";
-      strhtml += "          <td>" + this.paymenteraningList[key].bid + "</td>";
+      strhtml += "          <td>" + this.paymenteraningList[key].stid.split("/").slice(0, 2).join("/") + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].bnAddress + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].cname + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].duration + "</td>";
@@ -225,7 +233,7 @@ export class StudentIcardComponent {
       strhtml += "          <td>" + this.paymenteraningList[key].address + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].mobile + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].bname + "</td>";
-      strhtml += "          <td>" + this.paymenteraningList[key].bid + "</td>";
+      strhtml += "          <td>" + this.paymenteraningList[key].stid.split("/").slice(0, 2).join("/") + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].bnAddress + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].cname + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].duration + "</td>";

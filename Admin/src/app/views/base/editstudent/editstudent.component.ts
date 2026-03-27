@@ -71,7 +71,8 @@ export class EditStudentComponent {
       r4: [''],
       r5: [''],
       act: [''],
-      name: ['']
+      name: [''],
+      center_details:['']
     });
   }
   get f() { return this.editStudentForm.controls; }
@@ -85,6 +86,7 @@ export class EditStudentComponent {
         this.selectedStudentId = res[0].id;
         this.imageURL = `${environment.apiUrl}/Files/` + '' + res[0].fileup_ins; //res[0].fileup_ins;
         this.editStudentForm.get('name').setValue(res[0].fileup_ins);
+        this.editStudentForm.get('center_details').setValue(res[0].nssY_code.split("/").slice(0, 2).join("/"));
         this.spinner.hide();
       }
       else {
