@@ -47,6 +47,22 @@ namespace rg.service.Data
             }
             return details;
         }
+        public int NumberofBranchCenter(string Center_code)
+        {
+            int details = 0;
+            List<IDbDataParameter> parameters = new List<IDbDataParameter>
+                {
+                    myFactory.GetParameter("@branchid", Center_code)
+                };
+            string query = "BranchCenterCount";
+            DataTable tbl = hlpr.GetDataTable(query, ref parameters);
+            foreach (DataRow row in tbl.Rows)
+            {
+                details = !row.IsNull(0) ? Convert.ToInt32(row[0]) : 0;
+
+            }
+            return details;
+        }
         public int NumberofCourse()
         {
             int details = 0;

@@ -35,14 +35,14 @@ export class BranchDashboardComponent {
     this.spinner.show(); //---NSWB(nsny.org) SNYWB(Youth) NYCE1(computer)
     let likestr = '';
     if (this.currentUser.isBranch === 'True') {
-      likestr = this.currentUser.mastercode + "/" + new Date().getFullYear() % 100 + "/";
+      likestr = this.currentUser.loginType;//this.currentUser.mastercode + "/" + new Date().getFullYear() % 100 + "/";
       this.dashBoardService.getAllBranchCount(this.currentUser.id, likestr).subscribe((res: any) => {
         this.dashboard = res;
         this.spinner.hide();
       });
 
     } else {
-      likestr = this.currentUser.centercode + "/" + new Date().getFullYear() % 100 + "/";
+      likestr = this.currentUser.loginType;//this.currentUser.centercode + "/" + new Date().getFullYear() % 100 + "/";
       this.dashBoardService.getAllBranchCount(this.currentUser.id, likestr).subscribe((res: any) => {
         this.dashboard = res;
         this.spinner.hide();
@@ -52,10 +52,18 @@ export class BranchDashboardComponent {
   }
   getNotification() {
     this.spinner.show();
-    this.branchService.getBranchNotification(this.currentUser.id).subscribe((res: any) => {
-      this.noticeList = res;
-      this.spinner.hide();
-    });
+    if (this.currentUser.isBranch === 'True') {
+      this.branchService.getBranchNotification(this.currentUser.id).subscribe((res: any) => {
+        this.noticeList = res;
+        this.spinner.hide();
+      });
+    }
+    else {
+      this.branchService.getBranchNotification(this.currentUser.branchid).subscribe((res: any) => {
+        this.noticeList = res;
+        this.spinner.hide();
+      });
+    }
   }
 }
 

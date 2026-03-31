@@ -13,6 +13,7 @@
       </div>
     </div>
   </div>
+
   <div class="col col-md-3">
     <div class="bg-danger card text-white mb-3">
       <div class="card-body text-center">
@@ -21,7 +22,15 @@
       </div>
     </div>
   </div>
-  
+  <div class="col col-md-3" *ngIf="currentUser.isBranch === 'True'">
+    <div class="bg-info card text-white mb-3">
+      <div class="card-body text-center">
+        <p class="h6"> Number of Center</p>
+        <h3 class="high-light mt-3">{{dashboard?.numberofCenter}}</h3>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="row justify-content-md-center">

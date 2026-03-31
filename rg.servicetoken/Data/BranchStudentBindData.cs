@@ -344,7 +344,8 @@ namespace rg.service.Data
                     RemoveExtention = row["pic"].ToString().Replace(".jpg", ""),
                     Theory = row["theory"].ToString(),
                     Practical = row["practical"].ToString(),
-                    BnAddress = row["bnadress"].ToString()
+                    BnAddress = row["bnadress"].ToString(),
+                    CnAddress= row["centeradress"].ToString()
 
                 });
             }

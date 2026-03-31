@@ -17,8 +17,8 @@ export class StudentService {
   getStudentVerification(name: string, nssy_code: string): Observable<any> {
     return this.http.outSiteGet<any>('Upload?name=' + name + '&nssy_code=' + nssy_code);
   }
-  getBranchViewStudent(branchId: number, centerId: string, logintype: string): Observable<any> {
-    return this.http.get<any>('Student?branchId=' + branchId + '&centerId=' + centerId + '&logintype=' + logintype);
+  getBranchViewStudent(branchId: number, centerId: string, logintype: string, fromdate: string, todate: string): Observable<any> {
+    return this.http.get<any>('Student?branchId=' + branchId + '&centerId=' + centerId + '&logintype=' + logintype + '&fromdate=' + fromdate + '&todate=' + todate);
   }
 
   updateStudent(studentObject: any): Observable<any> {

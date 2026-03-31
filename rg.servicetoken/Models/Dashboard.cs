@@ -9,5 +9,6 @@ namespace rg.service.Models
         public int NumberofStudents { get; set; }
         public int NumberofCourse { get; set; }
         public int NumberofBranche { get; set; }
+        public int NumberofCenter { get; set; }
     }
 }

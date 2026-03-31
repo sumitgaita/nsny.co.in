@@ -47,5 +47,6 @@ namespace rg.service.Models
         public string CourseCatagory { get; set; }
         public string BnAddress { get; set; }
         public int Centerid { get; set; }
+        public string CnAddress { get; set; }
     }
 }

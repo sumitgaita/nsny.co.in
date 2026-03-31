@@ -14,7 +14,7 @@ namespace rg.service.Manager
         int BranchStudentRegisCount(Student student);
         bool UpdateStudentImageName(Student student);
         List<Student> GetByCenterCodeStudent(string center_code,string logintype,string centerid);
-        List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype);
+        List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype, string fromdate, string todate);
         List<Student> GetAdminVerifyStudent();
         List<BranchPaymentCollection> GetStudentIDJdate(string nssy_code);
         List<Student> GetStudentVerification(string name, string nssy_code);

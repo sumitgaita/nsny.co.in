@@ -50,6 +50,10 @@ namespace rg.service.Controllers
                 Dashboard loginDetails = new Dashboard();
                 loginDetails.NumberofStudents = _dashboardManager.NumberofBranchStudents(Center_code, likestr);
                 loginDetails.NumberofCourse = _dashboardManager.NumberofCourse();
+                if (likestr == "Branch")
+                {
+                    loginDetails.NumberofCenter = _dashboardManager.NumberofBranchCenter(Center_code);
+                }
                 return _httpResponseMessage.ReturnOk(loginDetails);
             }
             catch (Exception ex)
@@ -100,7 +104,7 @@ namespace rg.service.Controllers
                 }
             }
 
-           // bool response1 = _studentManager.UpdateStudentImageName(student);
+            // bool response1 = _studentManager.UpdateStudentImageName(student);
             return _httpResponseMessage.ReturnOk(true);
         }
 

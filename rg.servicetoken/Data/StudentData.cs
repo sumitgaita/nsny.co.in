@@ -418,14 +418,16 @@ namespace rg.service.Data
             return student;
         }
 
-        public List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype)
+        public List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype, string fromdate, string todate)
         {
             List<BranchViewStudent> branch = new List<BranchViewStudent>();
             List<IDbDataParameter> parameters = new List<IDbDataParameter>
             {
                 myFactory.GetParameter("@bid", branchId),
                 myFactory.GetParameter("@logintype", logintype),
-                myFactory.GetParameter("@centerid", centerId)
+                myFactory.GetParameter("@centerid", centerId),
+                myFactory.GetParameter("@fromdate", Convert.ToDateTime(fromdate)),
+                myFactory.GetParameter("@todate", Convert.ToDateTime(todate))
             };
             string query = "Select_Studetails";
             DataTable tbl = hlpr.GetDataTable(query, ref parameters);

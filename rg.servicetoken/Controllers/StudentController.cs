@@ -39,9 +39,9 @@ namespace rg.service.Controllers
         }
 
         [Route("")]
-        public HttpResponseMessage Get(int branchId,string centerId, string logintype)
+        public HttpResponseMessage Get(int branchId,string centerId, string logintype, string fromdate, string todate)
         {
-            System.Collections.Generic.List<BranchViewStudent> student = _studentManager.GetBranchViewStudent(branchId, centerId, logintype);
+            System.Collections.Generic.List<BranchViewStudent> student = _studentManager.GetBranchViewStudent(branchId, centerId, logintype, fromdate, todate);
             return _httpResponseMessage.ReturnOk(student.OrderByDescending(o => o.Stid));
         }
         //[Route("")]

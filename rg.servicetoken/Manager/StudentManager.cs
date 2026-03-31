@@ -16,10 +16,10 @@ namespace rg.service.Manager
             StudentData data = new StudentData();
             return data.GetByCenterCodeStudent(center_code, logintype, centerid);
         }
-        public List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype)
+        public List<BranchViewStudent> GetBranchViewStudent(int branchId, string centerId, string logintype, string fromdate, string todate)
         {
             StudentData data = new StudentData();
-            return data.GetBranchViewStudent(branchId, centerId, logintype);
+            return data.GetBranchViewStudent(branchId, centerId, logintype, fromdate, todate);
         }
         public int BranchStudentRegisCount(Student student)
         {

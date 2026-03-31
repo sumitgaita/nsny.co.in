@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { NgbAlertModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { CommonModule } from '@angular/common'
+import { NgbAlertModule, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule, DatePipe } from '@angular/common'
 import { DocsExampleComponent } from '@docs-components/public-api';
 import { NgxSpinnerService } from "ngx-spinner";
 import { RowComponent, ColComponent, TextColorDirective, CardComponent, CardHeaderComponent, CardBodyComponent, InputGroupComponent, InputGroupTextDirective, FormControlDirective, FormLabelDirective, FormCheckInputDirective, ButtonDirective, ThemeDirective, DropdownComponent, DropdownToggleDirective, DropdownMenuDirective, DropdownItemDirective, DropdownDividerDirective, FormSelectDirective } from '@coreui/angular';
@@ -11,6 +11,7 @@ import { ColDef } from 'ag-grid-community';
 import { StudentService } from '../../../services/student.service';
 import { ImageFormatterComponent } from '../../../services/ImageFormatter';
 import { AuthenticationService } from '../../../services/authentication.service';
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: 'branch-view-student',
   templateUrl: './branchviewstudent.component.html',
@@ -26,7 +27,8 @@ import { AuthenticationService } from '../../../services/authentication.service'
     CommonModule, FormsModule, AgGridAngular]
 })
 export class BranchViewStudentComponent {
-
+  searchFromDate!: NgbDateStruct;
+  searchToDate!: NgbDateStruct;
   columnDefs: ColDef[] = [];
   currentUser: any;
   branchviewstudentList: any[] = [];
@@ -34,6 +36,8 @@ export class BranchViewStudentComponent {
 
   constructor(private studentService: StudentService,
     private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
+    private datePipe: DatePipe,
     private authenticationService: AuthenticationService
   ) {
     this.columnDefs = [
@@ -53,14 +57,17 @@ export class BranchViewStudentComponent {
   }
 
   ngOnInit() {
-    this.getAllStudentByBranch();
+    //this.getAllStudentByBranch();
   }
-  private getAllStudentByBranch() {
+  public getAllStudentByBranch() {
     this.spinner.show();
     this.branchviewstudentList = [];
     const branchId = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
     const isBranch = this.currentUser.isBranch === 'True' ? 'Branch' : 'Center';
-    this.studentService.getBranchViewStudent(branchId, this.currentUser.id, isBranch).subscribe((res: any) => {
+    if (this.searchFromDate && this.searchToDate) {
+      const searchFromDate = this.datePipe.transform(new Date(this.searchFromDate.year, this.searchFromDate.month - 1, this.searchFromDate.day), 'yyyy-MM-dd')!;
+      const searchToDate = this.datePipe.transform(new Date(this.searchToDate.year, this.searchToDate.month - 1, this.searchToDate.day), 'yyyy-MM-dd')!;
+      this.studentService.getBranchViewStudent(branchId, this.currentUser.id, isBranch, searchFromDate, searchToDate).subscribe((res: any) => {
       if (res && res.length > 0) {
         this.branchviewstudentList = res;
         this.spinner.hide();
@@ -69,8 +76,19 @@ export class BranchViewStudentComponent {
         this.spinner.hide();
       }
     });
+    }
+    else {
+      this.toastr.warning('Enter', 'From Date to To Date');
+      this.spinner.hide();
+    }
+  }
+  onSelectFromDate(date: NgbDateStruct) {
+    this.searchFromDate = date;
   }
 
+  onSelectToDate(date: NgbDateStruct) {
+    this.searchToDate = date;
+  }
   excelFileData() {
     let strhtml = "";
     strhtml += " <table class=\"table table-hover table-bordered table-striped\" border=\"1\">";

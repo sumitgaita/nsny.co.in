@@ -67,7 +67,8 @@ export class StudentIcardComponent {
           return params.value ? params.value.split('/').slice(0, 2).join('/') : '';
         }
       },
-      { headerName: 'Branch Address', field: 'bnAddress', sortable: true },
+      { headerName: 'Master Branch Address', field: 'bnAddress', sortable: true },
+      { headerName: 'Center Location', field: 'cnAddress', sortable: true },
       { headerName: 'Course', field: 'cname', sortable: true },
       { headerName: 'Duration', field: 'duration', sortable: true },
       { headerName: 'C1', field: 'c1', sortable: true },
@@ -150,7 +151,8 @@ export class StudentIcardComponent {
     strhtml += "         <th>Mobile</th>";
     strhtml += "         <th>Branch</th>";
     strhtml += "         <th>Branch Code</th>";
-    strhtml += "         <th>Branch Address</th>";
+    strhtml += "         <th>Master Branch Address</th>";
+    strhtml += "         <th>Center Location</th>";
     strhtml += "         <th>Course</th>";
     strhtml += "         <th>Duration</th>";
     strhtml += "         <th>C1</th>";
@@ -174,6 +176,7 @@ export class StudentIcardComponent {
       strhtml += "          <td>" + this.paymenteraningList[key].bname + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].stid.split("/").slice(0, 2).join("/") + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].bnAddress + "</td>";
+      strhtml += "          <td>" + this.paymenteraningList[key].cnAddress + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].cname + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].duration + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].c1 + "</td>";
@@ -211,7 +214,8 @@ export class StudentIcardComponent {
     strhtml += "         <th>Mobile</th>";
     strhtml += "         <th>Branch</th>";
     strhtml += "         <th>Branch Code</th>";
-    strhtml += "         <th>Branch Address</th>";
+    strhtml += "         <th>Master Branch Address</th>";
+    strhtml += "         <th>Center Location</th>";
     strhtml += "         <th>Course</th>";
     strhtml += "         <th>Duration</th>";
     strhtml += "         <th>C1</th>";
@@ -235,6 +239,7 @@ export class StudentIcardComponent {
       strhtml += "          <td>" + this.paymenteraningList[key].bname + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].stid.split("/").slice(0, 2).join("/") + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].bnAddress + "</td>";
+      strhtml += "          <td>" + this.paymenteraningList[key].cnAddress + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].cname + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].duration + "</td>";
       strhtml += "          <td>" + this.paymenteraningList[key].c1 + "</td>";

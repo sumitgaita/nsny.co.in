@@ -25,6 +25,11 @@ namespace rg.service.Manager
             var data = new DashboardData();
             return data.NumberofBranche();
         }
+        public int NumberofBranchCenter(string Center_code)
+        {
+            var data = new DashboardData();
+            return data.NumberofBranchCenter(Center_code);
+        }
        public int NumberofBranchStudents(string Center_code, string likestr)
         {
             var data = new DashboardData();
