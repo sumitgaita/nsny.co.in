@@ -9,6 +9,7 @@ import { ToastrService } from "ngx-toastr";
 import { StudentService } from '../../../services/student.service';
 import { environment } from '../../../environments/environment';
 import { NgxSpinnerService } from "ngx-spinner";
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'edit-student',
@@ -34,45 +35,49 @@ export class EditStudentComponent {
   courseStatusList: string[] = ['Course Complete', 'Couse Ongoing'];
   previewUrl: any = null;
   imageURL!: string;
-
+  currentUser: any;
   constructor(private formBuilder: FormBuilder,
     private studentService: StudentService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
-    private datePipe: DatePipe) { }
+    private datePipe: DatePipe,
+    private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   ngOnInit() {
     this.loading = true;
+    const isAdmin = this.currentUser.isAdmin === 'False';
     this.editStudentForm = this.formBuilder.group({
-      stu_name: ['', Validators.required],
-      paddress: ['', Validators.required],
-      peraddress: [''],
-      nationality: [''],
-      mobile: ['', Validators.required],
-      guardian: ['', Validators.required],
-      emaiid: [''],
-      religion: ['Hinduism'],
-      casts: ['SC'],
-      dob: [''],
-      sex: ['Male'],
-      exam: [''],
-      duration: [''],
-      university: [''],
-      regno: [''],
-      percentage: [''],
-      class_per: [''],
-      fileup_ins: [''],
-      center_code: [''],
-      center_name: [''],
-      nssY_code: [''],
+      stu_name: [{ value: '', disabled: isAdmin }, Validators.required],
+      paddress: [{ value: '', disabled: isAdmin }, Validators.required],
+      peraddress: [{ value: '', disabled: isAdmin }],
+      nationality: [{ value: '', disabled: isAdmin }],
+      mobile: [{ value: '', disabled: isAdmin }, Validators.required],
+      guardian: [{ value: '', disabled: isAdmin }, Validators.required],
+      emaiid: [{ value: '', disabled: isAdmin }],
+      religion: [{ value: 'Hinduism', disabled: isAdmin }],
+      casts: [{ value: 'SC', disabled: isAdmin }],
+      dob: [{ value: '', disabled: isAdmin }],
+      sex: [{ value: 'Male', disabled: isAdmin }],
+      exam: [{ value: '', disabled: isAdmin }],
+      duration: [{ value: '', disabled: isAdmin }],
+      university: [{ value: '', disabled: isAdmin }],
+      regno: [{ value: '', disabled: isAdmin }],
+      percentage: [{ value: '', disabled: isAdmin }],
+      class_per: [{ value: '', disabled: isAdmin }],
+      fileup_ins: [{ value: '', disabled: isAdmin }],
+      center_code: [{ value: '', disabled: isAdmin }],
+      center_name: [{ value: '', disabled: isAdmin }],
+      nssY_code: [{ value: '', disabled: isAdmin }],
       r1: [''],
       r2: [''],
       r3: [''],
       r4: [''],
       r5: [''],
       act: [''],
-      name: [''],
-      center_details:['']
+      name: [{ value: '', disabled: isAdmin }],
+      center_details: [{ value: '', disabled: isAdmin }]
     });
   }
   get f() { return this.editStudentForm.controls; }

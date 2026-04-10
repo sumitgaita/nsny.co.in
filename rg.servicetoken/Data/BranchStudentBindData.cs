@@ -3,6 +3,7 @@ using rg.service.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 
 namespace rg.service.Data
 {
@@ -311,46 +312,61 @@ namespace rg.service.Data
             return branchpaymenteraning;
 
         }
-        public List<BranchPaymentCollection> GetAdminStudentIcard(int branchId,int centerId, string fromdate, string todate)
+        public List<BranchPaymentCollection> GetAdminStudentIcard(int branchId, int centerId, string fromdate, string todate)
         {
             List<BranchPaymentCollection> branchpaymenteraning = new List<BranchPaymentCollection>();
-            List<IDbDataParameter> parameters = new List<IDbDataParameter>
-            {
-                myFactory.GetParameter("@bid", branchId),
-                myFactory.GetParameter("@centerId", centerId),
-                myFactory.GetParameter("@fromdate", Convert.ToDateTime(fromdate)),
-                myFactory.GetParameter("@todate", Convert.ToDateTime(todate))
-            };
+
+            DateTime fromDt, toDt;
+
+            if (!DateTime.TryParseExact(fromdate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fromDt))
+                throw new Exception("Invalid fromdate format: " + fromdate);
+
+            if (!DateTime.TryParseExact(todate, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out toDt))
+                throw new Exception("Invalid todate format: " + todate);
+
+                    List<IDbDataParameter> parameters = new List<IDbDataParameter>
+                    {
+                        myFactory.GetParameter("@bid", branchId),
+                        myFactory.GetParameter("@centerId", centerId),
+                        myFactory.GetParameter("@fromdate", fromDt),
+                        myFactory.GetParameter("@todate", toDt)
+                    };
+
             string query = "GetAdminStudentIcard";
             DataTable tbl = hlpr.GetDataTable(query, ref parameters);
+
             foreach (DataRow row in tbl.Rows)
             {
+                int bidVal = 0;
+                int.TryParse(row["bbid"]?.ToString(), out bidVal);
+
+                string pic = row["pic"] == DBNull.Value ? "" : row["pic"].ToString();
+
                 branchpaymenteraning.Add(new BranchPaymentCollection()
                 {
-                    Stid = row["stid"].ToString(),
-                    Sname = row["name"].ToString(),
-                    Guardian = row["guardian"].ToString(),
-                    Address = row["address"].ToString(),
-                    Mobile = row["mobile"].ToString(),
-                    Pic = row["pic"].ToString(),
-                    Bname = row["branch"].ToString(),
-                    Bid = !row.IsNull("bbid") ? Convert.ToInt32(row["bbid"]) : 0,
-                    Cname = row["course"].ToString(),
-                    Sjoin = row["sjoin"].ToString(),
-                    C1 = row["c1"].ToString(),
-                    C2 = row["c2"].ToString(),
-                    Duration = row["duration"].ToString(),
-                    Dob = row["dob"].ToString(),
-                    RemoveExtention = row["pic"].ToString().Replace(".jpg", ""),
-                    Theory = row["theory"].ToString(),
-                    Practical = row["practical"].ToString(),
-                    BnAddress = row["bnadress"].ToString(),
-                    CnAddress= row["centeradress"].ToString()
-
+                    Stid = row["stid"] == DBNull.Value ? "" : row["stid"].ToString(),
+                    Sname = row["name"] == DBNull.Value ? "" : row["name"].ToString(),
+                    Guardian = row["guardian"] == DBNull.Value ? "" : row["guardian"].ToString(),
+                    Address = row["address"] == DBNull.Value ? "" : row["address"].ToString(),
+                    Mobile = row["mobile"] == DBNull.Value ? "" : row["mobile"].ToString(),
+                    Pic = pic,
+                    Bname = row["branch"] == DBNull.Value ? "" : row["branch"].ToString(),
+                    Bid = bidVal,
+                    Cname = row["course"] == DBNull.Value ? "" : row["course"].ToString(),
+                    Sjoin = row["sjoin"] == DBNull.Value ? "" : row["sjoin"].ToString(),
+                    C1 = row["c1"] == DBNull.Value ? "" : row["c1"].ToString(),
+                    C2 = row["c2"] == DBNull.Value ? "" : row["c2"].ToString(),
+                    Duration = row["duration"] == DBNull.Value ? "" : row["duration"].ToString(),
+                    Dob = row["dob"] == DBNull.Value ? "" : row["dob"].ToString(),
+                    RemoveExtention = pic.Replace(".jpg", ""),
+                    Theory = row["theory"] == DBNull.Value ? "" : row["theory"].ToString(),
+                    Practical = row["practical"] == DBNull.Value ? "" : row["practical"].ToString(),
+                    BnAddress = row["bnadress"] == DBNull.Value ? "" : row["bnadress"].ToString(),
+                    CnAddress = row["centeradress"] == DBNull.Value ? "" : row["centeradress"].ToString()
                 });
             }
-            return branchpaymenteraning;
 
+            return branchpaymenteraning;
         }
         //public List<Course> GetAllCourse()
         //{

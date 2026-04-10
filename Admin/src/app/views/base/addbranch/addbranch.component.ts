@@ -141,7 +141,7 @@ export class AddBranchComponent {
     //let count = 0;
     //let likestr = `${environment.branchcode}` + ("000" + st1).slice(-3);
     let st1 = this.crrentBranchId;
-    let likestr = environment.branchcode + `${1000 + st1}`;
+    let likestr = environment.branchcode + `${st1}`;
     this.addBranchForm.get('code').setValue(likestr);
     this.addBranchForm.get('code')?.disable();
 

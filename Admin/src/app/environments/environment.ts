@@ -7,11 +7,13 @@ export const environment = {
   //apiUrl: 'http://demo.nationalyouth.co.in',
   //apiUrl: 'http://localhost/nationalyouth',
   apiUrl: 'https://qmabacus.in',
-   //apiUrl: 'http://nsny.co.in',//use this link
+   //apiUrl: 'https://nsny.co.in',//use this link
   //apiUrl: 'http://nationalyouthcomputer.org',
   //apiUrl: 'http://nationalyouth.co.in',
+  //websitetitle: 'Netaji Subhas National Youth',
   websitetitle: 'Netaji Subhas National Youth',
-  branchcode: 'NSNY',
+  //branchcode: 'NSNY',
+  branchcode: 'QMAVM',
   originalsite: 'https://www.nsny.org',
   secure: false,
   changeOrigin: true

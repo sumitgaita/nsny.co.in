@@ -214,17 +214,18 @@ export class AddStudentComponent {
   }
 
   public Idnumber() {
-    let st1 = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
+    let st1 = this.currentUser.isBranch === 'False' ? this.currentUser.id : Number(this.currentUser.branchid);
     let count = 0;
     this.spinner.show();
-    let bcode = this.currentUser.isBranch === 'True' ? this.currentUser.id : Number(this.currentUser.branchid);
+    let bcode = this.currentUser.isBranch === 'False' ? this.currentUser.id : Number(this.currentUser.branchid);
     let likestr = '';
-    if (this.currentUser.isBranch === 'True') {
-      likestr = this.currentUser.mastercode + "/" + new Date().getFullYear() % 100 + "/";
-    } else {
-      likestr = this.currentUser.centercode + "/" + new Date().getFullYear() % 100 + "/";
-    }
+    //if (this.currentUser.isBranch === 'True') {
+    //  likestr = this.currentUser.mastercode + "/" + new Date().getFullYear() % 100 + "/";
+    //} else {
+    //  likestr = this.currentUser.centercode + "/" + new Date().getFullYear() % 100 + "/";
+    //}
     // let likestr = `${environment.branchcode}` + ("000" + st1).slice(-3) + "/" + new Date().getFullYear() % 100 + "/";
+    likestr = this.currentUser.loginType;
     this.studentService.branchStudentRegisCount(bcode, likestr).subscribe((res: any) => {
       if (res && res > 0) {
         count = res + 1;
